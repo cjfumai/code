@@ -1,0 +1,42 @@
+---
+# tasks file for snap_lvs
+
+- name: set short date
+  shell: "date +%d%m%y"
+  register: tstamp
+
+- name: remove existing boot dir for todays date if exists 
+  shell: |
+     if [ -d /var/backup/boot.{{ tstamp.stdout }} ]; then
+        rm -rf /var/backup/boot.{{ tstamp.stdout }}
+     fi
+  register: snap_dir_backup_today
+
+- name: backup snap dir if eixsts
+  shell: |
+     if [ -d /var/backup/boot ]; then
+         mv /var/backup/boot /var/backup/boot.{{ tstamp.stdout }}
+     fi
+  register: snap_dir_backup
+
+- name: setup snap dir
+  shell: |
+    if [ ! -d /var/backup/boot ] ; then
+      mkdir -p /var/backup/boot
+    fi
+  
+  register: snap_dir
+
+- name: copy /boot files
+  shell: |
+     if [ -d /var/backup/boot ]; then
+        cp -pr /boot /var/backup/
+     fi
+  register: copy_boot
+
+- name: take root lv snapshots
+  shell: |
+     for i in `ls -1 /dev/root_vg | egrep "root|var|opt|usr"`; do
+        lvcreate -s -L 15G -n "$i"snap root_vg/$i
+     done
+  register: lv_snaps

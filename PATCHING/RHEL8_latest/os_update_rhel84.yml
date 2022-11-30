@@ -1,0 +1,103 @@
+---
+- hosts: all
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  gather_facts: true
+
+  tasks:
+    - name: ARE_YOU_SURE_PAUSE
+      pause:
+        prompt:  Press "Ctrl+c" then "a" to abort now or Press ENTER to continue
+      when:
+        - ansible_distribution_major_version == "8"
+
+    - name: checking for veritas had
+      stat: 
+        path: /opt/VRTSvcs/bin/had
+      register: vrts_had
+
+    - name: checking for veritas config file
+      stat: 
+        path: /etc/VRTSvcs/conf/config/main.cf
+      register: vrts_main_cf
+
+    - name: checking for veritas volume manager vxiod
+      stat: 
+        path: /opt/VRTS/bin/vxiod
+      register: vrts_vxiod
+
+    - name: fail if veritas key files exist for vcs
+      fail:
+         msg: "Veritas is installed... exiting upgrade process"
+      when:
+         - ( vrts_had.stat.exists ) or (  vrts_main_cf.stat.exists ) or ( vrts_vxiod.stat.exists )
+
+    - name: check if enough free space in root
+      block:
+       - include_role:
+            name: cs_check
+         tags: cs_check
+
+       - include_role:
+            name: root_resize
+         tags: root_resize
+
+      when:
+       - ansible_lvm['vgs']['root_vg']['free_g'] < "35"
+
+    - include_role:
+         name: snap_lvs
+      tags: snap_lvs
+
+    - include_role:
+         name: katello
+      tags: katello
+
+    - include_role:
+         name: preupgrade_remove
+      tags: preupgrade_remove
+
+    - include_role:
+         name: kernel_patch_4.18.0-305.62
+      tags: kernel_patch_4.18.0-305.62
+
+    - include_role:
+         name: ofed_install
+      tags: ofed_install
+
+    - include_role:
+         name: subscribe_validate
+      tags: subscribe_validate
+
+    - include_role:
+         name: yum_update
+      tags: yum_update
+
+    - include_role:
+         name: post_upgrade
+      tags: post_upgrade
+
+
+    - include_role:
+         name: onload_install
+      tags: onload_install
+
+    - include_role:
+         name: puppet_pre_reboot
+      tags: puppet_pre_reboot
+
+    - name: last reboot post upgrade to boot into latest kernel
+      debug:
+          msg: 
+             - "final reboot post upgrade"
+
+    - name: Run_reboot_action
+      reboot:
+        reboot_timeout: 600
+      when:
+        - ansible_distribution_major_version == "8"
+
+    - include_role:
+         name: puppet_final
+      tags: puppet_final

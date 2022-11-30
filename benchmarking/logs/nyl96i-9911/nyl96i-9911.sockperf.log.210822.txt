@@ -1,0 +1,65 @@
+Crowdstrike falcon-sensor-6.41.0-13804.el8.x86_64 stopped at 210822:11:55:32
+
+timeout 300 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+/usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 120 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+sockperf: Test end (interrupted by timer)
+sockperf: Test ended
+sockperf: [Total Run] RunTime=120.100 sec; SentMessages=25946522; ReceivedMessages=25946521
+sockperf: ========= Printing statistics for Server No: 0
+sockperf: [Valid Duration] RunTime=120.000 sec; SentMessages=25924565; ReceivedMessages=25924565
+sockperf: [2;35m====> avg-lat=  2.303 (std-dev=1.080)[0m
+sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
+sockperf: Summary: Latency is 2.303 usec
+sockperf: [2;35mTotal 25924565 observations[0m; each percentile contains 259245.65 observations
+sockperf: ---> <MAX> observation = 2113.775
+sockperf: ---> percentile  99.99 =    9.407
+sockperf: ---> percentile  99.90 =    8.753
+sockperf: ---> percentile  99.50 =    3.319
+sockperf: ---> percentile  99.00 =    2.517
+sockperf: ---> percentile  95.00 =    2.324
+sockperf: ---> percentile  90.00 =    2.312
+sockperf: ---> percentile  75.00 =    2.297
+sockperf: ---> percentile  50.00 =    2.279
+sockperf: ---> percentile  25.00 =    2.259
+sockperf: ---> <MIN> observation =    2.175
+
+Crowdstrike falcon-sensor-6.41.0-13804.el8.x86_64 started at 210822:11:57:45
+
+timeout 300 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+/usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 120 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+sockperf: Test end (interrupted by timer)
+sockperf: Test ended
+sockperf: [Total Run] RunTime=120.100 sec; SentMessages=25648379; ReceivedMessages=25648378
+sockperf: ========= Printing statistics for Server No: 0
+sockperf: [Valid Duration] RunTime=120.000 sec; SentMessages=25626732; ReceivedMessages=25626732
+sockperf: [2;35m====> avg-lat=  2.330 (std-dev=10.315)[0m
+sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
+sockperf: Summary: Latency is 2.330 usec
+sockperf: [2;35mTotal 25626732 observations[0m; each percentile contains 256267.32 observations
+sockperf: ---> <MAX> observation = 14990.394
+sockperf: ---> percentile  99.99 =    9.676
+sockperf: ---> percentile  99.90 =    8.884
+sockperf: ---> percentile  99.50 =    3.545
+sockperf: ---> percentile  99.00 =    2.640
+sockperf: ---> percentile  95.00 =    2.345
+sockperf: ---> percentile  90.00 =    2.316
+sockperf: ---> percentile  75.00 =    2.298
+sockperf: ---> percentile  50.00 =    2.277
+sockperf: ---> percentile  25.00 =    2.257
+sockperf: ---> <MIN> observation =    2.188

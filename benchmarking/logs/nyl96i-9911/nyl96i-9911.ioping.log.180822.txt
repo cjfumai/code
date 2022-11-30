@@ -1,0 +1,147 @@
+Crowdstrike falcon-sensor-6.32.0-12905.el8.x86_64 stopped at 180822:13:41:26
+
+/bin/ioping -c 10 /tmp
+
+4 KiB <<< /tmp (tmpfs /tmpfs): request=1 time=1.40 us (warmup)
+4 KiB <<< /tmp (tmpfs /tmpfs): request=2 time=6.16 us
+4 KiB <<< /tmp (tmpfs /tmpfs): request=3 time=5.57 us
+4 KiB <<< /tmp (tmpfs /tmpfs): request=4 time=5.61 us
+4 KiB <<< /tmp (tmpfs /tmpfs): request=5 time=5.53 us
+4 KiB <<< /tmp (tmpfs /tmpfs): request=6 time=16.8 us
+4 KiB <<< /tmp (tmpfs /tmpfs): request=7 time=5.60 us (fast)
+4 KiB <<< /tmp (tmpfs /tmpfs): request=8 time=5.62 us (fast)
+4 KiB <<< /tmp (tmpfs /tmpfs): request=9 time=5.67 us (fast)
+4 KiB <<< /tmp (tmpfs /tmpfs): request=10 time=5.61 us (fast)
+
+--- /tmp (tmpfs /tmpfs) ioping statistics ---
+9 requests completed in 62.2 us, 36 KiB read, 144.7 k iops, 565.2 MiB/s
+generated 10 requests in 9.00 s, 40 KiB, 1 iops, 4.44 KiB/s
+min/avg/max/mdev = 5.53 us / 6.91 us / 16.8 us / 3.52 us
+
+ /bin/ioping -c 10 -RL /dev/sda
+
+
+--- /dev/sda (block device 447.1 GiB) ioping statistics ---
+9 requests completed in 6.17 ms, 2.25 MiB read, 1.46 k iops, 364.9 MiB/s
+generated 10 requests in 7.72 ms, 2.50 MiB, 1.29 k iops, 323.8 MiB/s
+min/avg/max/mdev = 584.8 us / 685.0 us / 723.7 us / 44.3 us
+
+/bin/ioping -c 10 -RL /dev/sda
+
+
+--- /dev/sda (block device 447.1 GiB) ioping statistics ---
+9 requests completed in 6.19 ms, 2.25 MiB read, 1.45 k iops, 363.5 MiB/s
+generated 10 requests in 7.66 ms, 2.50 MiB, 1.31 k iops, 326.6 MiB/s
+min/avg/max/mdev = 620.9 us / 687.8 us / 727.4 us / 38.2 us
+
+taskset -c 1 ioping -WY -c 10 /dev/shm/ioping
+
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=1 time=1.25 us (warmup)
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=2 time=10.4 us
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=3 time=9.97 us
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=4 time=9.33 us
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=5 time=9.16 us
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=6 time=9.35 us
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=7 time=8.88 us (fast)
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=8 time=9.41 us
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=9 time=9.15 us
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=10 time=9.18 us
+
+--- /dev/shm/ioping (tmpfs tmpfs) ioping statistics ---
+9 requests completed in 84.8 us, 36 KiB written, 106.1 k iops, 414.6 MiB/s
+generated 10 requests in 9.00 s, 40 KiB, 1 iops, 4.44 KiB/s
+min/avg/max/mdev = 8.88 us / 9.42 us / 10.4 us / 438 ns
+
+taskset -c 1 ioping -WY -c 10 /cs/ioping
+
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=1 time=46.5 us (warmup)
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=2 time=308.7 us
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=3 time=304.7 us
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=4 time=304.8 us
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=5 time=306.0 us
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=6 time=292.2 us
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=7 time=296.2 us
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=8 time=296.8 us
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=9 time=277.9 us (fast)
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=10 time=283.9 us
+
+--- /cs/ioping (ext4 /dev/dm-5) ioping statistics ---
+9 requests completed in 2.67 ms, 36 KiB written, 3.37 k iops, 13.2 MiB/s
+generated 10 requests in 9.00 s, 40 KiB, 1 iops, 4.44 KiB/s
+min/avg/max/mdev = 277.9 us / 296.8 us / 308.7 us / 9.99 us
+
+
+Crowdstrike falcon-sensor-6.32.0-12905.el8.x86_64 started at 180822:13:42:02
+
+/bin/ioping -c 10 /tmp
+
+4 KiB <<< /tmp (tmpfs /tmpfs): request=1 time=1.32 us (warmup)
+4 KiB <<< /tmp (tmpfs /tmpfs): request=2 time=9.05 us
+4 KiB <<< /tmp (tmpfs /tmpfs): request=3 time=8.27 us
+4 KiB <<< /tmp (tmpfs /tmpfs): request=4 time=8.09 us
+4 KiB <<< /tmp (tmpfs /tmpfs): request=5 time=7.66 us
+4 KiB <<< /tmp (tmpfs /tmpfs): request=6 time=7.55 us
+4 KiB <<< /tmp (tmpfs /tmpfs): request=7 time=7.43 us (fast)
+4 KiB <<< /tmp (tmpfs /tmpfs): request=8 time=7.52 us
+4 KiB <<< /tmp (tmpfs /tmpfs): request=9 time=7.62 us
+4 KiB <<< /tmp (tmpfs /tmpfs): request=10 time=7.59 us
+
+--- /tmp (tmpfs /tmpfs) ioping statistics ---
+9 requests completed in 70.8 us, 36 KiB read, 127.2 k iops, 496.7 MiB/s
+generated 10 requests in 9.00 s, 40 KiB, 1 iops, 4.44 KiB/s
+min/avg/max/mdev = 7.43 us / 7.86 us / 9.05 us / 493 ns
+
+ /bin/ioping -c 10 -RL /dev/sda
+
+
+--- /dev/sda (block device 447.1 GiB) ioping statistics ---
+9 requests completed in 6.30 ms, 2.25 MiB read, 1.43 k iops, 357.3 MiB/s
+generated 10 requests in 7.85 ms, 2.50 MiB, 1.27 k iops, 318.3 MiB/s
+min/avg/max/mdev = 629.8 us / 699.7 us / 736.0 us / 38.2 us
+
+/bin/ioping -c 10 -RL /dev/sda
+
+
+--- /dev/sda (block device 447.1 GiB) ioping statistics ---
+9 requests completed in 6.24 ms, 2.25 MiB read, 1.44 k iops, 360.3 MiB/s
+generated 10 requests in 7.68 ms, 2.50 MiB, 1.30 k iops, 325.5 MiB/s
+min/avg/max/mdev = 625.8 us / 693.9 us / 733.5 us / 43.6 us
+
+taskset -c 1 ioping -WY -c 10 /dev/shm/ioping
+
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=1 time=1.30 us (warmup)
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=2 time=17.2 us
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=3 time=16.0 us
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=4 time=14.3 us
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=5 time=14.6 us
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=6 time=14.7 us
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=7 time=14.2 us (fast)
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=8 time=14.3 us (fast)
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=9 time=14.4 us
+4 KiB >>> /dev/shm/ioping (tmpfs tmpfs): request=10 time=14.4 us (fast)
+
+--- /dev/shm/ioping (tmpfs tmpfs) ioping statistics ---
+9 requests completed in 134.2 us, 36 KiB written, 67.1 k iops, 262.0 MiB/s
+generated 10 requests in 9.00 s, 40 KiB, 1 iops, 4.44 KiB/s
+min/avg/max/mdev = 14.2 us / 14.9 us / 17.2 us / 979 ns
+
+taskset -c 1 ioping -WY -c 10 /cs/ioping
+
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=1 time=65.9 us (warmup)
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=2 time=368.7 us
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=3 time=364.6 us
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=4 time=372.4 us
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=5 time=374.9 us
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=6 time=371.5 us
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=7 time=367.9 us
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=8 time=376.4 us (slow)
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=9 time=368.1 us
+4 KiB >>> /cs/ioping (ext4 /dev/dm-5): request=10 time=371.5 us
+
+--- /cs/ioping (ext4 /dev/dm-5) ioping statistics ---
+9 requests completed in 3.34 ms, 36 KiB written, 2.70 k iops, 10.5 MiB/s
+generated 10 requests in 9.00 s, 40 KiB, 1 iops, 4.44 KiB/s
+min/avg/max/mdev = 364.6 us / 370.7 us / 376.4 us / 3.50 us
+
+
+

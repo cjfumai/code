@@ -1,0 +1,46 @@
+Crowdstrike falcon-sensor-6.41.0-13804.el8.x86_64 stopped at 220822:17:00:22
+
+timeout 300 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+/usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 120 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+sockperf: Test end (interrupted by timer)
+sockperf: Test ended
+sockperf: [Total Run] RunTime=120.105 sec; SentMessages=7689894; ReceivedMessages=7689893
+sockperf: ========= Printing statistics for Server No: 0
+sockperf: [Valid Duration] RunTime=119.995 sec; SentMessages=7679302; ReceivedMessages=7679302
+sockperf: [2;35m====> avg-lat=  7.803 (std-dev=236.381)[0m
+sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
+sockperf: Summary: Latency is 7.803 usec
+sockperf: [2;35mTotal 7679302 observations[0m; each percentile contains 76793.02 observations
+sockperf: ---> <MAX> observation = 39579.707
+sockperf: ---> percentile  99.99 = 5500.262
+sockperf: ---> percentile  99.90 =    3.676
+sockperf: ---> percentile  99.50 =    2.391
+sockperf: ---> percentile  99.00 =    2.197
+sockperf: ---> percentile  95.00 =    2.041
+sockperf: ---> percentile  90.00 =    2.030
+sockperf: ---> percentile  75.00 =    2.016
+sockperf: ---> percentile  50.00 =    2.004
+sockperf: ---> percentile  25.00 =    1.995
+sockperf: ---> <MIN> observation =    1.945
+
+Crowdstrike falcon-sensor-6.41.0-13804.el8.x86_64 started at 220822:17:04:14
+
+timeout 300 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+/usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 120 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+IP = 127.0.0.1       PORT =  2020 # TCP sockperf: ERROR: A connection was forcibly closed by a peer (errno=0 Success)

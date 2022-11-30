@@ -1,0 +1,85 @@
+telegraf_config:
+    telegraf_log_file: "/var/log/telegraf/telegraf.log"
+    required_files:
+        dest_dir: /hpet_tools/telegraf
+        files:
+            - tkstats_telegraf.py
+
+    agent:
+        collection_interval: "10s"
+
+    plugins:
+
+        cpu:
+            enabled: True
+            options:
+                - percpu: "true"
+                - totalcpu: "true"
+                - collect_cpu_time: "false"
+                - report_active: "false"
+
+        procstat:
+            enabled: True
+            options:
+                - exe: '"adclient"'
+                - prefix: '"adclient"'
+
+        procstat_2:
+            enabled: True
+            options:
+                - systemd_unit: '"telegraf.service"'
+                - prefix: '"telegraf"'
+
+
+        ethtool:
+            enabled: True
+            options:
+        #        - interface_exclude: '["bond0"]'
+                - interface_exclude: 'bond_auto'
+
+        disk:
+            enabled: True
+            options:
+               - ignore_fs: '["devtmpfs", "devfs", "iso9660", "overlay", "aufs", "squashfs"]'
+
+        diskio:
+            enabled: True
+
+        kernel:
+            enabled: True
+
+        mem:
+            enabled: True
+
+        processes:
+            enabled: True
+
+        swap:
+            enabled: False
+
+        system:
+            enabled: True
+
+        cgroup:
+            enabled: True
+
+        interrupts:
+            enabled: True
+
+        kernel_vmstat:
+            enabled: True
+
+        net:
+            enabled: True
+
+        nstat:
+            enabled: True
+
+        execd:
+            enabled: True
+            options:
+                - command: '["/hpet_tools/telegraf/tkstats_telegraf.py"]'
+                - data_format: '"influx"'
+                - signal: '"none"'
+                - restart_delay: '"10s"'
+

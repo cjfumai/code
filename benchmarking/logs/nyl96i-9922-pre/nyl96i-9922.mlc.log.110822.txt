@@ -1,0 +1,154 @@
+
+
+/usr/local/bin/mlc
+
+Intel(R) Memory Latency Checker - v3.9
+Measuring idle latencies (in ns)...
+		Numa node
+Numa node	     0	     1	     2	     3	
+       0	  81.4	  89.6	 130.3	 142.5	
+       1	  81.4	  81.4	 130.3	 144.8	
+       2	 130.3	 139.6	  72.4	  91.6	
+       3	 130.3	 144.8	  81.4	  81.4	
+
+Measuring Peak Injection Memory Bandwidths for the system
+Bandwidths are in MB/sec (1 MB/sec = 1,000,000 Bytes/sec)
+Using all the threads from each core if Hyper-threading is enabled
+Using traffic with the following read-write ratios
+ALL Reads        :	204587.6	
+3:1 Reads-Writes :	197820.3	
+2:1 Reads-Writes :	193498.8	
+1:1 Reads-Writes :	189694.0	
+Stream-triad like:	171912.2	
+
+Measuring Memory Bandwidths between nodes within system 
+Bandwidths are in MB/sec (1 MB/sec = 1,000,000 Bytes/sec)
+Using all the threads from each core if Hyper-threading is enabled
+Using Read-only traffic type
+		Numa node
+Numa node	     0	     1	     2	     3	
+       0	51073.7	50366.6	25364.4	25037.2	
+       1	49845.7	51594.7	25314.7	25004.4	
+       2	25408.0	24909.8	51274.8	50232.3	
+       3	25383.9	24882.4	46055.2	51413.5	
+
+Measuring Loaded Latencies for the system
+Using all the threads from each core if Hyper-threading is enabled
+Using Read-only traffic type
+Inject	Latency	Bandwidth
+Delay	(ns)	MB/sec
+==========================
+ 00000	 94.69	 195632.8
+ 00002	 95.16	 195749.5
+ 00008	 96.15	 195186.0
+ 00015	 94.60	 191437.4
+ 00050	 89.79	 166328.1
+ 00100	 82.97	 103693.7
+ 00200	 79.41	  66568.7
+ 00300	 78.10	  48390.8
+ 00400	 76.55	  38442.2
+ 00500	 75.46	  31627.4
+ 00700	 74.23	  23295.5
+ 01000	 73.81	  16785.5
+ 01300	 73.33	  13205.5
+ 01700	 73.95	  10365.9
+ 02500	 73.80	   7359.6
+ 03500	 73.76	   5522.9
+ 05000	 72.87	   4145.3
+ 09000	 72.84	   2697.0
+ 20000	 74.07	   1684.5
+
+Measuring cache-to-cache transfer latency (in ns)...
+Local Socket L2->L2 HIT  latency	44.0
+Local Socket L2->L2 HITM latency	44.1
+Remote Socket L2->L2 HITM latency (data address homed in writer socket)
+			Reader Numa Node
+Writer Numa Node     0	     1	     2	     3	
+            0	     -	  47.2	 105.8	 109.1	
+            1	  44.8	     -	 112.4	 115.5	
+            2	 109.7	 111.6	     -	  48.0	
+            3	 113.5	 115.4	  43.5	     -	
+Remote Socket L2->L2 HITM latency (data address homed in reader socket)
+			Reader Numa Node
+Writer Numa Node     0	     1	     2	     3	
+            0	     -	  46.3	 176.0	 178.1	
+            1	  47.9	     -	 175.5	 178.3	
+            2	 172.7	 179.8	     -	  43.7	
+            3	 172.6	 179.3	  45.2	     -	
+/usr/local/bin/mlc
+
+Intel(R) Memory Latency Checker - v3.9
+Measuring idle latencies (in ns)...
+		Numa node
+Numa node	     0	     1	     2	     3	
+       0	  81.4	  89.6	 130.3	 142.5	
+       1	  81.5	  81.4	 130.3	 144.8	
+       2	 130.3	 139.6	  72.4	  91.6	
+       3	 130.3	 144.8	  81.4	  81.4	
+
+Measuring Peak Injection Memory Bandwidths for the system
+Bandwidths are in MB/sec (1 MB/sec = 1,000,000 Bytes/sec)
+Using all the threads from each core if Hyper-threading is enabled
+Using traffic with the following read-write ratios
+ALL Reads        :	204603.1	
+3:1 Reads-Writes :	197817.1	
+2:1 Reads-Writes :	193520.0	
+1:1 Reads-Writes :	189722.2	
+Stream-triad like:	171918.4	
+
+Measuring Memory Bandwidths between nodes within system 
+Bandwidths are in MB/sec (1 MB/sec = 1,000,000 Bytes/sec)
+Using all the threads from each core if Hyper-threading is enabled
+Using Read-only traffic type
+		Numa node
+Numa node	     0	     1	     2	     3	
+       0	51153.4	50285.4	25361.1	25039.4	
+       1	49833.9	51581.9	25324.2	25004.8	
+       2	25412.3	24916.9	51288.6	50096.5	
+       3	25391.7	24886.7	46075.7	51416.3	
+
+Measuring Loaded Latencies for the system
+Using all the threads from each core if Hyper-threading is enabled
+Using Read-only traffic type
+Inject	Latency	Bandwidth
+Delay	(ns)	MB/sec
+==========================
+ 00000	 95.66	 195635.7
+ 00002	 95.48	 195708.5
+ 00008	 96.05	 194297.5
+ 00015	 98.16	 189988.0
+ 00050	 90.17	 166440.4
+ 00100	 82.97	 103571.9
+ 00200	 79.59	  66870.4
+ 00300	 78.57	  48694.4
+ 00400	 78.08	  38442.0
+ 00500	 75.48	  31629.3
+ 00700	 75.99	  23295.7
+ 01000	 74.23	  16794.3
+ 01300	 74.82	  13204.3
+ 01700	 74.39	  10361.5
+ 02500	 74.42	   7357.7
+ 03500	 75.06	   5504.4
+ 05000	 73.99	   4133.4
+ 09000	 75.30	   2659.7
+ 20000	 73.76	   1688.8
+
+Measuring cache-to-cache transfer latency (in ns)...
+Local Socket L2->L2 HIT  latency	44.0
+Local Socket L2->L2 HITM latency	44.1
+Remote Socket L2->L2 HITM latency (data address homed in writer socket)
+			Reader Numa Node
+Writer Numa Node     0	     1	     2	     3	
+            0	     -	  47.2	 105.8	 109.1	
+            1	  44.8	     -	 112.4	 115.5	
+            2	 109.7	 111.6	     -	  48.0	
+            3	 113.5	 115.3	  43.5	     -	
+Remote Socket L2->L2 HITM latency (data address homed in reader socket)
+			Reader Numa Node
+Writer Numa Node     0	     1	     2	     3	
+            0	     -	  46.2	 175.9	 178.9	
+            1	  47.9	     -	 176.0	 181.2	
+            2	 172.9	 180.7	     -	  43.7	
+            3	 172.5	 180.6	  45.2	     -	
+
+

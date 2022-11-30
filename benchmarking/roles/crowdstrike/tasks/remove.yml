@@ -1,0 +1,7 @@
+---
+- name: "Starting crowdstrike package removal"
+  yum:
+    name:
+       - falcon-sensor
+
+    state: absent

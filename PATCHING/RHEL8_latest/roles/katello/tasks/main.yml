@@ -1,0 +1,16 @@
+---
+# tasks file for katello
+
+- name: ensure subscription-manager latest is installed
+  yum:
+    name: 'subscription-manager'
+    state: latest
+  when: ansible_distribution_major_version == "8"
+
+- name: install katello certificates
+  yum:
+    name: http://vsol06i-0006.eu.hedani.net/pub/katello-ca-consumer-latest.noarch.rpm
+    state: present
+    disablerepo: "*"
+    disable_gpg_check: yes
+  when: ansible_distribution_major_version == "8"

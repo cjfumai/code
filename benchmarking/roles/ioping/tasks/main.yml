@@ -1,0 +1,150 @@
+---
+- name: Include crowdstrike
+  include_vars:  "{{ roles_path }}/crowdstrike/vars/crowdstrike.yml"
+
+- name: run ioping benchmark 
+  block:
+
+       - name: check for /bin/ioping
+         stat:
+           path: /bin/ioping
+         register: ioping_result
+       
+       - name: check for /bin/ioping
+         fail:
+           msg: "{{ prog }} does not exist on this system"
+         when:
+            - not ioping_result.stat.exists
+       
+       - name: set short date
+         shell: "date +%d%m%y"
+         register: tstamp
+         when:
+           - ioping_result.stat.exists
+           - ansible_distribution_major_version|int >= 7
+       
+       - file:
+            path: "{{ test_fs2 }}"
+            state: directory
+            owner: root
+            group: root
+            mode: 0755
+         when:
+           - ioping_result.stat.exists
+           - ansible_distribution_major_version|int >= 7
+       
+       - file:
+            path: "{{ test_fs3 }}"
+            state: directory
+            owner: root
+            group: root
+            mode: 0755
+         when:
+           - ioping_result.stat.exists
+           - ansible_distribution_major_version|int >= 7
+       
+       - name: Get List of services
+         service_facts:
+       
+       - name: Output message if Crowdstrike missing
+         shell: "{{ item }}"
+         with_items:
+           - "{{ crowdstrike_missing }}"
+         when:
+           - "'falcon-sensor.service' not in services"
+
+       - name: Stop cgroups service
+         shell: "{{ item }}"
+         with_items:
+            - "{{ LLcgconfig_stop }}"
+         when:
+           - "'LLcgconfig' in services"
+           - cgroups == "no"
+
+       - name: Stop Crowdstrike if exists
+         shell: "{{ item }}"
+         with_items:
+           - "{{ crowdstrike_stop }}"
+         when:
+           - ( crowdstrike == "yes" ) and (  "'falcon-sensor.service' in services" )
+
+       - name: run {{ prog }} tests
+         shell: "{{ item }}"
+         with_items:
+           - "{{ commands }}"
+         when:
+           - ioping_result.stat.exists
+           - ansible_distribution_major_version|int >= 7
+
+       - name: Start crowdstrike if exists
+         shell: "{{ item }}"
+         with_items:
+           - "{{ crowdstrike_start }}"
+         when:
+           - ( crowdstrike == "yes" ) and (  "'falcon-sensor.service' in services" )
+       
+       - name: run {{ prog }} tests
+         shell: "{{ item }}"
+         with_items:
+           - "{{ commands }}"
+         when:
+           - ioping_result.stat.exists
+           - "'falcon-sensor.service' in services"
+           - ansible_distribution_major_version|int >= 7
+
+       - name: Start cgroups service
+         shell: "{{ item }}"
+         with_items:
+            - "{{ LLcgconfig_start }}"
+         when:
+           - "'LLcgconfig' in services"
+           - cgroups == "yes"
+       
+       - file: 
+            path: "{{ tmp_log }}.{{ tstamp.stdout }}.txt"
+            state: touch
+            owner: root
+            group: root
+            mode: 0755
+         when:
+           - ioping_result.stat.exists
+           - ansible_distribution_major_version|int >= 7
+       
+       - file: 
+            path: "{{ test_fs2 }}"
+            state: absent
+       
+       - file: 
+            path: "{{ test_fs3 }}"
+            state: absent
+       
+       - name: find file on remote to copy
+         find:
+           paths: /tmp/
+           recurse: no
+           patterns: "{{ prog }}.log.{{ tstamp.stdout }}.txt"
+         register: files_to_copy
+         when:
+           - ioping_result.stat.exists
+           - ansible_distribution_major_version|int >= 7
+       
+       - name: Copy logfile to control server
+         fetch:
+            src: "{{ item.path }}"
+            dest: "{{ logs_dir }}/{{ ansible_hostname }}.{{ prog }}.log.{{ tstamp.stdout }}.txt"
+            flat: yes
+         with_items: "{{ files_to_copy.files }}"
+         when:
+           - ioping_result.stat.exists
+           - ansible_distribution_major_version|int >= 7
+       
+       - name: local action on controller to fix fetched file perms
+         file:
+            path:  "{{ logs_dir }}"
+            state: directory
+            mode: 0755
+            recurse: yes
+         delegate_to: localhost
+         when:
+           - ioping_result.stat.exists
+           - ansible_distribution_major_version|int >= 7 

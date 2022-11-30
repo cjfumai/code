@@ -1,0 +1,65 @@
+---
+# tasks file for ofed_install
+
+- name: Check if Mellanox is installed
+  shell: /sbin/lspci | /bin/grep -i Mellanox  | xargs
+  register: mellanox_nic_installed
+
+- name: set install flag to true if mellanox cards found
+  set_fact:
+    ofed_install_flag: True
+  tags: install_ofed 
+  when:
+     - mellanox_nic_installed.stdout != ""
+
+- name: Set system flag as well if something fails
+  shell: touch /root/.ansible_ofed_install_flag
+  tags: install_ofed
+  when:
+     - mellanox_nic_installed.stdout != ""
+
+- name: Install 82-net-setup-link.rules
+  copy:
+    src: 82-net-setup-link.rules
+    dest: /etc/udev/rules.d
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Deploy OFED Repo
+  copy:
+    src: files/mlnx_ofed.repo
+    dest: /etc/yum.repos.d
+    owner: root
+    group: root
+    mode: 0644
+  tags: install_ofed
+  when:
+     - mellanox_nic_installed.stdout != ""
+
+- name: Clean all repos
+  shell: yum clean all
+  tags: install_ofed
+
+- name: Run yum install
+  yum:
+    name: mlnx-ofed-vma-4.18.0-305.62.1.el8_4.x86_64.noarch
+    state: present
+    enablerepo:
+      - rhel-8-for-x86_64-baseos-eus-rpms
+      - rhel-8-for-x86_64-appstream-eus-rpms
+      - rhel-8-for-x86_64-supplementary-eus-rpms
+  tags: install_ofed
+  when:
+     - mellanox_nic_installed.stdout != ""
+
+- name: Force regenerate initrd
+  shell: dracut --kver 4.18.0-305.62.1.el8_4.x86_64 --force
+  when:
+     - mellanox_nic_installed.stdout != ""
+
+- name: Remove the flag
+  shell: rm /root/.ansible_ofed_install_flag | xargs
+  tags: install_ofed
+  when:
+     - mellanox_nic_installed.stdout != ""

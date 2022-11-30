@@ -1,0 +1,138 @@
+
+
+/usr/local/bin/mlc
+
+Intel(R) Memory Latency Checker - v3.9
+Measuring idle latencies (in ns)...
+		Numa node
+Numa node	     0	     1	
+       0	  81.4	 135.5	
+       1	 135.8	  81.3	
+
+Measuring Peak Injection Memory Bandwidths for the system
+Bandwidths are in MB/sec (1 MB/sec = 1,000,000 Bytes/sec)
+Using all the threads from each core if Hyper-threading is enabled
+Using traffic with the following read-write ratios
+ALL Reads        :	198001.8	
+3:1 Reads-Writes :	189716.1	
+2:1 Reads-Writes :	184734.6	
+1:1 Reads-Writes :	183261.7	
+Stream-triad like:	162997.9	
+
+Measuring Memory Bandwidths between nodes within system 
+Bandwidths are in MB/sec (1 MB/sec = 1,000,000 Bytes/sec)
+Using all the threads from each core if Hyper-threading is enabled
+Using Read-only traffic type
+		Numa node
+Numa node	     0	     1	
+       0	98859.8	33258.7	
+       1	33249.3	99196.8	
+
+Measuring Loaded Latencies for the system
+Using all the threads from each core if Hyper-threading is enabled
+Using Read-only traffic type
+Inject	Latency	Bandwidth
+Delay	(ns)	MB/sec
+==========================
+ 00000	104.95	 189581.0
+ 00002	104.93	 189957.2
+ 00008	104.82	 189933.8
+ 00015	104.39	 187451.0
+ 00050	 97.58	 157537.3
+ 00100	 90.92	  92981.8
+ 00200	 83.51	  65187.5
+ 00300	 82.90	  48696.0
+ 00400	 81.87	  38435.1
+ 00500	 81.80	  31538.5
+ 00700	 81.83	  23240.8
+ 01000	 81.67	  16740.0
+ 01300	 81.66	  13151.2
+ 01700	 81.82	  10295.2
+ 02500	 81.56	   7291.3
+ 03500	 81.66	   5446.6
+ 05000	 81.35	   4060.2
+ 09000	 81.13	   2609.1
+ 20000	 80.78	   1614.4
+
+Measuring cache-to-cache transfer latency (in ns)...
+Local Socket L2->L2 HIT  latency	47.3
+Local Socket L2->L2 HITM latency	46.8
+Remote Socket L2->L2 HITM latency (data address homed in writer socket)
+			Reader Numa Node
+Writer Numa Node     0	     1	
+            0	     -	 113.6	
+            1	 112.8	     -	
+Remote Socket L2->L2 HITM latency (data address homed in reader socket)
+			Reader Numa Node
+Writer Numa Node     0	     1	
+            0	     -	 179.1	
+            1	 181.3	     -	
+/usr/local/bin/mlc
+
+Intel(R) Memory Latency Checker - v3.9
+Measuring idle latencies (in ns)...
+		Numa node
+Numa node	     0	     1	
+       0	  81.4	 135.5	
+       1	 135.8	  81.3	
+
+Measuring Peak Injection Memory Bandwidths for the system
+Bandwidths are in MB/sec (1 MB/sec = 1,000,000 Bytes/sec)
+Using all the threads from each core if Hyper-threading is enabled
+Using traffic with the following read-write ratios
+ALL Reads        :	197920.9	
+3:1 Reads-Writes :	189711.3	
+2:1 Reads-Writes :	184748.3	
+1:1 Reads-Writes :	182963.3	
+Stream-triad like:	164158.5	
+
+Measuring Memory Bandwidths between nodes within system 
+Bandwidths are in MB/sec (1 MB/sec = 1,000,000 Bytes/sec)
+Using all the threads from each core if Hyper-threading is enabled
+Using Read-only traffic type
+		Numa node
+Numa node	     0	     1	
+       0	98887.3	33265.0	
+       1	33256.1	99185.4	
+
+Measuring Loaded Latencies for the system
+Using all the threads from each core if Hyper-threading is enabled
+Using Read-only traffic type
+Inject	Latency	Bandwidth
+Delay	(ns)	MB/sec
+==========================
+ 00000	105.28	 189981.4
+ 00002	104.83	 189996.1
+ 00008	104.97	 189878.2
+ 00015	104.26	 187452.5
+ 00050	102.61	 157703.3
+ 00100	 87.38	  93342.8
+ 00200	 83.38	  65383.6
+ 00300	 82.18	  48850.8
+ 00400	 81.83	  38439.9
+ 00500	 81.84	  31531.7
+ 00700	 81.72	  23243.2
+ 01000	 81.84	  16738.6
+ 01300	 81.79	  13146.9
+ 01700	 81.63	  10296.6
+ 02500	 81.92	   7287.7
+ 03500	 81.46	   5449.1
+ 05000	 81.34	   4059.5
+ 09000	 81.27	   2611.1
+ 20000	 81.63	   1600.9
+
+Measuring cache-to-cache transfer latency (in ns)...
+Local Socket L2->L2 HIT  latency	46.7
+Local Socket L2->L2 HITM latency	46.8
+Remote Socket L2->L2 HITM latency (data address homed in writer socket)
+			Reader Numa Node
+Writer Numa Node     0	     1	
+            0	     -	 113.6	
+            1	 112.8	     -	
+Remote Socket L2->L2 HITM latency (data address homed in reader socket)
+			Reader Numa Node
+Writer Numa Node     0	     1	
+            0	     -	 179.7	
+            1	 180.4	     -	
+
+

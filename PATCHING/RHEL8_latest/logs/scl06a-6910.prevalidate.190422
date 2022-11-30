@@ -1,0 +1,125 @@
+################################################
+INFO : Starting prevalidate.sh at 13:39:06:190422
+
+INFO: /boot/grub2/grubenv is OK
+
+INFO: grubby info is OK
+
+INFO : 13:39:07:190422 Starting bootspace checks
+/dev/sda1         245671 65827    162641  29% /boot
+
+INFO : 13:39:07:190422 Found 162641 kilobytes of space in /boot, continuing.....
+
+INFO : 13:39:07:190422 Printing state of all LVM vols seen 
+
+  LV   VG      Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  cs   root_vg -wi-ao---- 400.00g                                                    
+  root root_vg Owi-aos---  40.00g             17.14                                  
+  swap root_vg -wi-ao----   8.00g                                                    
+  var  root_vg Owi-aos---  40.00g             6.68                                   
+
+INFO : 13:39:07:190422 Starting snap checks
+ERROR : 13:39:07:190422 Found we already have root_vg snapshots, needs attention before OS update
+  43620761600
+INFO : 13:39:07:190422 root_vg free space OK
+
+INFO : 13:39:07:190422 Starting rpm checks
+INFO : 13:39:09:190422 No problematic RPM's found OK 
+
+INFO : 13:39:09:190422 Starting ofed checks
+INFO : 13:39:09:190422 No evidence of ofed_info OK
+
+INFO : 13:39:09:190422 Starting dracut checks
+add_drivers+="dm-snapshot"
+INFO : 13:39:09:190422 dracut checks have passed OK
+
+/cs is less then 85 percent OK
+35 2 * * * /opt/puppetlabs/bin/puppet agent -o --no-daemonize --logdest=syslog --no-splay
+INFO : 13:39:09:190422 Starting duplicate rpms check
+
+INFO : Finished prevalidate.sh at 13:39:19:190422
+################################################
+################################################
+INFO : Starting prevalidate.sh at 13:45:40:190422
+
+INFO: /boot/grub2/grubenv is OK
+
+INFO: grubby info is OK
+
+INFO : 13:45:40:190422 Starting bootspace checks
+/dev/sda1         245671 65827    162641  29% /boot
+
+INFO : 13:45:40:190422 Found 162641 kilobytes of space in /boot, continuing.....
+
+INFO : 13:45:40:190422 Printing state of all LVM vols seen 
+
+  LV   VG      Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  cs   root_vg -wi-ao---- 400.00g                                                    
+  root root_vg -wi-ao----  40.00g                                                    
+  swap root_vg -wi-ao----   8.00g                                                    
+  var  root_vg -wi-ao----  40.00g                                                    
+
+INFO : 13:45:40:190422 Starting snap checks
+INFO : 13:45:40:190422 No root snaps detected, continuing.
+
+  75833016320
+INFO : 13:45:40:190422 root_vg free space OK
+
+INFO : 13:45:40:190422 Starting rpm checks
+INFO : 13:45:41:190422 No problematic RPM's found OK 
+
+INFO : 13:45:41:190422 Starting ofed checks
+INFO : 13:45:41:190422 No evidence of ofed_info OK
+
+INFO : 13:45:41:190422 Starting dracut checks
+add_drivers+="dm-snapshot"
+INFO : 13:45:41:190422 dracut checks have passed OK
+
+/cs is less then 85 percent OK
+35 2 * * * /opt/puppetlabs/bin/puppet agent -o --no-daemonize --logdest=syslog --no-splay
+INFO : 13:45:41:190422 Starting duplicate rpms check
+
+INFO : Finished prevalidate.sh at 13:45:42:190422
+################################################
+################################################
+INFO : Starting prevalidate.sh at 13:48:25:190422
+
+INFO: /boot/grub2/grubenv is OK
+
+INFO: grubby info is OK
+
+INFO : 13:48:25:190422 Starting bootspace checks
+/dev/sda1         245671 65827    162641  29% /boot
+
+INFO : 13:48:25:190422 Found 162641 kilobytes of space in /boot, continuing.....
+
+INFO : 13:48:25:190422 Printing state of all LVM vols seen 
+
+  LV   VG      Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  cs   root_vg -wi-ao---- 400.00g                                                    
+  root root_vg -wi-ao----  40.00g                                                    
+  swap root_vg -wi-ao----   8.00g                                                    
+  var  root_vg -wi-ao----  40.00g                                                    
+
+INFO : 13:48:25:190422 Starting snap checks
+INFO : 13:48:25:190422 No root snaps detected, continuing.
+
+  75833016320
+INFO : 13:48:25:190422 root_vg free space OK
+
+INFO : 13:48:25:190422 Starting rpm checks
+INFO : 13:48:26:190422 No problematic RPM's found OK 
+
+INFO : 13:48:26:190422 Starting ofed checks
+INFO : 13:48:26:190422 No evidence of ofed_info OK
+
+INFO : 13:48:26:190422 Starting dracut checks
+add_drivers+="dm-snapshot"
+INFO : 13:48:26:190422 dracut checks have passed OK
+
+/cs is less then 85 percent OK
+35 2 * * * /opt/puppetlabs/bin/puppet agent -o --no-daemonize --logdest=syslog --no-splay
+INFO : 13:48:26:190422 Starting duplicate rpms check
+
+INFO : Finished prevalidate.sh at 13:48:26:190422
+################################################

@@ -1,0 +1,141 @@
+Crowdstrike falcon-sensor-6.41.0-13804.el8.x86_64 stopped at 220822:17:08:10
+
+
+
+/usr/local/bin/mlc
+
+Intel(R) Memory Latency Checker - v3.9
+Measuring idle latencies (in ns)...
+		Numa node
+Numa node	     0	     1	
+       0	  82.0	 151.0	
+       1	 150.9	  81.7	
+
+Measuring Peak Injection Memory Bandwidths for the system
+Bandwidths are in MB/sec (1 MB/sec = 1,000,000 Bytes/sec)
+Using all the threads from each core if Hyper-threading is enabled
+Using traffic with the following read-write ratios
+ALL Reads        :	110015.9	
+3:1 Reads-Writes :	147667.4	
+2:1 Reads-Writes :	147365.0	
+1:1 Reads-Writes :	150645.6	
+Stream-triad like:	101700.0	
+
+Measuring Memory Bandwidths between nodes within system 
+Bandwidths are in MB/sec (1 MB/sec = 1,000,000 Bytes/sec)
+Using all the threads from each core if Hyper-threading is enabled
+Using Read-only traffic type
+		Numa node
+Numa node	     0	     1	
+       0	74008.3	29314.1	
+       1	31083.5	74251.1	
+
+Measuring Loaded Latencies for the system
+Using all the threads from each core if Hyper-threading is enabled
+Using Read-only traffic type
+Inject	Latency	Bandwidth
+Delay	(ns)	MB/sec
+==========================
+ 00000	157.61	 102798.1
+ 00002	182.55	 102614.6
+ 00008	172.20	 101973.8
+ 00015	192.60	 100350.2
+ 00050	180.91	  82895.3
+ 00100	170.75	  52216.1
+ 00200	166.17	  36749.8
+ 00300	153.62	  27285.5
+ 00400	175.25	  21896.4
+ 00500	153.86	  17775.3
+ 00700	153.64	  13095.1
+ 01000	163.79	   9416.6
+ 01300	245.12	   7661.9
+ 01700	166.13	   5787.0
+ 02500	166.46	   4079.9
+ 03500	148.91	   3062.9
+ 05000	166.44	   2245.0
+ 09000	162.24	   1426.4
+ 20000	147.52	    897.8
+
+Measuring cache-to-cache transfer latency (in ns)...
+Local Socket L2->L2 HIT  latency	52.0
+Local Socket L2->L2 HITM latency	52.4
+Remote Socket L2->L2 HITM latency (data address homed in writer socket)
+			Reader Numa Node
+Writer Numa Node     0	     1	
+            0	     -	 126.2	
+            1	 125.5	     -	
+Remote Socket L2->L2 HITM latency (data address homed in reader socket)
+			Reader Numa Node
+Writer Numa Node     0	     1	
+            0	     -	 196.4	
+            1	 193.6	     -	
+
+Crowdstrike falcon-sensor-6.41.0-13804.el8.x86_64 started at 220822:17:13:36
+
+/usr/local/bin/mlc
+
+Intel(R) Memory Latency Checker - v3.9
+Measuring idle latencies (in ns)...
+		Numa node
+Numa node	     0	     1	
+       0	  92.5	 135.7	
+       1	 155.7	  81.4	
+
+Measuring Peak Injection Memory Bandwidths for the system
+Bandwidths are in MB/sec (1 MB/sec = 1,000,000 Bytes/sec)
+Using all the threads from each core if Hyper-threading is enabled
+Using traffic with the following read-write ratios
+ALL Reads        :	113970.2	
+3:1 Reads-Writes :	140428.0	
+2:1 Reads-Writes :	151442.2	
+1:1 Reads-Writes :	147892.1	
+Stream-triad like:	104338.1	
+
+Measuring Memory Bandwidths between nodes within system 
+Bandwidths are in MB/sec (1 MB/sec = 1,000,000 Bytes/sec)
+Using all the threads from each core if Hyper-threading is enabled
+Using Read-only traffic type
+		Numa node
+Numa node	     0	     1	
+       0	75522.6	32467.5	
+       1	31653.5	77835.8	
+
+Measuring Loaded Latencies for the system
+Using all the threads from each core if Hyper-threading is enabled
+Using Read-only traffic type
+Inject	Latency	Bandwidth
+Delay	(ns)	MB/sec
+==========================
+ 00000	140.95	 105167.4
+ 00002	196.25	 109080.2
+ 00008	185.21	 106463.0
+ 00015	181.17	 104151.9
+ 00050	151.10	  83956.9
+ 00100	223.25	  54355.2
+ 00200	248.40	  38729.6
+ 00300	246.33	  28971.0
+ 00400	224.85	  22553.6
+ 00500	171.70	  17894.1
+ 00700	164.32	  13088.7
+ 01000	166.41	   9305.2
+ 01300	169.28	   7420.2
+ 01700	162.85	   5783.8
+ 02500	163.57	   4076.4
+ 03500	162.76	   3030.0
+ 05000	144.59	   2281.9
+ 09000	163.19	   1430.4
+ 20000	168.28	    849.5
+
+Measuring cache-to-cache transfer latency (in ns)...
+Local Socket L2->L2 HIT  latency	48.3
+Local Socket L2->L2 HITM latency	47.1
+Remote Socket L2->L2 HITM latency (data address homed in writer socket)
+			Reader Numa Node
+Writer Numa Node     0	     1	
+            0	     -	 115.7	
+            1	 114.7	     -	
+Remote Socket L2->L2 HITM latency (data address homed in reader socket)
+			Reader Numa Node
+Writer Numa Node     0	     1	
+            0	     -	 183.0	
+            1	 181.4	     -	

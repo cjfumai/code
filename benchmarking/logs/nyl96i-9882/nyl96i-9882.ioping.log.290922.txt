@@ -1,0 +1,47 @@
+Crowdstrike falcon-sensor-6.39.0-13601.el7.x86_64 stopped at 290922:11:34:07
+
+/bin/cgexec -g cpuset:/prime ioping -qc 100 /tmp
+
+cgroup change of group failed
+
+ /bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+cgroup change of group failed
+
+/bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+cgroup change of group failed
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /dev/shm/ioping
+
+cgroup change of group failed
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /cs/ioping
+
+cgroup change of group failed
+
+
+Crowdstrike falcon-sensor-6.39.0-13601.el7.x86_64 started at 290922:11:34:21
+
+/bin/cgexec -g cpuset:/prime ioping -qc 100 /tmp
+
+cgroup change of group failed
+
+ /bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+cgroup change of group failed
+
+/bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+cgroup change of group failed
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /dev/shm/ioping
+
+cgroup change of group failed
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /cs/ioping
+
+cgroup change of group failed
+
+
+

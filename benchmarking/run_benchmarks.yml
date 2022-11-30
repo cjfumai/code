@@ -1,0 +1,29 @@
+---
+- hosts: all
+  roles:
+
+    - role: loader
+      tags: loader
+
+    - role: ioping 
+      tags: ioping
+
+    - role: sysjitter
+      tags: sysjitter
+
+    - role: sockperf
+      tags: sockperf
+
+    - role: lmbench
+      tags: lmbench
+
+    - role: mlc
+      tags: mlc
+
+    - role: reporter
+      tags: reporter
+
+    - role: stoploader
+      tags: stoploader
+
+  ignore_errors: True

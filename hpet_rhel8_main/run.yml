@@ -1,0 +1,19 @@
+---
+
+- name: Apply LLET Configuration
+  hosts: all
+  gather_facts: yes
+
+  tasks:
+
+    - name: Import role set_hosts_env to setup the runtime env
+      import_role:
+        name: set_host_env
+
+    - name: Start first role GLOBAL
+      import_role:
+        #name: "{{ roles_path }}/global"
+        name: global
+
+
+

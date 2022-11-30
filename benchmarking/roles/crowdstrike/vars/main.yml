@@ -1,0 +1,8 @@
+---
+package:             falcon-sensor
+roles_path:          /cs/benchmarking/roles
+crowdstrike_service: falcon-sensor
+deploy_action:       install
+app_aph:             crowdstrike-proxy.gtm.hedani.net
+app_port:            8080
+app_cid:             9908789BAFDA4161A4DD0192DB4FF4F0-FF

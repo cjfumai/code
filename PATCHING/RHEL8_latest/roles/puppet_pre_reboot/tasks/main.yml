@@ -1,0 +1,57 @@
+---
+# tasks file for puppet_pre_reboot
+
+- name: check if puppet binary exists
+  stat:
+        path: /opt/puppetlabs/bin/puppet
+  register: puppet_binary
+
+- name: check for puppet lock file
+  stat:
+        path: /opt/puppetlabs/puppet/cache/state/agent_disabled.lock
+  register: puppet_lock
+
+- name: re-enable puppet if in lock sate
+  puppet:
+     enabled: yes 
+  when:
+     - puppet_lock.stat.exists
+
+- name: check if solarflare cards are installed
+  shell: /sbin/lspci | /bin/grep -i Solarflare  | xargs
+  register: solarflare_nic_installed
+
+- name: check if mellanox cards are installed
+  shell: /sbin/lspci | /bin/grep -i Mellanox  | xargs
+  register: mellanox_nic_installed
+
+- name: Run puppet using pre reboot tags for corp network only machines
+  puppet:
+    tags:
+      - Hardware
+      - Bootconfig
+      - Interfaces
+      - Centrify
+      - Yumrepo
+      - Nsswitch
+      - Shellrc
+  when:
+     - puppet_binary.stat.exists
+     - ( solarflare_nic_installed.stdout == "" ) and ( mellanox_nic_installed.stdout == "" )
+
+- name: Run puppet using pre reboot tags for solarflare or mellanox machines
+  puppet:
+    tags:
+      - Centrify
+      - Yumrepo
+      - Nsswitch
+      - Shellrc
+  when:
+     - puppet_binary.stat.exists 
+     - ( solarflare_nic_installed.stdout != "" ) or ( solarflare_nic_installed.stdout != "" )
+
+- name: re-disable puppet if it was in lock state
+  puppet:
+     enabled: no
+  when:
+     - puppet_lock.stat.exists

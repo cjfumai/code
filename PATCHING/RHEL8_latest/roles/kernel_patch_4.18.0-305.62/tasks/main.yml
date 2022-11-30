@@ -1,0 +1,25 @@
+---
+# tasks file for kernel_patch_4.18.0-305.62
+
+- name: Subscribe to latest kernel repo
+  shell: subscription-manager register --org='Default_Organization' --activationkey='HPET RHEL8.4 202209' --force
+
+- name: subscription-manager set release
+  shell: subscription-manager release --set=8.4
+  register: subscribe_release_out
+
+- name: update kernel to latest
+  ansible.builtin.yum:
+    name:
+      - kernel
+      - kernel-tools
+      - kernel-devel
+      - kernel-headers
+      - python3-perf
+    state: latest
+    update_only: yes
+    update_cache: yes
+    enablerepo: 
+      - rhel-8-for-x86_64-baseos-eus-rpms
+      - rhel-8-for-x86_64-appstream-eus-rpms
+      - rhel-8-for-x86_64-supplementary-eus-rpms

@@ -1,0 +1,5 @@
+[sf_onload62]
+name= Solarflare RHEL8.4 Onload 62 kernel
+baseurl=http://sol06a-4801.eu.hedani.net/repos/rhel_8.4-4.18.0-305.62-onload/
+enabled=1
+gpgcheck=0

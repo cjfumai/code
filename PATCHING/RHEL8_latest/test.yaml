@@ -1,0 +1,11 @@
+---
+- hosts: all
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  gather_facts: true
+
+  tasks:
+    - include_role:
+         name: kernel_patch_4.18.0-305.62
+      tags: kernel_patch_4.18.0-305.62

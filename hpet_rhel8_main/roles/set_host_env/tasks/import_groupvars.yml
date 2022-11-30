@@ -1,0 +1,98 @@
+---
+
+#- name: Include groupvars and hostvars
+#  include_vars:
+#    dir: "{{ item }}"
+#    ignore_unknown_extensions: True
+#    extensions:
+#        - 'yml'
+#  loop:
+#    - "/runner/project/roles/set_host_env/vars/group_vars/all"
+#    - "/runner/project/roles/set_host_env/vars/group_vars/regions/{{ region }}"
+#    - "/runner/project/roles/set_host_env/vars/group_vars/locatoins/{{ location }}"
+#    - "/runner/project/roles/set_host_env/vars/group_vars/application_profiles/{{ application_profile }}"
+#    - "/runner/project/roles/set_host_env/vars/host_vars/{{ ansible_hostname }}"
+
+
+- name: Check if group_vars/all exists
+  stat:
+    path: "{{ vars_path }}/group_vars/all"
+  register: file_stat
+  delegate_to: 127.0.0.1
+  
+
+- name: Include groupvars and hostvars
+  include_vars:
+    dir: "{{ vars_path }}/group_vars/all"
+    ignore_unknown_extensions: True
+    extensions:
+        - 'yml'
+  when: file_stat.stat.exists
+
+- name: Check if group_vars/all exists
+  stat:
+    path: "{{ vars_path }}/group_vars/regions/{{ region }}"
+  register: file_stat
+  delegate_to: 127.0.0.1
+
+- name: "Include groupvars and hostvars regions/{{ region }}"
+  include_vars:
+    dir: "{{ vars_path }}/group_vars/regions/{{ region }}"
+    ignore_unknown_extensions: True
+    extensions:
+        - 'yml'
+  when: file_stat.stat.exists
+
+- name: Check if group_vars/all exists
+  stat:
+    path: "{{ vars_path }}/group_vars/locations/{{ location }}"
+  register: file_stat
+  delegate_to: 127.0.0.1
+
+- name: "Include groupvars and hostvars locatoins/{{ location }}"
+  include_vars:
+    dir: "{{ vars_path }}/group_vars/locations/{{ location }}"
+    ignore_unknown_extensions: True
+    extensions:
+        - 'yml'
+  when: file_stat.stat.exists
+
+- name: Check if group_vars/all exists
+  stat:
+    path:  "{{ vars_path }}/group_vars/application_profiles/{{ application_profile }}"
+  register: file_stat
+  delegate_to: 127.0.0.1
+
+- name: "Include groupvars and hostvars application_profiles/{{ application_profile }}"
+  include_vars:
+    dir:  "{{ vars_path }}/group_vars/application_profiles/{{ application_profile }}"
+    ignore_unknown_extensions: True
+    extensions:
+        - 'yml'
+  when: file_stat.stat.exists
+
+- name: Check if group_vars/all exists
+  stat:
+    path:  "{{ vars_path }}/host_vars/{{ ansible_hostname }}"
+  register: file_stat
+  delegate_to: 127.0.0.1
+
+- name: "Include groupvars and hostvars host_vars/{{ ansible_hostname }}"
+  include_vars:
+    dir:  "{{ vars_path }}/host_vars/{{ ansible_hostname }}"
+    ignore_unknown_extensions: True
+    extensions:
+        - 'yml'
+  when: file_stat.stat.exists
+
+
+
+
+
+
+
+
+
+
+
+

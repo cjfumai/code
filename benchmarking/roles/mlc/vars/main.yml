@@ -1,0 +1,27 @@
+---
+prog:		       mlc
+roles_path:       /cs/benchmarking/roles
+logs_dir:         /cs/benchmarking/logs/{{ ansible_hostname }}
+tmp_log:          /tmp/{{ prog }}.log
+cgroups_service:  LLcgconfig
+
+deploy_action: install
+
+commands:
+
+#
+# run on junk cores
+#
+  - echo "/usr/local/bin/mlc" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - /usr/local/bin/mlc >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+
+LLcgconfig_stop:
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - systemctl stop {{ cgroups_service }}
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+
+LLcgconfig_start:
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - systemctl start {{ cgroups_service }}
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1

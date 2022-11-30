@@ -1,0 +1,672 @@
+<h1>nyl96i-9922 benchmarking report
+</h1><h3>Run date: 300922
+</h3><pre>/bin/cgexec -g cpuset:/prime ioping -qc 100 /tmp
+
+
+--- /tmp (tmpfs /tmpfs) ioping statistics ---
+99 requests completed in 55.9 us, 396 KiB read, 1.77 M iops, 6.76 GiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 338 ns / 564 ns / 2.31 us / 333 ns
+
+ /bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+
+--- /dev/sda (block device 558.9 GiB) ioping statistics ---
+99 requests completed in 61.4 ms, 24.8 MiB read, 1.61 k iops, 403.1 MiB/s
+generated 100 requests in 71.2 ms, 25 MiB, 1.40 k iops, 351.2 MiB/s
+min/avg/max/mdev = 113.5 us / 620.2 us / 3.90 ms / 562.0 us
+
+/bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+
+--- /dev/sda (block device 558.9 GiB) ioping statistics ---
+99 requests completed in 31.1 ms, 24.8 MiB read, 3.18 k iops, 794.8 MiB/s
+generated 100 requests in 44.0 ms, 25 MiB, 2.27 k iops, 567.6 MiB/s
+min/avg/max/mdev = 109.3 us / 314.6 us / 4.34 ms / 533.4 us
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /dev/shm/ioping
+
+
+--- /dev/shm/ioping (tmpfs tmpfs) ioping statistics ---
+99 requests completed in 77.1 us, 396 KiB written, 1.28 M iops, 4.90 GiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 529 ns / 779 ns / 2.85 us / 400 ns
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /cs/ioping
+
+
+--- /cs/ioping (ext4 /dev/dm-5) ioping statistics ---
+99 requests completed in 8.53 ms, 396 KiB written, 11.6 k iops, 45.4 MiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 80.8 us / 86.1 us / 114.7 us / 4.53 us
+
+/bin/cgexec -g cpuset:/prime ioping -qc 100 /tmp
+
+
+--- /tmp (tmpfs /tmpfs) ioping statistics ---
+99 requests completed in 77.5 us, 396 KiB read, 1.28 M iops, 4.88 GiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 361 ns / 782 ns / 3.14 us / 493 ns
+
+ /bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+
+--- /dev/sda (block device 558.9 GiB) ioping statistics ---
+99 requests completed in 35.5 ms, 24.8 MiB read, 2.79 k iops, 697.6 MiB/s
+generated 100 requests in 44.4 ms, 25 MiB, 2.25 k iops, 563.4 MiB/s
+min/avg/max/mdev = 99.8 us / 358.4 us / 6.68 ms / 829.7 us
+
+/bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+
+--- /dev/sda (block device 558.9 GiB) ioping statistics ---
+99 requests completed in 41.4 ms, 24.8 MiB read, 2.39 k iops, 598.0 MiB/s
+generated 100 requests in 43.0 ms, 25 MiB, 2.32 k iops, 581.2 MiB/s
+min/avg/max/mdev = 96.9 us / 418.1 us / 13.2 ms / 1.51 ms
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /dev/shm/ioping
+
+
+--- /dev/shm/ioping (tmpfs tmpfs) ioping statistics ---
+99 requests completed in 129.4 us, 396 KiB written, 765.1 k iops, 2.92 GiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 667 ns / 1.31 us / 3.60 us / 460 ns
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /cs/ioping
+
+
+--- /cs/ioping (ext4 /dev/dm-5) ioping statistics ---
+99 requests completed in 8.83 ms, 396 KiB written, 11.2 k iops, 43.8 MiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 82.5 us / 89.1 us / 115.4 us / 4.57 us
+
+
+
+
+
+Simple syscall: 0.1028 microseconds
+Simple read: 0.1602 microseconds
+Simple write: 0.1274 microseconds
+Simple stat: 0.3692 microseconds
+Simple fstat: 0.1581 microseconds
+Simple open/close: 0.9415 microseconds
+
+Simple syscall: 0.1026 microseconds
+Simple read: 0.1601 microseconds
+Simple write: 0.1260 microseconds
+Simple stat: 0.3667 microseconds
+Simple fstat: 0.1606 microseconds
+Simple open/close: 0.7701 microseconds
+
+Simple syscall: 0.1027 microseconds
+Simple read: 0.1600 microseconds
+Simple write: 0.1272 microseconds
+Simple stat: 0.3669 microseconds
+Simple fstat: 0.1585 microseconds
+Simple open/close: 0.9277 microseconds
+
+Simple syscall: 0.1039 microseconds
+Simple read: 0.1596 microseconds
+Simple write: 0.1275 microseconds
+Simple stat: 0.3671 microseconds
+Simple fstat: 0.1581 microseconds
+Simple open/close: 0.9381 microseconds
+
+Simple syscall: 0.1026 microseconds
+Simple read: 0.1601 microseconds
+Simple write: 0.1272 microseconds
+Simple stat: 0.3670 microseconds
+Simple fstat: 0.1589 microseconds
+Simple open/close: 0.9207 microseconds
+
+Simple syscall: 0.1025 microseconds
+Simple read: 0.1602 microseconds
+Simple write: 0.1277 microseconds
+Simple stat: 0.3661 microseconds
+Simple fstat: 0.1606 microseconds
+Simple open/close: 0.7741 microseconds
+
+Simple syscall: 0.1029 microseconds
+Simple read: 0.1605 microseconds
+Simple write: 0.1273 microseconds
+Simple stat: 0.3668 microseconds
+Simple fstat: 0.1579 microseconds
+Simple open/close: 0.9483 microseconds
+
+Simple syscall: 0.1030 microseconds
+Simple read: 0.1617 microseconds
+Simple write: 0.1276 microseconds
+Simple stat: 0.3666 microseconds
+Simple fstat: 0.1580 microseconds
+Simple open/close: 0.7675 microseconds
+
+Simple syscall: 0.1035 microseconds
+Simple read: 0.1602 microseconds
+Simple write: 0.1278 microseconds
+Simple stat: 0.3699 microseconds
+Simple fstat: 0.1585 microseconds
+Simple open/close: 0.7703 microseconds
+
+Simple syscall: 0.1035 microseconds
+Simple read: 0.1606 microseconds
+Simple write: 0.1276 microseconds
+Simple stat: 0.3667 microseconds
+Simple fstat: 0.1586 microseconds
+Simple open/close: 0.9404 microseconds
+
+Simple syscall: 0.1026 microseconds
+Simple read: 0.1603 microseconds
+Simple write: 0.1290 microseconds
+Simple stat: 0.3666 microseconds
+Simple fstat: 0.1586 microseconds
+Simple open/close: 0.9492 microseconds
+
+Simple syscall: 0.1034 microseconds
+Simple read: 0.1606 microseconds
+Simple write: 0.1276 microseconds
+Simple stat: 0.3724 microseconds
+Simple fstat: 0.1580 microseconds
+Simple open/close: 0.9359 microseconds
+
+Simple syscall: 0.1034 microseconds
+Simple read: 0.1595 microseconds
+Simple write: 0.1277 microseconds
+Simple stat: 0.3682 microseconds
+Simple fstat: 0.1606 microseconds
+Simple open/close: 0.7734 microseconds
+
+Simple syscall: 0.1035 microseconds
+Simple read: 0.1601 microseconds
+Simple write: 0.1275 microseconds
+Simple stat: 0.3669 microseconds
+Simple fstat: 0.1582 microseconds
+Simple open/close: 0.9304 microseconds
+
+Simple syscall: 0.1028 microseconds
+Simple read: 0.1617 microseconds
+Simple write: 0.1272 microseconds
+Simple stat: 0.3665 microseconds
+Simple fstat: 0.1586 microseconds
+Simple open/close: 0.7648 microseconds
+
+Simple syscall: 0.1044 microseconds
+Simple read: 0.1597 microseconds
+Simple write: 0.1272 microseconds
+Simple stat: 0.3663 microseconds
+Simple fstat: 0.1579 microseconds
+Simple open/close: 0.7701 microseconds
+
+Simple syscall: 0.1033 microseconds
+Simple read: 0.1602 microseconds
+Simple write: 0.1272 microseconds
+Simple stat: 0.3663 microseconds
+Simple fstat: 0.1580 microseconds
+Simple open/close: 0.7689 microseconds
+
+Simple syscall: 0.1026 microseconds
+Simple read: 0.1596 microseconds
+Simple write: 0.1273 microseconds
+Simple stat: 0.3696 microseconds
+Simple fstat: 0.1590 microseconds
+Simple open/close: 0.9434 microseconds
+
+Simple syscall: 0.1027 microseconds
+Simple read: 0.1601 microseconds
+Simple write: 0.1276 microseconds
+Simple stat: 0.3666 microseconds
+Simple fstat: 0.1585 microseconds
+Simple open/close: 0.9491 microseconds
+
+Simple syscall: 0.1036 microseconds
+Simple read: 0.1596 microseconds
+Simple write: 0.1275 microseconds
+Simple stat: 0.3666 microseconds
+Simple fstat: 0.1581 microseconds
+Simple open/close: 0.7735 microseconds
+
+
+
+Simple syscall: 0.1027 microseconds
+Simple read: 0.1602 microseconds
+Simple write: 0.1277 microseconds
+Simple stat: 0.3668 microseconds
+Simple fstat: 0.1594 microseconds
+Simple open/close: 0.7692 microseconds
+
+Simple syscall: 0.1031 microseconds
+Simple read: 0.1596 microseconds
+Simple write: 0.1290 microseconds
+Simple stat: 0.3669 microseconds
+Simple fstat: 0.1688 microseconds
+Simple open/close: 0.9495 microseconds
+
+Simple syscall: 0.1034 microseconds
+Simple read: 0.1602 microseconds
+Simple write: 0.1271 microseconds
+Simple stat: 0.3668 microseconds
+Simple fstat: 0.1591 microseconds
+Simple open/close: 0.9459 microseconds
+
+Simple syscall: 0.1028 microseconds
+Simple read: 0.1595 microseconds
+Simple write: 0.1272 microseconds
+Simple stat: 0.3666 microseconds
+Simple fstat: 0.1612 microseconds
+Simple open/close: 0.9759 microseconds
+
+Simple syscall: 0.1028 microseconds
+Simple read: 0.1606 microseconds
+Simple write: 0.1270 microseconds
+Simple stat: 0.3701 microseconds
+Simple fstat: 0.1580 microseconds
+Simple open/close: 0.9448 microseconds
+
+Simple syscall: 0.1026 microseconds
+Simple read: 0.1604 microseconds
+Simple write: 0.1260 microseconds
+Simple stat: 0.3666 microseconds
+Simple fstat: 0.1586 microseconds
+Simple open/close: 0.9381 microseconds
+
+Simple syscall: 0.1026 microseconds
+Simple read: 0.1602 microseconds
+Simple write: 0.1289 microseconds
+Simple stat: 0.3667 microseconds
+Simple fstat: 0.1581 microseconds
+Simple open/close: 0.7798 microseconds
+
+Simple syscall: 0.1034 microseconds
+Simple read: 0.1604 microseconds
+Simple write: 0.1272 microseconds
+Simple stat: 0.3664 microseconds
+Simple fstat: 0.1618 microseconds
+Simple open/close: 0.7739 microseconds
+
+Simple syscall: 0.1037 microseconds
+Simple read: 0.1606 microseconds
+Simple write: 0.1290 microseconds
+Simple stat: 0.3664 microseconds
+Simple fstat: 0.1584 microseconds
+Simple open/close: 0.9480 microseconds
+
+Simple syscall: 0.1035 microseconds
+Simple read: 0.1609 microseconds
+Simple write: 0.1278 microseconds
+Simple stat: 0.3691 microseconds
+Simple fstat: 0.1579 microseconds
+Simple open/close: 0.9501 microseconds
+
+Simple syscall: 0.1030 microseconds
+Simple read: 0.1604 microseconds
+Simple write: 0.1276 microseconds
+Simple stat: 0.3669 microseconds
+Simple fstat: 0.1592 microseconds
+Simple open/close: 0.9427 microseconds
+
+Simple syscall: 0.1036 microseconds
+Simple read: 0.1602 microseconds
+Simple write: 0.1266 microseconds
+Simple stat: 0.3664 microseconds
+Simple fstat: 0.1621 microseconds
+Simple open/close: 0.9606 microseconds
+
+Simple syscall: 0.1034 microseconds
+Simple read: 0.1595 microseconds
+Simple write: 0.1272 microseconds
+Simple stat: 0.3669 microseconds
+Simple fstat: 0.1590 microseconds
+Simple open/close: 0.7656 microseconds
+
+Simple syscall: 0.1027 microseconds
+Simple read: 0.1597 microseconds
+Simple write: 0.1272 microseconds
+Simple stat: 0.3669 microseconds
+Simple fstat: 0.1579 microseconds
+Simple open/close: 0.7606 microseconds
+
+Simple syscall: 0.1037 microseconds
+Simple read: 0.1602 microseconds
+Simple write: 0.1270 microseconds
+Simple stat: 0.3663 microseconds
+Simple fstat: 0.1591 microseconds
+Simple open/close: 0.9346 microseconds
+
+Simple syscall: 0.1026 microseconds
+Simple read: 0.1602 microseconds
+Simple write: 0.1274 microseconds
+Simple stat: 0.3685 microseconds
+Simple fstat: 0.1589 microseconds
+Simple open/close: 0.9271 microseconds
+
+Simple syscall: 0.1027 microseconds
+Simple read: 0.1602 microseconds
+Simple write: 0.1301 microseconds
+Simple stat: 0.3672 microseconds
+Simple fstat: 0.1581 microseconds
+Simple open/close: 0.7708 microseconds
+
+Simple syscall: 0.1032 microseconds
+Simple read: 0.1599 microseconds
+Simple write: 0.1272 microseconds
+Simple stat: 0.3668 microseconds
+Simple fstat: 0.1580 microseconds
+Simple open/close: 0.7654 microseconds
+
+Simple syscall: 0.1041 microseconds
+Simple read: 0.1595 microseconds
+Simple write: 0.1272 microseconds
+Simple stat: 0.3664 microseconds
+Simple fstat: 0.1623 microseconds
+Simple open/close: 0.9428 microseconds
+
+Simple syscall: 0.1032 microseconds
+Simple read: 0.1605 microseconds
+Simple write: 0.1273 microseconds
+Simple stat: 0.3664 microseconds
+Simple fstat: 0.1580 microseconds
+Simple open/close: 0.8762 microseconds
+
+
+
+/usr/local/bin/mlc
+
+Intel(R) Memory Latency Checker - v3.9
+Measuring idle latencies (in ns)...
+		Numa node
+Numa node	     0	     1	
+       0	  81.4	 134.2	
+       1	 135.7	  81.4	
+
+Measuring Peak Injection Memory Bandwidths for the system
+Bandwidths are in MB/sec (1 MB/sec = 1,000,000 Bytes/sec)
+Using all the threads from each core if Hyper-threading is enabled
+Using traffic with the following read-write ratios
+ALL Reads        :	198050.8	
+3:1 Reads-Writes :	189797.6	
+2:1 Reads-Writes :	184802.1	
+1:1 Reads-Writes :	183264.5	
+Stream-triad like:	164314.5	
+
+Measuring Memory Bandwidths between nodes within system 
+Bandwidths are in MB/sec (1 MB/sec = 1,000,000 Bytes/sec)
+Using all the threads from each core if Hyper-threading is enabled
+Using Read-only traffic type
+		Numa node
+Numa node	     0	     1	
+       0	98849.7	33276.8	
+       1	33249.3	99242.7	
+
+Measuring Loaded Latencies for the system
+Using all the threads from each core if Hyper-threading is enabled
+Using Read-only traffic type
+Inject	Latency	Bandwidth
+Delay	(ns)	MB/sec
+==========================
+ 00000	128.73	 186873.7
+ 00002	104.81	 189956.0
+ 00008	104.75	 189919.6
+ 00015	104.35	 187379.1
+ 00050	 97.56	 157763.8
+ 00100	 86.96	  93626.1
+ 00200	 83.05	  64954.5
+ 00300	 82.07	  48873.8
+ 00400	 81.80	  38425.4
+ 00500	 81.74	  31542.6
+ 00700	 81.84	  23244.6
+ 01000	 87.79	  16486.1
+ 01300	 81.71	  13141.8
+ 01700	 82.06	  10282.6
+ 02500	 81.70	   7289.8
+ 03500	 81.37	   5449.9
+ 05000	 81.15	   4062.2
+ 09000	 81.22	   2611.6
+ 20000	 80.94	   1612.9
+
+Measuring cache-to-cache transfer latency (in ns)...
+Local Socket L2->L2 HIT  latency	46.7
+Local Socket L2->L2 HITM latency	46.8
+Remote Socket L2->L2 HITM latency (data address homed in writer socket)
+			Reader Numa Node
+Writer Numa Node     0	     1	
+            0	     -	 113.2	
+            1	 112.4	     -	
+Remote Socket L2->L2 HITM latency (data address homed in reader socket)
+			Reader Numa Node
+Writer Numa Node     0	     1	
+            0	     -	 178.7	
+            1	 180.7	     -	
+/usr/local/bin/mlc
+
+Intel(R) Memory Latency Checker - v3.9
+Measuring idle latencies (in ns)...
+		Numa node
+Numa node	     0	     1	
+       0	  81.4	 134.2	
+       1	 135.7	  81.4	
+
+Measuring Peak Injection Memory Bandwidths for the system
+Bandwidths are in MB/sec (1 MB/sec = 1,000,000 Bytes/sec)
+Using all the threads from each core if Hyper-threading is enabled
+Using traffic with the following read-write ratios
+ALL Reads        :	198003.7	
+3:1 Reads-Writes :	189807.1	
+2:1 Reads-Writes :	184793.7	
+1:1 Reads-Writes :	183306.6	
+Stream-triad like:	164318.3	
+
+Measuring Memory Bandwidths between nodes within system 
+Bandwidths are in MB/sec (1 MB/sec = 1,000,000 Bytes/sec)
+Using all the threads from each core if Hyper-threading is enabled
+Using Read-only traffic type
+		Numa node
+Numa node	     0	     1	
+       0	98856.7	33276.7	
+       1	33240.3	99248.5	
+
+Measuring Loaded Latencies for the system
+Using all the threads from each core if Hyper-threading is enabled
+Using Read-only traffic type
+Inject	Latency	Bandwidth
+Delay	(ns)	MB/sec
+==========================
+ 00000	104.81	 189933.5
+ 00002	105.24	 189970.4
+ 00008	104.77	 189861.8
+ 00015	104.08	 187244.2
+ 00050	 97.57	 157755.2
+ 00100	 86.84	  93525.5
+ 00200	 82.90	  64883.7
+ 00300	 81.85	  48881.3
+ 00400	 82.03	  38429.9
+ 00500	 81.73	  31540.1
+ 00700	 83.22	  23126.5
+ 01000	 81.94	  16699.8
+ 01300	 81.60	  13152.1
+ 01700	 81.57	  10297.9
+ 02500	 81.52	   7291.2
+ 03500	 81.64	   5448.1
+ 05000	 81.08	   4062.3
+ 09000	 80.77	   2616.0
+ 20000	 80.57	   1616.5
+
+Measuring cache-to-cache transfer latency (in ns)...
+Local Socket L2->L2 HIT  latency	46.7
+Local Socket L2->L2 HITM latency	46.8
+Remote Socket L2->L2 HITM latency (data address homed in writer socket)
+			Reader Numa Node
+Writer Numa Node     0	     1	
+            0	     -	 113.2	
+            1	 112.4	     -	
+Remote Socket L2->L2 HITM latency (data address homed in reader socket)
+			Reader Numa Node
+Writer Numa Node     0	     1	
+            0	     -	 179.0	
+            1	 180.7	     -	
+
+
+timeout 1800 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+/usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 120 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+sockperf: Test end (interrupted by timer)
+sockperf: Test ended
+sockperf: [Total Run] RunTime=120.099 sec; SentMessages=29479247; ReceivedMessages=29479246
+sockperf: ========= Printing statistics for Server No: 0
+sockperf: [Valid Duration] RunTime=119.999 sec; SentMessages=29454374; ReceivedMessages=29454374
+sockperf: [2;35m====> avg-lat=  2.026 (std-dev=1.768)[0m
+sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
+sockperf: Summary: Latency is 2.026 usec
+sockperf: [2;35mTotal 29454374 observations[0m; each percentile contains 294543.74 observations
+sockperf: ---> <MAX> observation = 3509.980
+sockperf: ---> percentile  99.99 =    8.970
+sockperf: ---> percentile  99.90 =    8.362
+sockperf: ---> percentile  99.50 =    2.545
+sockperf: ---> percentile  99.00 =    2.194
+sockperf: ---> percentile  95.00 =    2.057
+sockperf: ---> percentile  90.00 =    2.022
+sockperf: ---> percentile  75.00 =    2.007
+sockperf: ---> percentile  50.00 =    1.996
+sockperf: ---> percentile  25.00 =    1.988
+sockperf: ---> <MIN> observation =    1.933
+timeout 1800 cgexec -g cpuset:/prime /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+cgexec -g cpuset:/prime /usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 120 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+sockperf: Test end (interrupted by timer)
+sockperf: Test ended
+sockperf: [Total Run] RunTime=120.099 sec; SentMessages=7119215; ReceivedMessages=7119214
+sockperf: ========= Printing statistics for Server No: 0
+sockperf: [Valid Duration] RunTime=119.999 sec; SentMessages=7110800; ReceivedMessages=7110800
+sockperf: [2;35m====> avg-lat=  8.427 (std-dev=4.102)[0m
+sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
+sockperf: Summary: Latency is 8.427 usec
+sockperf: [2;35mTotal 7110800 observations[0m; each percentile contains 71108.00 observations
+sockperf: ---> <MAX> observation = 4514.756
+sockperf: ---> percentile  99.99 =   16.432
+sockperf: ---> percentile  99.90 =   10.111
+sockperf: ---> percentile  99.50 =    9.674
+sockperf: ---> percentile  99.00 =    9.409
+sockperf: ---> percentile  95.00 =    8.926
+sockperf: ---> percentile  90.00 =    8.806
+sockperf: ---> percentile  75.00 =    8.634
+sockperf: ---> percentile  50.00 =    8.441
+sockperf: ---> percentile  25.00 =    8.276
+sockperf: ---> <MIN> observation =    3.639
+timeout 1800 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+/usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 120 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+sockperf: Test end (interrupted by timer)
+sockperf: Test ended
+sockperf: [Total Run] RunTime=120.099 sec; SentMessages=29384299; ReceivedMessages=29384298
+sockperf: ========= Printing statistics for Server No: 0
+sockperf: [Valid Duration] RunTime=119.999 sec; SentMessages=29360497; ReceivedMessages=29360497
+sockperf: [2;35m====> avg-lat=  2.032 (std-dev=1.786)[0m
+sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
+sockperf: Summary: Latency is 2.032 usec
+sockperf: [2;35mTotal 29360497 observations[0m; each percentile contains 293604.97 observations
+sockperf: ---> <MAX> observation = 3567.500
+sockperf: ---> percentile  99.99 =    9.122
+sockperf: ---> percentile  99.90 =    8.521
+sockperf: ---> percentile  99.50 =    2.681
+sockperf: ---> percentile  99.00 =    2.212
+sockperf: ---> percentile  95.00 =    2.170
+sockperf: ---> percentile  90.00 =    2.028
+sockperf: ---> percentile  75.00 =    2.009
+sockperf: ---> percentile  50.00 =    1.997
+sockperf: ---> percentile  25.00 =    1.987
+sockperf: ---> <MIN> observation =    1.934
+timeout 1800 cgexec -g cpuset:/prime /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+cgexec -g cpuset:/prime /usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 120 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+sockperf: Test end (interrupted by timer)
+sockperf: Test ended
+sockperf: [Total Run] RunTime=120.099 sec; SentMessages=7092561; ReceivedMessages=7092560
+sockperf: ========= Printing statistics for Server No: 0
+sockperf: [Valid Duration] RunTime=119.999 sec; SentMessages=7086696; ReceivedMessages=7086696
+sockperf: [2;35m====> avg-lat=  8.456 (std-dev=3.356)[0m
+sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
+sockperf: Summary: Latency is 8.456 usec
+sockperf: [2;35mTotal 7086696 observations[0m; each percentile contains 70866.96 observations
+sockperf: ---> <MAX> observation = 5007.260
+sockperf: ---> percentile  99.99 =   12.297
+sockperf: ---> percentile  99.90 =    9.832
+sockperf: ---> percentile  99.50 =    9.411
+sockperf: ---> percentile  99.00 =    9.232
+sockperf: ---> percentile  95.00 =    8.910
+sockperf: ---> percentile  90.00 =    8.792
+sockperf: ---> percentile  75.00 =    8.612
+sockperf: ---> percentile  50.00 =    8.472
+sockperf: ---> percentile  25.00 =    8.262
+sockperf: ---> <MIN> observation =    4.213
+
+
+
+
+cgexec -g cpuset:/prime sysjitter --runtime 300 --cores 1-7,9-15 500
+
+core_i: 1 2 3 4 5 6 7 9 10 11 12 13 14 15
+threshold(ns): 500 500 500 500 500 500 500 500 500 500 500 500 500 500
+cpu_mhz: 3597 3597 3597 3597 3597 3597 3597 3597 3597 3597 3597 3597 3584 3597
+runtime(ns): 299542063540 299542063451 299542063548 299542064274 299542063617 299542062924 299542063547 299542062474 299542062582 299542062700 299542063002 299542062431 300628571296 299542064676
+runtime(s): 299.542 299.542 299.542 299.542 299.542 299.542 299.542 299.542 299.542 299.542 299.542 299.542 300.629 299.542
+int_n: 153 134 4532 864 121 111 111 112 112 114 114 114 114 114
+int_n_per_sec: 0.511 0.447 15.130 2.884 0.404 0.371 0.371 0.374 0.374 0.381 0.381 0.381 0.379 0.381
+int_min(ns): 939 1107 617 745 1078 1065 1084 608 1083 629 546 517 567 586
+int_median(ns): 2469 2552 2303 1594 2282 2400 2372 1981 1967 1916 1896 1927 2066 2096
+int_mean(ns): 4063 4059 2288 2104 3971 3939 3918 3638 3532 3458 3457 3577 3557 3548
+int_90(ns): 8009 7773 3470 3033 8135 7829 7772 6948 6884 6985 6795 7336 6904 6802
+int_99(ns): 12910 11601 5715 8016 10974 11718 10289 12871 11768 9246 12505 12365 12544 12108
+int_999(ns): 13395 12694 10060 11730 12152 12604 12449 15335 12422 11262 13306 13400 12670 12523
+int_9999(ns): 13395 12694 14380 11730 12152 12604 12449 15335 12422 11262 13306 13400 12670 12523
+int_99999(ns): 13395 12694 14380 11730 12152 12604 12449 15335 12422 11262 13306 13400 12670 12523
+int_max(ns): 13395 12694 14380 11730 12152 12604 12449 15335 12422 11262 13306 13400 12670 12523
+int_total(ns): 621678 543936 10369824 1818445 480536 437333 435006 407529 395635 394331 394211 407895 405537 404532
+int_total(%): 0.000 0.000 0.003 0.001 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000
+cgexec -g cpuset:/prime sysjitter --runtime 300 --cores 1-7,9-15 500
+
+core_i: 1 2 3 4 5 6 7 9 10 11 12 13 14 15
+threshold(ns): 500 500 500 500 500 500 500 500 500 500 500 500 500 500
+cpu_mhz: 3597 3584 3584 3597 3597 3597 3584 3597 3597 3597 3597 3584 3584 3597
+runtime(ns): 299542091001 300628601135 300628600044 299542091428 299542092038 299542091471 300628601152 299542090979 299542092013 299542091279 299542091090 300628600228 300628599509 299542093884
+runtime(s): 299.542 300.629 300.629 299.542 299.542 299.542 300.629 299.542 299.542 299.542 299.542 300.629 300.629 299.542
+int_n: 149 224 4529 925 121 112 113 113 113 113 113 113 112 111
+int_n_per_sec: 0.497 0.745 15.065 3.088 0.404 0.374 0.376 0.377 0.377 0.377 0.377 0.376 0.373 0.371
+int_min(ns): 949 1086 612 736 1079 992 1041 1163 1066 1020 1053 1075 1030 1067
+int_median(ns): 2589 3188 2319 1654 2236 2187 2175 1987 1766 1881 1878 1813 1856 1931
+int_mean(ns): 4006 3954 2315 2073 3941 4001 3914 3556 3416 3481 3456 3546 3442 3552
+int_90(ns): 7978 7416 3520 2894 8165 7973 7813 6818 6751 6926 6741 7309 6839 6992
+int_99(ns): 11906 12045 5476 8226 9494 11715 9752 12281 11677 11406 11426 12209 12058 11809
+int_999(ns): 13596 14373 10779 12990 12427 16070 14974 12921 11867 12998 12363 12358 12130 13941
+int_9999(ns): 13596 14373 13977 12990 12427 16070 14974 12921 11867 12998 12363 12358 12130 13941
+int_99999(ns): 13596 14373 13977 12990 12427 16070 14974 12921 11867 12998 12363 12358 12130 13941
+int_max(ns): 13596 14373 13977 12990 12427 16070 14974 12921 11867 12998 12363 12358 12130 13941
+int_total(ns): 596928 885795 10485232 1918281 476890 448229 442290 401896 386050 393397 390636 400750 385566 394314
+int_total(%): 0.000 0.000 0.003 0.001 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000
+
+

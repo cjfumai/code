@@ -1,0 +1,15 @@
+---
+- name: set short date
+  shell: "date +%d%m%y"
+  register: tstamp
+
+- name: run benchmark reporter
+  shell: "{{ script_path}}/{{ script }} {{ tstamp.stdout }}"
+  delegate_to: 127.0.0.1
+  run_once: true
+
+  register: reporter_result
+
+- name: Get stdout or stderr 
+  debug:
+     var: reporter_result.stdout

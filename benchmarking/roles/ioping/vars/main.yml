@@ -1,0 +1,78 @@
+---
+# vars file for ioping
+#
+prog:            ioping
+roles_path:      /cs/benchmarking/roles
+logs_dir:        /cs/benchmarking/logs/{{ ansible_hostname }}
+tmp_log:         /tmp/{{ prog }}.log
+#
+test_fs1:        /tmp
+test_fs2:        /dev/shm/ioping
+test_fs3:        /cs/ioping
+test_disk1:      /dev/sda 
+cgroups_service: LLcgconfig
+#
+cpu:             1		
+cpu_list:        4
+run_count:       100
+
+commands:
+#  - echo "/bin/ioping -qc {{ run_count }} {{ test_fs1 }}" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+#  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+#  - /bin/ioping -qc {{ run_count }} {{ test_fs1 }} >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+#  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+#
+#  - echo " /bin/ioping -qc {{ run_count }} -RL {{ test_disk1 }}" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+#  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+#  - /bin/ioping -qc {{ run_count }} -RL {{ test_disk1 }} >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+#  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+#
+#  - echo "/bin/ioping -qc {{ run_count }} -RL {{ test_disk1 }}" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+#  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+#  - /bin/ioping -qc {{ run_count }} -RL {{ test_disk1 }} >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+#  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+#
+#  - echo "taskset -c {{ cpu }} {{ prog }} -WY -qc {{ run_count }} {{ test_fs2 }}" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+#  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+#  - taskset -c {{ cpu }} {{ prog }} -WY -qc {{ run_count }} {{ test_fs2 }} >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+#  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+#
+#  - echo "taskset -c {{ cpu }} {{ prog }} -WY -qc {{ run_count }} {{ test_fs3 }}" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+#  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+#  - taskset -c {{ cpu }} {{ prog }} -WY -qc {{ run_count }} {{ test_fs3 }} >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+#  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+
+  - echo "/bin/cgexec -g cpuset:/prime ioping -qc {{ run_count }} {{ test_fs1 }}" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - /bin/cgexec -g cpuset:/prime ioping -qc {{ run_count }} {{ test_fs1 }} >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+
+  - echo " /bin/cgexec -g cpuset:/prime ioping -qc {{ run_count }} -RL {{ test_disk1 }}" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - /bin/cgexec -g cpuset:/prime ioping -qc {{ run_count }} -RL {{ test_disk1 }} >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+
+  - echo "/bin/cgexec -g cpuset:/prime ioping -qc {{ run_count }} -RL {{ test_disk1 }}" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - /bin/cgexec -g cpuset:/prime ioping -qc {{ run_count }} -RL {{ test_disk1 }} >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+
+  - echo "/bin/cgexec -g cpuset:/prime {{ prog }} -WY -qc {{ run_count }} {{ test_fs2 }}" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - /bin/cgexec -g cpuset:/prime {{ prog }} -WY -qc {{ run_count }} {{ test_fs2 }} >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+
+  - echo "/bin/cgexec -g cpuset:/prime {{ prog }} -WY -qc {{ run_count }} {{ test_fs3 }}" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - /bin/cgexec -g cpuset:/prime {{ prog }} -WY -qc {{ run_count }} {{ test_fs3 }} >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+
+LLcgconfig_stop:
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - systemctl stop {{ cgroups_service }}
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+
+LLcgconfig_start:
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - systemctl start {{ cgroups_service }}
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1

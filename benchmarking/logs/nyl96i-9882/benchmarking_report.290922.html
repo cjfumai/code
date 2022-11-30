@@ -1,0 +1,54 @@
+<h1>nyl96i-9882 benchmarking report
+</h1><h3>Run date: 290922
+</h3><pre><h2>benchmark test: ioping</h2>
+<pre><h3>crowdstrike stopped</h3>
+Crowdstrike falcon-sensor-6.39.0-13601.el7.x86_64 stopped at 290922:11:34:07
+
+/bin/cgexec -g cpuset:/prime ioping -qc 100 /tmp
+
+cgroup change of group failed
+
+ /bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+cgroup change of group failed
+
+/bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+cgroup change of group failed
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /dev/shm/ioping
+
+cgroup change of group failed
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /cs/ioping
+
+cgroup change of group failed
+
+
+
+<pre>
+<h3>crowdstrike started</h3>
+Crowdstrike falcon-sensor-6.39.0-13601.el7.x86_64 started at 290922:11:34:21
+
+/bin/cgexec -g cpuset:/prime ioping -qc 100 /tmp
+
+cgroup change of group failed
+
+ /bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+cgroup change of group failed
+
+/bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+cgroup change of group failed
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /dev/shm/ioping
+
+cgroup change of group failed
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /cs/ioping
+
+cgroup change of group failed
+
+
+

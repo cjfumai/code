@@ -1,0 +1,35 @@
+---
+# tasks file for root_resize
+
+- name: check /etc/fstab
+  shell: grep /cs /etc/fstab | grep -i root_vg| grep ^# | xargs
+  register: cs_fstab_check
+
+- name: run e2fsck on cs
+  shell: e2fsck -f -p {{ dev_cs }}
+  register: e2fsck_out
+  when:
+     - cs_fstab_check.rc == 0
+     - "'/dev/mapper/root_vg-cs' in cs_fstab_check.stdout"
+
+- name: resize root_vg
+  shell: lvresize --resizefs --size -35G /dev/root_vg/cs
+  register: root_resize
+
+  when:
+     - cs_fstab_check.rc == 0
+     - "'/dev/mapper/root_vg-cs' in cs_fstab_check.stdout"
+
+- name: update /etc/fstab
+  shell: sed -e '/^#\/dev\/mapper\/root_vg-cs.*\/cs. /s/^#//' -i /etc/fstab
+  register: cs_fstab_update
+  when:
+     - cs_fstab_check.rc == 0
+     - "'/dev/mapper/root_vg-cs' in cs_fstab_check.stdout"
+
+- name: remount /cs
+  shell: mount /cs
+  register: cs_remount
+  when:
+     - cs_fstab_check.rc == 0
+     - "'/dev/mapper/root_vg-cs' in cs_fstab_check.stdout"

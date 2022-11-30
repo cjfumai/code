@@ -1,0 +1,56 @@
+---
+- name: Include crowdstrike
+  include_vars: "{{ roles_path }}/crowdstrike/vars/crowdstrike.yml"
+
+- name: set short date
+  shell: "date +%d%m%y"
+  register: tstamp
+  when:
+   - ansible_distribution_major_version|int >= 7
+
+- name: Get List of services
+  service_facts:
+
+- name: run {{ prog }}
+  shell: "{{ item }}"
+  with_items:
+    - "{{ commands }}"
+  when:
+   - "'falcon-sensor.service' in services"
+   - ansible_distribution_major_version|int >= 7
+
+- name: Start cgroups service
+  shell: "{{ item }}"
+  with_items:
+    - "{{ LLcgconfig_start }}"
+  when:
+    - "'LLcgconfig' in services"
+    - cgroups == "yes"
+
+- name: find file on remote to copy
+  find:
+    paths: /tmp/
+    recurse: no
+    patterns:
+      - "{{ loader_log }}"
+  register: files_to_copy
+  when:
+   - ansible_distribution_major_version|int >= 7
+
+- name: Copy logfile(s) to control server
+  fetch:
+     src: "{{ item.path }}"
+     dest: "{{ logs_dir }}/{{ ansible_hostname }}.loader.log.{{ tstamp.stdout }}.txt"
+     flat: yes
+  with_items: "{{ files_to_copy.files }}"
+  when:
+    - ansible_distribution_major_version|int >= 7
+
+- name: local action on controller to fix fetched file perms
+  file:
+     path: "{{ logs_dir }}"
+     mode: 0755
+     recurse: yes
+  delegate_to: localhost
+  when:
+    - ansible_distribution_major_version|int >= 7

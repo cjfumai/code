@@ -1,0 +1,33 @@
+---
+# defaults file for set_host_env
+#
+
+
+# Expected Strucutre in Repository 
+# ./
+#   group_vars/
+#       all/
+#           <name>.yml
+#       regions/
+#           AMERICAS
+#           ...
+#       locations/
+#           SLOUGH
+#           ...
+#       application_profiles/
+#           CROSSFINDER
+#           ...
+#
+#   host_vars/
+#       server_name1
+#       server_name2
+#       server_name3
+#       ...
+#
+
+vars_repo: "https://oauth2:glpat-D3hcMvvwFGj8GTeK2ZNz@gitlab.csintra.net/hpet-engineering/hpet-configuration-management/rhel8/vars/hpet_rhel8_vars_{{ hosttype | lower }}.git"
+vars_path: "/runner/project/roles/set_host_env/vars/hpet_rhel8_vars"
+
+roles_repo: "https://oauth2:glpat-ycgywkoVh3TZYxGH6VXj@gitlab.csintra.net/hpet-engineering/hpet-configuration-management/rhel8/hpet_rhel8_roles.git"
+roles_path: "/runner/project/roles/set_host_env/vars/hpet_rhel8_roles"
+

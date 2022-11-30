@@ -1,0 +1,16 @@
+---
+- hosts: all
+  roles:
+
+  tasks:
+
+  - name: remnove benchmark tool rpms
+    yum:
+      name:
+         -  LLsysjitter
+         -  LLsockperf
+         -  LLIntelMLC
+         -  LLlmbench
+         -  ioping
+         -  perf
+      state: absent

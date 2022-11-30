@@ -1,0 +1,28 @@
+---
+- name: Include crowdstrike vars
+  include_vars:  "{{ roles_path }}/crowdstrike/vars/crowdstrike.yml"
+
+- name: Install {{ package }}
+  block:
+
+     - name: Check {{ package }} exists
+       stat:
+         path: /opt/CrowdStrike/{{ package }}
+       register: falcon_info
+
+     - name: Install {{ package }}
+       include_tasks: install.yml
+
+       when:
+         - '"install" in deploy_action'
+         - not falcon_info.stat.exists
+ 
+- name: Removing  {{ package }}
+  block:
+
+     - name: Remove {{ package }}
+       include_tasks: remove.yml
+
+  when:
+    - '"remove" in deploy_action'
+

@@ -1,0 +1,41 @@
+Crowdstrike falcon-sensor-6.41.0-13804.el8.x86_64 stopped at 200822:13:11:24
+
+timeout 300 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+/usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 120 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+sockperf: Test end (interrupted by timer)
+sockperf: Test ended
+sockperf: [Total Run] RunTime=120.137 sec; SentMessages=5492294; ReceivedMessages=5492293
+sockperf: ========= Printing statistics for Server No: 0
+sockperf: [Valid Duration] RunTime=119.984 sec; SentMessages=5481264; ReceivedMessages=5481264
+sockperf: [2;35m====> avg-lat= 10.934 (std-dev=406.747)[0m
+sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
+sockperf: Summary: Latency is 10.934 usec
+sockperf: [2;35mTotal 5481264 observations[0m; each percentile contains 54812.64 observations
+sockperf: ---> <MAX> observation = 47686.985
+sockperf: ---> percentile  99.99 = 24731.079
+sockperf: ---> percentile  99.90 =    4.135
+sockperf: ---> percentile  99.50 =    3.189
+sockperf: ---> percentile  99.00 =    2.487
+sockperf: ---> percentile  95.00 =    2.316
+sockperf: ---> percentile  90.00 =    2.302
+sockperf: ---> percentile  75.00 =    2.289
+sockperf: ---> percentile  50.00 =    2.277
+sockperf: ---> percentile  25.00 =    2.265
+sockperf: ---> <MIN> observation =    2.205
+
+Crowdstrike falcon-sensor-6.41.0-13804.el8.x86_64 started at 200822:13:15:52
+
+timeout 300 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+/usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 120 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf: ERROR: Can`t connect socket (errno=111 Connection refused)

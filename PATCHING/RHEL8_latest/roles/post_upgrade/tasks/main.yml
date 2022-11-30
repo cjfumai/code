@@ -1,0 +1,30 @@
+---
+# tasks file for post_upgrade
+
+- name: yum disable repos
+  shell: /sbin/chkconfig CSfirstboot off
+  register: CSfirstboot_out
+
+- name: check .firstbooted
+  shell: |
+     if [ -f /.firstbooted]; then
+        rm /.firstbooted
+     fi
+
+#- name: yum disable repos
+#  shell: yum -y --disablerepo=*
+#  register: yum_disable_out
+
+#/bin/rpm -qa | grep CentrifyDA | wc -l
+#if [ "$DirectAudit" -ge 1 ]
+#  systemctl enable centrifyda >> $update_log 2>&1
+#  systemctl start centrifyda >> $update_log 2>&1
+#fi
+
+#puppetlock_file=/opt/puppetlabs/puppet/cache/state/agent_disabled.lock
+#if [[ -f $puppetlock_file ]]; then
+#   touch /var/backup/puppet.agent_disabled.lock
+#   puppet agent --enable >> $update_log 2>&1
+#fi
+
+#puppet agent -tov --tags Hardware,Bootconfig,Interfaces,Services,Ntp,Shellrc,Centrify,Remove_nproc_limit >> $update_log 2>&1

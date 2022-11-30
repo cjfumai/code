@@ -1,0 +1,7 @@
+---
+# vars file for  reporter
+#
+script:       benchmarking_report.py 
+roles_path:  /cs/benchmarking/roles
+script_path: /cs/benchmarking/scripts
+logs_dir:    /cs/benchmarking/logs/{{ ansible_hostname }}

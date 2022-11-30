@@ -1,0 +1,95 @@
+---
+- name: Include crowdstrike
+  include_vars: "{{ roles_path }}/crowdstrike/vars/crowdstrike.yml"
+
+- name: check for {{ prog }}
+  stat:
+    path: "{{ prog_path }}/{{ prog }}"
+  register: lmbench_result
+
+  environment:
+   PATH: '{{ ansible_env.PATH }}:{{ prog_path }}'
+
+- name: set short date
+  shell: "date +%d%m%y"
+  register: tstamp
+  when:
+   - lmbench_result.stat.exists
+   - ansible_distribution_major_version|int >= 7
+
+- name: Get List of services
+  service_facts:
+
+- name: Output message is Crowdstrike missing
+  shell: "{{ item }}"
+  with_items:
+    - "{{ crowdstrike_missing }}"
+  when:
+    - "'falcon-sensor.service' not in services"
+
+- name: Stop Crowdstrike if exists
+  shell: "{{ item }}"
+  with_items:
+    - "{{ crowdstrike_stop }}"
+  when:
+    - ( crowdstrike == "yes" ) and (  "'falcon-sensor.service' in services" )
+    - cgroups == "yes"
+
+- name: run {{ prog }} tests
+  shell: "{{ item }}"
+  with_items:
+    - "{{ commands }}"
+  when:
+   - lmbench_result.stat.exists
+   - ansible_distribution_major_version|int >= 7
+
+  environment:
+   PATH: '{{ ansible_env.PATH }}:{{ prog_path }}'
+
+- name: Start Crowdstrike
+  shell: "{{ item }}"
+  with_items:
+    - "{{ crowdstrike_start }}"
+  when:
+    - ( crowdstrike == "yes" ) and (  "'falcon-sensor.service' in services" )
+    - cgroups == "yes"
+
+- name: Run Benchmark
+  shell: "{{ item }}"
+  with_items:
+    - "{{ commands }}"
+  when:
+    - "'falcon-sensor.service' in services"
+
+  environment:
+   PATH: '{{ ansible_env.PATH }}:{{ prog_path }}'
+
+- name: find file on remote to copy
+  find:
+    paths: /tmp/
+    recurse: no
+    patterns: "{{ prog }}.log.{{ tstamp.stdout }}.txt"
+  register: files_to_copy
+  when:
+   - lmbench_result.stat.exists
+   - ansible_distribution_major_version|int >= 7
+
+- name: Copy logfile to control server
+  fetch:
+     src: "{{ item.path }}"
+     dest: "{{ logs_dir }}/{{ ansible_hostname }}.lmbench.log.{{ tstamp.stdout }}.txt"
+     flat: yes
+  with_items: "{{ files_to_copy.files }}"
+  when:
+    - lmbench_result.stat.exists
+    - ansible_distribution_major_version|int >= 7
+
+- name: local action on controller to fix fetched file perms
+  file:
+     path: "{{ logs_dir }}"
+     mode: 0755
+     recurse: yes
+  delegate_to: localhost
+  when:
+    - lmbench_result.stat.exists
+    - ansible_distribution_major_version|int >= 7

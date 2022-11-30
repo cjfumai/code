@@ -1,0 +1,56 @@
+---
+- tags: sockperf benchmarking
+  hosts: all
+  vars:
+     ansible_python_interpreter: /usr/bin/python3
+     role_path: /cs/benchmarking/roles/sockperf
+
+  vars_files:
+     - "{{ role_path }}/vars/main.yml"
+
+  tasks:
+
+  - name: check for {{ prog }}
+    stat:
+      path: "{{ prog_path }}/{{ prog }}"
+    register: sockperf_result
+  
+  - name: set short date
+    shell: "date +%d%m%y"
+    register: tstamp
+    when:
+       sockperf_result.stat.exists
+  
+  - name: run {{ prog }} tests
+    shell: "{{ item }}"
+    with_items:
+       "{{ commands }}"
+    when:
+       sockperf_result.stat.exists
+  
+  - name: find file on remote to copy
+    find:
+      paths: /tmp/
+      recurse: no
+      patterns: "{{ prog }}.log.{{ tstamp.stdout }}.txt"
+    register: files_to_copy
+    when:
+       sockperf_result.stat.exists
+  
+  - name: Copy logfile to control server
+    fetch:
+       src: "{{ item.path }}"
+       dest: "{{ logs_dir }}/{{ ansible_hostname }}.sockperf.log.{{ tstamp.stdout }}.txt"
+       flat: yes
+    with_items: "{{ files_to_copy.files }}"
+    when:
+       sockperf_result.stat.exists
+  
+  - name: local action on controller to fix fetched file perms
+    file:
+       path: "{{ logs_dir }}"
+       mode: 0755
+       recurse: yes
+    delegate_to: localhost
+    when:
+       sockperf_result.stat.exists

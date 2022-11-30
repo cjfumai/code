@@ -1,0 +1,6 @@
+pkill dd
+pkill sar
+pkill dd
+pkill sar
+pkill dd
+pkill sar

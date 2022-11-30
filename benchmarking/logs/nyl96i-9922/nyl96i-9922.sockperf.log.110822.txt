@@ -1,0 +1,60 @@
+timeout 300 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+/usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 30 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+sockperf: Test end (interrupted by timer)
+sockperf: Test ended
+sockperf: [Total Run] RunTime=30.100 sec; SentMessages=2995009; ReceivedMessages=2995008
+sockperf: ========= Printing statistics for Server No: 0
+sockperf: [Valid Duration] RunTime=30.000 sec; SentMessages=2980766; ReceivedMessages=2980766
+sockperf: [2;35m====> avg-lat=  5.021 (std-dev=28.815)[0m
+sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
+sockperf: Summary: Latency is 5.021 usec
+sockperf: [2;35mTotal 2980766 observations[0m; each percentile contains 29807.66 observations
+sockperf: ---> <MAX> observation = 13361.705
+sockperf: ---> percentile  99.99 =   51.610
+sockperf: ---> percentile  99.90 =   10.123
+sockperf: ---> percentile  99.50 =    9.313
+sockperf: ---> percentile  99.00 =    8.643
+sockperf: ---> percentile  95.00 =    8.150
+sockperf: ---> percentile  90.00 =    8.001
+sockperf: ---> percentile  75.00 =    7.794
+sockperf: ---> percentile  50.00 =    2.233
+sockperf: ---> percentile  25.00 =    2.031
+sockperf: ---> <MIN> observation =    1.971
+timeout 300 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+/usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 30 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+sockperf: Test end (interrupted by timer)
+sockperf: Test ended
+sockperf: [Total Run] RunTime=30.100 sec; SentMessages=6259457; ReceivedMessages=6259456
+sockperf: ========= Printing statistics for Server No: 0
+sockperf: [Valid Duration] RunTime=30.000 sec; SentMessages=6245189; ReceivedMessages=6245189
+sockperf: [2;35m====> avg-lat=  2.391 (std-dev=19.204)[0m
+sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
+sockperf: Summary: Latency is 2.391 usec
+sockperf: [2;35mTotal 6245189 observations[0m; each percentile contains 62451.89 observations
+sockperf: ---> <MAX> observation = 15676.092
+sockperf: ---> percentile  99.99 =   12.938
+sockperf: ---> percentile  99.90 =    8.704
+sockperf: ---> percentile  99.50 =    8.193
+sockperf: ---> percentile  99.00 =    8.026
+sockperf: ---> percentile  95.00 =    3.860
+sockperf: ---> percentile  90.00 =    2.077
+sockperf: ---> percentile  75.00 =    2.057
+sockperf: ---> percentile  50.00 =    2.042
+sockperf: ---> percentile  25.00 =    2.030
+sockperf: ---> <MIN> observation =    1.977

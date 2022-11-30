@@ -1,0 +1,14 @@
+---
+# defaults file for root_resize
+
+logdir:        /var/log
+update_log:    $logdir/"OS_update_log_"$shortdate".out"
+timestamp:     date +"%T:%d%m%y"
+file:          /etc/fstab
+rootvg:	       root_vg
+dev_cs:	       /dev/root_vg/cs
+lv:            root_vg-cs
+mount:         /cs
+#
+cs_reduce_by:  35G
+rootvg_min:    300

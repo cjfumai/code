@@ -1,0 +1,9 @@
+---
+- name: Start Crowdstrike if exists
+  shell: "{{ item }}"
+  with_items:
+      - "{{ crowdstrike_start }}"
+  when:
+      - "'falcon-sensor.service' in services"
+
+  tags: startfalcon

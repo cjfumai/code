@@ -1,0 +1,17 @@
+taskset -c 1  dd if=/dev/zero of=/dev/null &
+taskset -c 2  dd if=/dev/zero of=/dev/null &
+taskset -c 3  dd if=/dev/zero of=/dev/null &
+taskset -c 4  dd if=/dev/zero of=/dev/null &
+taskset -c 5  dd if=/dev/zero of=/dev/null &
+taskset -c 6  dd if=/dev/zero of=/dev/null &
+taskset -c 7  dd if=/dev/zero of=/dev/null &
+taskset -c 9  dd if=/dev/zero of=/dev/null &
+taskset -c 10  dd if=/dev/zero of=/dev/null &
+taskset -c 11 dd if=/dev/zero of=/dev/null &
+taskset -c 12  dd if=/dev/zero of=/dev/null &
+taskset -c 13  dd if=/dev/zero of=/dev/null &
+taskset -c 14  dd if=/dev/zero of=/dev/null &
+taskset -c 15  dd if=/dev/zero of=/dev/null &
+sar -P ALL 30 100 &
+
+Linux 4.18.0-305.25.1.el8_4.x86_64 (nyl96i-9911) 	08/23/2022 	_x86_64_	(16 CPU)

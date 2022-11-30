@@ -1,0 +1,22 @@
+---
+# tasks file for cs_check
+
+- name: set short date
+  shell: "date +%d%m%y"
+  register: shortdate
+
+- name: check for /cs in /etc/fstab
+  shell: grep /cs /etc/fstab  | egrep -i '(ext4|xfs)' | egrep -i '(root_vg)' | xargs
+  register: cs_grep_result
+
+- name: check /etc/fstab
+  shell: sed -e '/^\/dev\/mapper\/root_vg-cs.*\/cs. /s/^/#/' -i /etc/fstab 
+  register: cs_fs_check
+  when:
+     - "'/dev/mapper/root_vg-cs' in cs_grep_result.stdout"
+
+- name: Run_reboot_action
+  reboot:
+    reboot_timeout: 600
+  when:
+     - "'/dev/mapper/root_vg-cs' in cs_grep_result.stdout"

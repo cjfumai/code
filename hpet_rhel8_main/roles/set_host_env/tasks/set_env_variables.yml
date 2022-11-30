@@ -1,0 +1,28 @@
+---
+# tasks file for set_host_env
+#
+
+- set_fact:
+    region: "{{ ansible_local.sat6_hostparams.region }}"
+    location: "{{ ansible_local.sat6_hostparams.location }}"
+    hosttype: "{{ ansible_local.sat6_hostparams.hosttype }}"
+    application_code: "{{ ansible_local.sat6_hostparams.application_code }}"
+    application_profile: "{{ ansible_local.sat6_hostparams.application_profile }}"
+    llet_rhel_release: "{{ ansible_local.sat6_hostparams.llet_rhel_release }}"
+    rhel_version: "{{ ansible_local.sat6_hostparams.rhel_version }}"
+
+- name: Add Server to groups
+  add_host:
+    hostname: "{{ ansible_hostname }}"
+    groups:
+        - "{{ region }}"
+        - "{{ location }}"
+        - "{{ hosttype }}"
+        - "{{ application_code }}"
+        - "{{ application_profile }}"
+        - "{{ llet_rhel_release }}"
+        - "{{ rhel_version }}"
+
+
+- name: "{{ ansible_hostname }} is part of .these groups"
+  debug: var=groups

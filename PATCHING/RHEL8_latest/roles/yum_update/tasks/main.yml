@@ -1,0 +1,54 @@
+---
+# tasks file for yum_update
+
+#- name: yum clean all
+#  shell: yum clean all
+#  register: yum_clean_out
+
+#- name: yum disable repos
+#  shell: yum -y --disablerepo=* 
+#  register: yum_disable_out
+
+#- name: yum enable repos
+#  shell: yum -y --enablerepo="{{ item }}"
+#  with_items:
+#      - rhel-8-for-x86_64-baseos-rpms
+#      - rhel-8-for-x86_64-appstream-rpms
+
+#- name: yum update to desired kernel
+#  yum:
+#     name: "{{ kernel }}"
+#     state: present
+#  vars:
+#     kernel:
+#         - kernel-4.18.0-305.25.1.el8_4.x86_64
+
+#- name: yum update kernel tools and libs for desired kernel
+#  yum: 
+#     name: "{{ kernel_tools_libs }}"
+#     state: present
+#     exclude: kernel
+#  vars:
+#     kernel_tools_libs:
+#         - kernel-tools-4.18.0-305.25.1.el8_4.x86_64
+
+#- name: yum disable repos
+#  shell: yum -y --disablerepo=* 
+#  register: yum_disable_out
+
+#- name: yum enable repos
+#  shell: yum -y --enablerepo="{{ item }}"
+#  with_items:
+#      - rhel-8-for-x86_64-baseos-rpms
+#      - rhel-8-for-x86_64-appstream-rpms
+
+- name: yum update all excluding kernel and hwloc
+  yum: 
+    name: "*"
+    state: latest
+    exclude: "kernel*,hwloc,hwloc-libs,mlnx*"
+    update_cache: yes
+    disablerepo: "*"
+    enablerepo:
+      - rhel-8-for-x86_64-baseos-rpms
+      - rhel-8-for-x86_64-appstream-rpms

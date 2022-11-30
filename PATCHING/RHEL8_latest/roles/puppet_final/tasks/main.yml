@@ -1,0 +1,31 @@
+---
+# tasks file for puppet_final
+
+- name: check if puppet binary exists
+  stat:
+        path: /opt/puppetlabs/bin/puppet
+  register: puppet_binary
+
+- name: check for puppet lock file
+  stat:
+        path: /opt/puppetlabs/puppet/cache/state/agent_disabled.lock
+  register: puppet_lock
+
+- name: re-enable puppet if in lock sate
+  puppet:
+     enabled: yes
+  when:
+     - puppet_lock.stat.exists
+
+- name: puppet final run
+  puppet:
+    tags:
+    - Banners
+  when:
+     - puppet_binary.stat.exists
+
+- name: re-disable puppet if it was in lock state
+  puppet:
+     enabled: no
+  when:
+     - puppet_lock.stat.exists

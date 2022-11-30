@@ -1,0 +1,10 @@
+crowdstrike_allow_list: |
+                        sol06a-4817,
+                        bel06a-4810,
+                        hkl06i-0002,
+                        lnl06a-4810,
+                        sol06a-4815,
+                        vsol06i-0002,
+                        zul06a-4810,
+                        scl06i-0011,
+                        pnl06i-9804

@@ -1,0 +1,21 @@
+---
+# tasks file for subscribe_validate
+
+- name: subscription-manager release and clean
+  shell: |
+     if [ -f /usr/sbin/subscription-manager ]; then
+        subscription-manager clean
+     fi
+  register: subscribe_clean_out
+
+- name: subscription-manager register
+  shell: subscription-manager register --org="Default_Organization" --activationkey="RHEL 8.4" --force
+  register: subscribe_register_out
+
+- name: subscription-manager attach pool id for ISV content
+  shell: /usr/sbin/subscription-manager attach --pool=268d33997495f1120174a0b3c8fc00d2
+  register: subscribe_clean_out
+
+- name: subscription-manager set to proper release
+  shell: subscription-manager release --set=8.4
+  register: subscribe_release_out

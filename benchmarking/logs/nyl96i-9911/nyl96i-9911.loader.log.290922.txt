@@ -1,0 +1,8 @@
+taskset -c 1 dd if=/dev/zero of=/dev/null &
+taskset -c 2 dd if=/dev/zero of=/dev/null &
+taskset -c 3 dd if=/dev/zero of=/dev/null &
+taskset -c 4 dd if=/dev/zero of=/dev/null &
+taskset -c 5 dd if=/dev/zero of=/dev/null &
+for i in {1..100}; do echo ; dd if=/dev/zero of=/tmp/dd.junkfile count=10240 bs=1M; rm -rf /tmp/dd.junkfile; sleep 2; done
+
+

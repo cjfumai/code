@@ -1,0 +1,26 @@
+---
+
+- name: Create directory structure for variables
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+  loop:
+    - "{{ vars_path }}"
+  delegate_to: 127.0.0.1
+
+- name: Clone group_vars
+  git:
+    repo:  "{{ vars_repo }}"
+    dest: "{{ vars_path }}"
+    force: yes
+  loop:
+    - "{{ vars_repo }}"
+  delegate_to: 127.0.0.1
+  environment:
+    - GIT_SSL_NO_VERIFY: "true"
+
+
+
+
+

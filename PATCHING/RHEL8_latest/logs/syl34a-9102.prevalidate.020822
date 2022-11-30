@@ -1,0 +1,39 @@
+##########################################################################################
+INFO : Starting prevalidate.sh at 19:06:11:020822
+
+INFO: /boot/grub2/grubenv is OK
+
+INFO: grubby info is OK
+
+INFO : 19:06:11:020822 Starting bootspace checks
+/dev/sda1         245671 62469    165999  28% /boot
+
+INFO : 19:06:11:020822 Found 165999 kilobytes of space in /boot, continuing.....
+
+INFO : 19:06:11:020822 Printing state of all LVM vols seen 
+
+  LV   VG      Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  cs   app_vg  -wi-ao----  1.09t                                                    
+  root root_vg -wi-ao---- 40.00g                                                    
+  swap root_vg -wi-ao----  8.00g                                                    
+  var  root_vg -wi-ao---- 40.00g                                                    
+
+INFO : 19:06:11:020822 Starting snap checks
+INFO : 19:06:11:020822 No root snaps detected, continuing.
+
+  505329745920
+INFO : 19:06:11:020822 root_vg free space OK
+
+INFO : 19:06:11:020822 Starting rpm checks
+INFO : 19:06:12:020822 No problematic RPM's found OK 
+
+INFO : 19:06:12:020822 Starting dracut checks
+INFO : 19:06:12:020822 dracut checks have passed OK
+
+/cs is less then 85 percent OK
+10 2 * * * /opt/puppetlabs/bin/puppet agent -o --no-daemonize --logdest=syslog --no-splay
+INFO : 19:06:12:020822 Starting duplicate rpms check
+INFO : 19:06:12:020822 No failures found from pre-validation, upgrade can proceed
+
+INFO : Finished prevalidate.sh at 19:06:12:020822
+##########################################################################################

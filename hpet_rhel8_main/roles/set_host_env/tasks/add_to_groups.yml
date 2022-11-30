@@ -1,0 +1,12 @@
+---
+
+- name: Add server to groups for dynamic imports
+  add_host:
+    hostname: "{{ ansible_hostname }}"
+    groups:
+        - "all"
+        - "{{ region }}"
+        - "{{ location }}"
+        - "{{ hosttype }}"
+        - "{{ application_code }}"
+        - "{{ application_profile }}"

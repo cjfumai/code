@@ -1,0 +1,25 @@
+---
+# vars file for crowdstrike
+#
+package:              falcon-sensor
+crowdstrike_service:  falcon-sensor
+version:              6.41.0
+version_release:      13804
+arch_rpm:             x86_64.rpm
+os_version:           "{{ ansible_distribution_major_version }}"
+package_version:      "{{ package }}-{{ version }}-{{ version_release }}.el{{ os_version }}.{{ arch_rpm }}"
+
+crowdstrike_stop:
+  - echo "Crowdstrike `rpm -qa {{ crowdstrike_service }}` stopped at `date +%d%m%y:%H:%M:%S`" > {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - systemctl stop {{ crowdstrike_service }}
+
+crowdstrike_start:
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "Crowdstrike `rpm -qa {{ package }}` started at `date +%d%m%y:%H:%M:%S`" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - systemctl start {{ crowdstrike_service }}
+
+crowdstrike_missing:
+  - echo "Crowdstrike is Not Installed" > {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1

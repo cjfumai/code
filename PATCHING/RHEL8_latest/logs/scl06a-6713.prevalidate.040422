@@ -1,0 +1,35 @@
+################################################
+INFO : Starting prevalidate.sh at 14:26:28:040422
+INFO : 14:26:28:040422 Starting bootspace checks
+/dev/sda1         245671 63195    165273  28% /boot
+
+INFO : 14:26:28:040422 Found 165273 kilobytes of space in /boot, continuing.....
+
+INFO : 14:26:28:040422 Printing state of all LVM vols seen 
+
+  LV   VG      Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  cs   root_vg -wi-ao---- 470.62g                                                    
+  root root_vg -wi-ao----  40.00g                                                    
+  swap root_vg -wi-ao----   8.00g                                                    
+  var  root_vg -wi-ao----  40.00g                                                    
+
+INFO : 14:26:28:040422 Starting snap checks
+INFO : 14:26:28:040422 No root snaps detected, continuing.
+
+      0
+ERROR : 14:26:28:040422 root_vg has less than 31G free
+INFO : 14:26:28:040422 Starting rpm checks
+INFO : 14:26:29:040422 No problematic RPM's found OK 
+
+INFO : 14:26:29:040422 Starting ofed checks
+INFO : 14:26:29:040422 No evidence of ofed_info OK
+
+INFO : 14:26:29:040422 Starting dracut checks
+INFO : 14:26:29:040422 dracut checks have passed OK
+
+/cs is less then 85 percent OK
+ERROR : 14:26:29:040422 /opt/puppetlabs/puppet/cache/state/agent_disabled.lock found - puppet is disabled on this host
+23 2 * * * /opt/puppetlabs/bin/puppet agent -o --no-daemonize --logdest=syslog --no-splay
+
+INFO : Finished prevalidate.sh at 14:26:29:040422
+################################################

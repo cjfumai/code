@@ -1,0 +1,26 @@
+---
+# vars file for stoploader
+#
+prog:                 stoploader
+roles_path:           /cs/benchmarking/roles
+logs_dir:             /cs/benchmarking/logs/{{ ansible_hostname }}
+tmp_log:              /tmp/{{ prog }}.log
+loader_log:	      loader.log.{{ tstamp.stdout }}.txt
+
+# stop dd and sar
+commands:
+  - echo "pkill dd" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "pkill sar" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+
+  - pkill dd
+  - pkill sar
+
+LLcgconfig_stop:
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - systemctl stop {{ cgroups_service }}
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+
+LLcgconfig_start:
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - systemctl start {{ cgroups_service }}
+  - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1

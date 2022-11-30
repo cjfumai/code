@@ -1,0 +1,87 @@
+Crowdstrike falcon-sensor-6.43.0-14005.el8.x86_64 stopped at 080922:13:47:37
+
+/bin/cgexec -g cpuset:/prime ioping -qc 100 /tmp
+
+
+--- /tmp (tmpfs /tmpfs) ioping statistics ---
+99 requests completed in 808.5 us, 396 KiB read, 122.5 k iops, 478.3 MiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 2.58 us / 8.17 us / 16.8 us / 4.83 us
+
+ /bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+
+--- /dev/sda (block device 447.1 GiB) ioping statistics ---
+99 requests completed in 66.7 ms, 24.8 MiB read, 1.48 k iops, 370.9 MiB/s
+generated 100 requests in 69.8 ms, 25 MiB, 1.43 k iops, 358.2 MiB/s
+min/avg/max/mdev = 595.0 us / 674.1 us / 751.2 us / 45.1 us
+
+/bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+
+--- /dev/sda (block device 447.1 GiB) ioping statistics ---
+99 requests completed in 66.7 ms, 24.8 MiB read, 1.48 k iops, 370.9 MiB/s
+generated 100 requests in 69.7 ms, 25 MiB, 1.44 k iops, 358.9 MiB/s
+min/avg/max/mdev = 593.5 us / 673.9 us / 743.8 us / 44.2 us
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /dev/shm/ioping
+
+
+--- /dev/shm/ioping (tmpfs tmpfs) ioping statistics ---
+99 requests completed in 1.22 ms, 396 KiB written, 80.8 k iops, 315.8 MiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 3.56 us / 12.4 us / 18.4 us / 3.32 us
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /cs/ioping
+
+
+--- /cs/ioping (ext4 /dev/dm-5) ioping statistics ---
+99 requests completed in 28.6 ms, 396 KiB written, 3.46 k iops, 13.5 MiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 248.2 us / 289.0 us / 299.0 us / 8.16 us
+
+
+Crowdstrike falcon-sensor-6.43.0-14005.el8.x86_64 started at 080922:13:52:45
+
+/bin/cgexec -g cpuset:/prime ioping -qc 100 /tmp
+
+
+--- /tmp (tmpfs /tmpfs) ioping statistics ---
+99 requests completed in 1.14 ms, 396 KiB read, 86.6 k iops, 338.2 MiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 3.21 us / 11.5 us / 17.7 us / 3.80 us
+
+ /bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+
+--- /dev/sda (block device 447.1 GiB) ioping statistics ---
+99 requests completed in 64.6 ms, 24.8 MiB read, 1.53 k iops, 383.0 MiB/s
+generated 100 requests in 67.5 ms, 25 MiB, 1.48 k iops, 370.5 MiB/s
+min/avg/max/mdev = 574.2 us / 652.7 us / 721.8 us / 44.1 us
+
+/bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+
+--- /dev/sda (block device 447.1 GiB) ioping statistics ---
+99 requests completed in 64.5 ms, 24.8 MiB read, 1.53 k iops, 383.5 MiB/s
+generated 100 requests in 67.2 ms, 25 MiB, 1.49 k iops, 372.0 MiB/s
+min/avg/max/mdev = 572.1 us / 651.8 us / 722.1 us / 44.6 us
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /dev/shm/ioping
+
+
+--- /dev/shm/ioping (tmpfs tmpfs) ioping statistics ---
+99 requests completed in 1.51 ms, 396 KiB written, 65.7 k iops, 256.6 MiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 6.29 us / 15.2 us / 19.9 us / 1.94 us
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /cs/ioping
+
+
+--- /cs/ioping (ext4 /dev/dm-5) ioping statistics ---
+99 requests completed in 28.0 ms, 396 KiB written, 3.53 k iops, 13.8 MiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 237.8 us / 283.2 us / 298.1 us / 7.29 us
+
+
+

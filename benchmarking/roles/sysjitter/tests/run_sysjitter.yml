@@ -1,0 +1,77 @@
+---
+- tags: sockperf benchmarking
+  hosts: all
+  vars:
+     ansible_python_interpreter: /usr/bin/python3
+     role_path: /cs/benchmarking/roles/sockperf
+
+  vars_files:
+     - "{{ role_path }}/vars/main.yml"
+
+  tasks:
+
+  - name: check for /bin/sysjitter
+    stat:
+      path: /bin/sysjitter
+    register: sysjitter_result
+  
+  - name: set short date
+    shell: "date +%d%m%y"
+    register: tstamp
+    when:
+       - sysjitter_result.stat.exists
+  
+  - name: gather junk cpu information
+    shell:
+       /bin/cgget -r cpuset.cpus junk | grep -i ^cpuset.cpus | awk '{print $2}'
+    register: junk_cpus
+    when:
+       - sysjitter_result.stat.exists
+  
+  - name: gather prime cpu information
+    shell:
+       /bin/cgget -r cpuset.cpus prime | grep -i ^cpuset.cpus | awk '{print $2}'
+    register: prime_cpus
+    when:
+       - sysjitter_result.stat.exists
+  
+  - name: run sysjitter on prime cores
+    shell: "{{ item }}"
+    with_items:
+       - echo "cgexec -g cpuset:/prime sysjitter --runtime {{ runtime }} --cores {{ prime_cpus.stdout }} {{ threshold }}" > {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+       - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+       - cgexec -g cpuset:/prime sysjitter --runtime {{ runtime }} --cores {{ prime_cpus.stdout }} {{ threshold }} >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+    when:
+       - sysjitter_result.stat.exists
+       - prime_cpus.stdout != ""
+  
+  - name: find file on remote to copy
+    find:
+      paths: /tmp/
+      recurse: no
+      patterns: "sysjitter.log.{{ tstamp.stdout }}.txt"
+    register: files_to_copy
+    when:
+       - sysjitter_result.stat.exists
+       - prime_cpus.stdout != ""
+  
+  - name: Copy logfile to control server
+    fetch:
+       src: "{{ item.path }}"
+       dest: "{{ logs_dir }}/{{ ansible_hostname }}.sysjitter.log.{{ tstamp.stdout }}.txt"
+       flat: yes
+    with_items: "{{ files_to_copy.files }}"
+    when:
+       - sysjitter_result.stat.exists
+       - prime_cpus.stdout != ""
+  
+  - name: local action on controller to fix fetched file perms
+    file:
+       path: "{{ logs_dir }}"
+       state: directory
+       mode: 0755
+       recurse: yes
+    delegate_to: localhost
+    when:
+       - sysjitter_result.stat.exists
+       - prime_cpus.stdout != ""

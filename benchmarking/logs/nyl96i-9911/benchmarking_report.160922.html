@@ -1,0 +1,580 @@
+<h1>nyl96i-9911 benchmarking report
+</h1><h3>Run date: 160922
+</h3><pre><h2>benchmark test: ioping</h2>
+<pre><h3>crowdstrike stopped</h3>
+Crowdstrike falcon-sensor-6.43.0-14005.el8.x86_64 stopped at 160922:06:59:46
+
+/bin/cgexec -g cpuset:/prime ioping -qc 100 /tmp
+
+
+--- /tmp (tmpfs /tmpfs) ioping statistics ---
+99 requests completed in 97.8 us, 396 KiB read, 1.01 M iops, 3.86 GiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 504 ns / 987 ns / 3.24 us / 499 ns
+
+ /bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+
+--- /dev/sda (block device 447.1 GiB) ioping statistics ---
+99 requests completed in 63.7 ms, 24.8 MiB read, 1.55 k iops, 388.7 MiB/s
+generated 100 requests in 65.0 ms, 25 MiB, 1.54 k iops, 384.6 MiB/s
+min/avg/max/mdev = 562.2 us / 643.1 us / 716.2 us / 44.4 us
+
+/bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+
+--- /dev/sda (block device 447.1 GiB) ioping statistics ---
+99 requests completed in 63.3 ms, 24.8 MiB read, 1.56 k iops, 390.8 MiB/s
+generated 100 requests in 65.9 ms, 25 MiB, 1.52 k iops, 379.1 MiB/s
+min/avg/max/mdev = 560.0 us / 639.7 us / 718.0 us / 44.4 us
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /dev/shm/ioping
+
+
+--- /dev/shm/ioping (tmpfs tmpfs) ioping statistics ---
+99 requests completed in 192.8 us, 396 KiB written, 513.5 k iops, 1.96 GiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 854 ns / 1.95 us / 4.08 us / 581 ns
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /cs/ioping
+
+
+--- /cs/ioping (ext4 /dev/dm-5) ioping statistics ---
+99 requests completed in 20.7 ms, 396 KiB written, 4.78 k iops, 18.7 MiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 155.5 us / 209.1 us / 233.3 us / 7.13 us
+
+
+
+<pre>
+<h3>crowdstrike started</h3>
+Crowdstrike falcon-sensor-6.43.0-14005.el8.x86_64 started at 160922:07:04:54
+
+/bin/cgexec -g cpuset:/prime ioping -qc 100 /tmp
+
+
+--- /tmp (tmpfs /tmpfs) ioping statistics ---
+99 requests completed in 119.9 us, 396 KiB read, 825.7 k iops, 3.15 GiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 560 ns / 1.21 us / 4.29 us / 671 ns
+
+ /bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+
+--- /dev/sda (block device 447.1 GiB) ioping statistics ---
+99 requests completed in 63.4 ms, 24.8 MiB read, 1.56 k iops, 390.5 MiB/s
+generated 100 requests in 66.0 ms, 25 MiB, 1.51 k iops, 378.5 MiB/s
+min/avg/max/mdev = 561.4 us / 640.1 us / 713.1 us / 44.2 us
+
+/bin/cgexec -g cpuset:/prime ioping -qc 100 -RL /dev/sda
+
+
+--- /dev/sda (block device 447.1 GiB) ioping statistics ---
+99 requests completed in 62.5 ms, 24.8 MiB read, 1.58 k iops, 396.2 MiB/s
+generated 100 requests in 64.9 ms, 25 MiB, 1.54 k iops, 385.1 MiB/s
+min/avg/max/mdev = 551.5 us / 631.0 us / 710.5 us / 45.6 us
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /dev/shm/ioping
+
+
+--- /dev/shm/ioping (tmpfs tmpfs) ioping statistics ---
+99 requests completed in 178.4 us, 396 KiB written, 554.9 k iops, 2.12 GiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 1.27 us / 1.80 us / 4.34 us / 477 ns
+
+/bin/cgexec -g cpuset:/prime ioping -WY -qc 100 /cs/ioping
+
+
+--- /cs/ioping (ext4 /dev/dm-5) ioping statistics ---
+99 requests completed in 22.4 ms, 396 KiB written, 4.42 k iops, 17.3 MiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 208.3 us / 226.2 us / 858.8 us / 64.2 us
+
+
+
+<h2>benchmark test: lmbench</h2>
+<pre><h3>crowdstrike stopped</h3>
+Crowdstrike falcon-sensor-6.43.0-14005.el8.x86_64 stopped at 160922:07:29:26
+
+
+
+Simple syscall: 0.2432 microseconds
+Simple read: 0.3083 microseconds
+Simple write: 0.2721 microseconds
+Simple stat: 0.5176 microseconds
+Simple fstat: 0.3047 microseconds
+Simple open/close: 1.2501 microseconds
+
+Simple syscall: 0.2482 microseconds
+Simple read: 0.3078 microseconds
+Simple write: 0.2718 microseconds
+Simple stat: 0.5175 microseconds
+Simple fstat: 0.3107 microseconds
+Simple open/close: 1.2680 microseconds
+
+Simple syscall: 0.2418 microseconds
+Simple read: 0.3117 microseconds
+Simple write: 0.2723 microseconds
+Simple stat: 0.5161 microseconds
+Simple fstat: 0.3050 microseconds
+Simple open/close: 1.0862 microseconds
+
+Simple syscall: 0.2486 microseconds
+Simple read: 0.3079 microseconds
+Simple write: 0.2722 microseconds
+Simple stat: 0.5175 microseconds
+Simple fstat: 0.3131 microseconds
+Simple open/close: 1.2550 microseconds
+
+Simple syscall: 0.2496 microseconds
+Simple read: 0.3062 microseconds
+Simple write: 0.2755 microseconds
+Simple stat: 0.5160 microseconds
+Simple fstat: 0.3046 microseconds
+Simple open/close: 1.0836 microseconds
+
+Simple syscall: 0.2443 microseconds
+Simple read: 0.3079 microseconds
+Simple write: 0.2713 microseconds
+Simple stat: 0.5170 microseconds
+Simple fstat: 0.3049 microseconds
+Simple open/close: 1.2534 microseconds
+
+Simple syscall: 0.2441 microseconds
+Simple read: 0.3081 microseconds
+Simple write: 0.2773 microseconds
+Simple stat: 0.5154 microseconds
+Simple fstat: 0.3081 microseconds
+Simple open/close: 1.0757 microseconds
+
+Simple syscall: 0.2441 microseconds
+Simple read: 0.3082 microseconds
+Simple write: 0.2749 microseconds
+Simple stat: 0.5177 microseconds
+Simple fstat: 0.3043 microseconds
+Simple open/close: 1.2497 microseconds
+
+Simple syscall: 0.2482 microseconds
+Simple read: 0.3079 microseconds
+Simple write: 0.2714 microseconds
+Simple stat: 0.5174 microseconds
+Simple fstat: 0.3106 microseconds
+Simple open/close: 1.2510 microseconds
+
+Simple syscall: 0.2481 microseconds
+Simple read: 0.3065 microseconds
+Simple write: 0.2778 microseconds
+Simple stat: 0.5174 microseconds
+Simple fstat: 0.3028 microseconds
+Simple open/close: 1.2454 microseconds
+
+Simple syscall: 0.2434 microseconds
+Simple read: 0.3077 microseconds
+Simple write: 0.2720 microseconds
+Simple stat: 0.5217 microseconds
+Simple fstat: 0.3041 microseconds
+Simple open/close: 1.0788 microseconds
+
+Simple syscall: 0.2496 microseconds
+Simple read: 0.3056 microseconds
+Simple write: 0.2760 microseconds
+Simple stat: 0.5158 microseconds
+Simple fstat: 0.3103 microseconds
+Simple open/close: 1.0794 microseconds
+
+Simple syscall: 0.2446 microseconds
+Simple read: 0.3071 microseconds
+Simple write: 0.2712 microseconds
+Simple stat: 0.5171 microseconds
+Simple fstat: 0.3044 microseconds
+Simple open/close: 1.2718 microseconds
+
+Simple syscall: 0.2436 microseconds
+Simple read: 0.3076 microseconds
+Simple write: 0.2723 microseconds
+Simple stat: 0.5269 microseconds
+Simple fstat: 0.3024 microseconds
+Simple open/close: 1.0964 microseconds
+
+Simple syscall: 0.2443 microseconds
+Simple read: 0.3065 microseconds
+Simple write: 0.2719 microseconds
+Simple stat: 0.5177 microseconds
+Simple fstat: 0.3043 microseconds
+Simple open/close: 1.2426 microseconds
+
+Simple syscall: 0.2445 microseconds
+Simple read: 0.3113 microseconds
+Simple write: 0.2722 microseconds
+Simple stat: 0.5212 microseconds
+Simple fstat: 0.3047 microseconds
+Simple open/close: 1.0950 microseconds
+
+Simple syscall: 0.2422 microseconds
+Simple read: 0.3118 microseconds
+Simple write: 0.2708 microseconds
+Simple stat: 0.5158 microseconds
+Simple fstat: 0.3052 microseconds
+Simple open/close: 1.2482 microseconds
+
+Simple syscall: 0.2437 microseconds
+Simple read: 0.3131 microseconds
+Simple write: 0.2720 microseconds
+Simple stat: 0.5208 microseconds
+Simple fstat: 0.3047 microseconds
+Simple open/close: 1.0817 microseconds
+
+Simple syscall: 0.2448 microseconds
+Simple read: 0.3136 microseconds
+Simple write: 0.2699 microseconds
+Simple stat: 0.5215 microseconds
+Simple fstat: 0.3049 microseconds
+Simple open/close: 1.2637 microseconds
+
+Simple syscall: 0.2439 microseconds
+Simple read: 0.3098 microseconds
+Simple write: 0.2714 microseconds
+Simple stat: 0.5176 microseconds
+Simple fstat: 0.3082 microseconds
+Simple open/close: 1.2565 microseconds
+
+
+
+<pre>
+<h3>crowdstrike started</h3>
+Crowdstrike falcon-sensor-6.43.0-14005.el8.x86_64 started at 160922:07:31:45
+
+
+
+Simple syscall: 0.2426 microseconds
+Simple read: 0.3393 microseconds
+Simple write: 1.5957 microseconds
+Simple stat: 0.5170 microseconds
+Simple fstat: 0.3095 microseconds
+Simple open/close: 2.1523 microseconds
+
+Simple syscall: 0.2476 microseconds
+Simple read: 0.3339 microseconds
+Simple write: 1.6157 microseconds
+Simple stat: 0.5161 microseconds
+Simple fstat: 0.3045 microseconds
+Simple open/close: 2.0711 microseconds
+
+Simple syscall: 0.2436 microseconds
+Simple read: 0.3329 microseconds
+Simple write: 1.1524 microseconds
+Simple stat: 0.5160 microseconds
+Simple fstat: 0.3040 microseconds
+Simple open/close: 2.1297 microseconds
+
+Simple syscall: 0.2493 microseconds
+Simple read: 0.3316 microseconds
+Simple write: 1.6310 microseconds
+Simple stat: 0.5174 microseconds
+Simple fstat: 0.3026 microseconds
+Simple open/close: 2.0121 microseconds
+
+Simple syscall: 0.2435 microseconds
+Simple read: 0.3329 microseconds
+Simple write: 1.1438 microseconds
+Simple stat: 0.5167 microseconds
+Simple fstat: 0.3076 microseconds
+Simple open/close: 1.8863 microseconds
+
+Simple syscall: 0.2432 microseconds
+Simple read: 0.3318 microseconds
+Simple write: 1.5908 microseconds
+Simple stat: 0.5229 microseconds
+Simple fstat: 0.3022 microseconds
+Simple open/close: 2.2651 microseconds
+
+Simple syscall: 0.2469 microseconds
+Simple read: 0.3340 microseconds
+Simple write: 1.1354 microseconds
+Simple stat: 0.5159 microseconds
+Simple fstat: 0.3039 microseconds
+Simple open/close: 1.8790 microseconds
+
+Simple syscall: 0.2431 microseconds
+Simple read: 0.3339 microseconds
+Simple write: 1.6198 microseconds
+Simple stat: 0.5229 microseconds
+Simple fstat: 0.3042 microseconds
+Simple open/close: 2.1143 microseconds
+
+Simple syscall: 0.2416 microseconds
+Simple read: 0.3376 microseconds
+Simple write: 1.5968 microseconds
+Simple stat: 0.5150 microseconds
+Simple fstat: 0.3043 microseconds
+Simple open/close: 1.8898 microseconds
+
+Simple syscall: 0.2426 microseconds
+Simple read: 0.3370 microseconds
+Simple write: 1.1654 microseconds
+Simple stat: 0.5246 microseconds
+Simple fstat: 0.3038 microseconds
+Simple open/close: 1.8695 microseconds
+
+Simple syscall: 0.2468 microseconds
+Simple read: 0.3339 microseconds
+Simple write: 1.5979 microseconds
+Simple stat: 0.5148 microseconds
+Simple fstat: 0.3084 microseconds
+Simple open/close: 2.2779 microseconds
+
+Simple syscall: 0.2425 microseconds
+Simple read: 0.3336 microseconds
+Simple write: 1.1724 microseconds
+Simple stat: 0.5160 microseconds
+Simple fstat: 0.3041 microseconds
+Simple open/close: 1.8858 microseconds
+
+Simple syscall: 0.2472 microseconds
+Simple read: 0.3337 microseconds
+Simple write: 1.1775 microseconds
+Simple stat: 0.5173 microseconds
+Simple fstat: 0.3100 microseconds
+Simple open/close: 2.1402 microseconds
+
+Simple syscall: 0.2479 microseconds
+Simple read: 0.3395 microseconds
+Simple write: 1.5402 microseconds
+Simple stat: 0.5164 microseconds
+Simple fstat: 0.3048 microseconds
+Simple open/close: 1.8891 microseconds
+
+Simple syscall: 0.2434 microseconds
+Simple read: 0.3334 microseconds
+Simple write: 1.1579 microseconds
+Simple stat: 0.5165 microseconds
+Simple fstat: 0.3078 microseconds
+Simple open/close: 2.3153 microseconds
+
+Simple syscall: 0.2498 microseconds
+Simple read: 0.3320 microseconds
+Simple write: 1.6307 microseconds
+Simple stat: 0.5247 microseconds
+Simple fstat: 0.3032 microseconds
+Simple open/close: 1.8486 microseconds
+
+Simple syscall: 0.2435 microseconds
+Simple read: 0.3334 microseconds
+Simple write: 1.1349 microseconds
+Simple stat: 0.5162 microseconds
+Simple fstat: 0.3076 microseconds
+Simple open/close: 1.8957 microseconds
+
+Simple syscall: 0.2439 microseconds
+Simple read: 0.3339 microseconds
+Simple write: 1.5926 microseconds
+Simple stat: 0.5149 microseconds
+Simple fstat: 0.3081 microseconds
+Simple open/close: 2.1000 microseconds
+
+Simple syscall: 0.2433 microseconds
+Simple read: 0.3323 microseconds
+Simple write: 1.1517 microseconds
+Simple stat: 0.5169 microseconds
+Simple fstat: 0.3039 microseconds
+Simple open/close: 2.0477 microseconds
+
+Simple syscall: 0.2436 microseconds
+Simple read: 0.3333 microseconds
+Simple write: 1.1472 microseconds
+Simple stat: 0.5173 microseconds
+Simple fstat: 0.3100 microseconds
+Simple open/close: 2.1419 microseconds
+
+taskset -c 1 dd if=/dev/zero of=/dev/null &
+taskset -c 2 dd if=/dev/zero of=/dev/null &
+taskset -c 3 dd if=/dev/zero of=/dev/null &
+taskset -c 4 dd if=/dev/zero of=/dev/null &
+taskset -c 5 dd if=/dev/zero of=/dev/null &
+for i in {1..100}; do echo ; dd if=/dev/zero of=/tmp/dd.junkfile count=10240 bs=1M; rm -rf /tmp/dd.junkfile; sleep 2; done
+
+
+<h2>benchmark test: sockperf</h2>
+<pre><h3>crowdstrike stopped</h3>
+Crowdstrike falcon-sensor-6.43.0-14005.el8.x86_64 stopped at 160922:07:20:40
+
+timeout 1800 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+/usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 120 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+sockperf: Test end (interrupted by timer)
+sockperf: Test ended
+sockperf: [Total Run] RunTime=120.099 sec; SentMessages=26027427; ReceivedMessages=26027426
+sockperf: ========= Printing statistics for Server No: 0
+sockperf: [Valid Duration] RunTime=119.999 sec; SentMessages=26006603; ReceivedMessages=26006603
+sockperf: [2;35m====> avg-lat=  2.296 (std-dev=0.837)[0m
+sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
+sockperf: Summary: Latency is 2.296 usec
+sockperf: [2;35mTotal 26006603 observations[0m; each percentile contains 260066.03 observations
+sockperf: ---> <MAX> observation = 3576.458
+sockperf: ---> percentile  99.99 =    4.098
+sockperf: ---> percentile  99.90 =    3.696
+sockperf: ---> percentile  99.50 =    2.833
+sockperf: ---> percentile  99.00 =    2.487
+sockperf: ---> percentile  95.00 =    2.314
+sockperf: ---> percentile  90.00 =    2.307
+sockperf: ---> percentile  75.00 =    2.298
+sockperf: ---> percentile  50.00 =    2.288
+sockperf: ---> percentile  25.00 =    2.278
+sockperf: ---> <MIN> observation =    2.204
+timeout 1800 cgexec -g cpuset:/prime /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+cgexec -g cpuset:/prime /usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 120 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+sockperf: Test end (interrupted by timer)
+sockperf: Test ended
+sockperf: [Total Run] RunTime=120.100 sec; SentMessages=12479069; ReceivedMessages=12479068
+sockperf: ========= Printing statistics for Server No: 0
+sockperf: [Valid Duration] RunTime=120.000 sec; SentMessages=12468601; ReceivedMessages=12468601
+sockperf: [2;35m====> avg-lat=  4.800 (std-dev=0.198)[0m
+sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
+sockperf: Summary: Latency is 4.800 usec
+sockperf: [2;35mTotal 12468601 observations[0m; each percentile contains 124686.01 observations
+sockperf: ---> <MAX> observation =  118.725
+sockperf: ---> percentile  99.99 =    9.275
+sockperf: ---> percentile  99.90 =    6.468
+sockperf: ---> percentile  99.50 =    5.768
+sockperf: ---> percentile  99.00 =    5.208
+sockperf: ---> percentile  95.00 =    4.981
+sockperf: ---> percentile  90.00 =    4.933
+sockperf: ---> percentile  75.00 =    4.865
+sockperf: ---> percentile  50.00 =    4.794
+sockperf: ---> percentile  25.00 =    4.709
+sockperf: ---> <MIN> observation =    3.789
+
+
+<pre>
+<h3>crowdstrike started</h3>
+Crowdstrike falcon-sensor-6.43.0-14005.el8.x86_64 started at 160922:07:24:58
+
+timeout 1800 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+/usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 120 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+sockperf: Test end (interrupted by timer)
+sockperf: Test ended
+sockperf: [Total Run] RunTime=120.100 sec; SentMessages=25854487; ReceivedMessages=25854486
+sockperf: ========= Printing statistics for Server No: 0
+sockperf: [Valid Duration] RunTime=120.000 sec; SentMessages=25833909; ReceivedMessages=25833909
+sockperf: [2;35m====> avg-lat=  2.311 (std-dev=7.739)[0m
+sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
+sockperf: Summary: Latency is 2.311 usec
+sockperf: [2;35mTotal 25833909 observations[0m; each percentile contains 258339.09 observations
+sockperf: ---> <MAX> observation = 12534.138
+sockperf: ---> percentile  99.99 =    4.238
+sockperf: ---> percentile  99.90 =    3.643
+sockperf: ---> percentile  99.50 =    2.829
+sockperf: ---> percentile  99.00 =    2.489
+sockperf: ---> percentile  95.00 =    2.323
+sockperf: ---> percentile  90.00 =    2.316
+sockperf: ---> percentile  75.00 =    2.305
+sockperf: ---> percentile  50.00 =    2.294
+sockperf: ---> percentile  25.00 =    2.283
+sockperf: ---> <MIN> observation =    2.206
+timeout 1800 cgexec -g cpuset:/prime /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+cgexec -g cpuset:/prime /usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 120 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+sockperf: Test end (interrupted by timer)
+sockperf: Test ended
+sockperf: [Total Run] RunTime=120.100 sec; SentMessages=12619520; ReceivedMessages=12619519
+sockperf: ========= Printing statistics for Server No: 0
+sockperf: [Valid Duration] RunTime=120.000 sec; SentMessages=12608928; ReceivedMessages=12608928
+sockperf: [2;35m====> avg-lat=  4.747 (std-dev=1.250)[0m
+sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
+sockperf: Summary: Latency is 4.747 usec
+sockperf: [2;35mTotal 12608928 observations[0m; each percentile contains 126089.28 observations
+sockperf: ---> <MAX> observation = 1002.817
+sockperf: ---> percentile  99.99 =    9.835
+sockperf: ---> percentile  99.90 =    6.130
+sockperf: ---> percentile  99.50 =    5.571
+sockperf: ---> percentile  99.00 =    5.129
+sockperf: ---> percentile  95.00 =    4.947
+sockperf: ---> percentile  90.00 =    4.897
+sockperf: ---> percentile  75.00 =    4.822
+sockperf: ---> percentile  50.00 =    4.740
+sockperf: ---> percentile  25.00 =    4.644
+sockperf: ---> <MIN> observation =    3.682
+<h2>benchmark test: sysjitter</h2>
+<pre><h3>crowdstrike stopped</h3>
+Crowdstrike falcon-sensor-6.43.0-14005.el8.x86_64 stopped at 160922:07:10:18
+
+
+
+cgexec -g cpuset:/prime sysjitter --runtime 300 --cores 1-7,9-15 500
+
+core_i: 1 2 3 4 5 6 7 9 10 11 12 13 14 15
+threshold(ns): 500 500 500 500 500 500 500 500 500 500 500 500 500 500
+cpu_mhz: 3891 3891 3891 3891 3891 3891 3891 3891 3891 3891 3891 3891 3891 3891
+runtime(ns): 299985404814 299985405268 299985405228 299991446255 299985405195 299985404825 299985404769 299992445039 299985404252 299985404395 299985404573 299985404361 299985404400 299985407198
+runtime(s): 299.985 299.985 299.985 299.991 299.985 299.985 299.985 299.992 299.985 299.985 299.985 299.985 299.985 299.985
+int_n: 119285 23317 25150 22275 26630 30277 39118 121986 23968 29890 26280 41693 50598 76134
+int_n_per_sec: 397.636 77.727 83.837 74.252 88.771 100.928 130.400 406.630 79.897 99.638 87.604 138.983 168.668 253.792
+int_min(ns): 942 987 979 976 966 1015 989 912 935 920 951 908 926 913
+int_median(ns): 1798 1740 1861 1873 1729 1795 1762 1928 1962 1929 1947 1960 1957 1948
+int_mean(ns): 1271300 993526 993278 992516 993152 994130 995469 1110911 993584 993766 992887 995840 996213 996695
+int_90(ns): 3800 3728 3731 3739 3702 3726 3735 3723 3711 3681 3678 3696 3696 3692
+int_99(ns): 18002315 13003181 13003251 13003241 13003167 13003181 13003220 18001275 13003249 13003210 13003348 13003307 13003251 13003288
+int_999(ns): 33000663 13003924 13004063 13004032 13003920 13003925 13004035 22002649 13004047 13003911 13004047 13003977 13004019 13004119
+int_9999(ns): 33003089 25001111 25002818 21000640 23001035 22002658 24000999 36000809 25000998 21001303 25000944 25001019 25001329 25001060
+int_99999(ns): 39000545 25002445 25003346 23000867 24000782 25002281 25001004 44002182 25001128 25001323 25001322 25002912 25002905 25002869
+int_max(ns): 51000728 25002445 25003346 23000867 24000782 25002281 25001004 47001165 25001128 25001323 25001322 25002912 25002905 25002869
+int_total(ns): 151647075729 23166064727 24980962799 22108302287 26447648393 30099304588 38940785451 135515706037 23814235444 29703693670 26093087708 41519596740 50406425516 75882415879
+int_total(%): 50.551 7.722 8.327 7.370 8.816 10.034 12.981 45.173 7.938 9.902 8.698 13.841 16.803 25.295
+
+
+<pre>
+<h3>crowdstrike started</h3>
+Crowdstrike falcon-sensor-6.43.0-14005.el8.x86_64 started at 160922:07:15:25
+
+cgexec -g cpuset:/prime sysjitter --runtime 300 --cores 1-7,9-15 500
+
+core_i: 1 2 3 4 5 6 7 9 10 11 12 13 14 15
+threshold(ns): 500 500 500 500 500 500 500 500 500 500 500 500 500 500
+cpu_mhz: 3891 3891 3891 3891 3891 3891 3891 3891 3891 3891 3891 3891 3891 3891
+runtime(ns): 299985361645 299985360853 299985361263 299996348197 299987348661 299985360852 299985360716 299994348446 299985360756 299985360871 299985360776 299985360790 299996348530 299985364080
+runtime(s): 299.985 299.985 299.985 299.996 299.987 299.985 299.985 299.994 299.985 299.985 299.985 299.985 299.996 299.985
+int_n: 124869 29874 30305 37982 44329 26118 51500 120694 29294 20363 42127 38635 52363 46510
+int_n_per_sec: 416.250 99.585 101.022 126.608 147.770 87.064 171.675 402.321 97.651 67.880 140.430 128.790 174.545 155.041
+int_min(ns): 714 775 701 703 688 702 700 743 754 768 757 786 691 704
+int_median(ns): 1774 1813 1760 1772 1725 1717 1709 1933 1938 1943 1960 1933 1959 1958
+int_mean(ns): 1081242 981529 983066 988637 987779 980213 991017 1152514 979967 972750 986516 985650 989934 989085
+int_90(ns): 3745 3731 3725 3703 3704 3683 3680 3753 3706 3716 3700 3706 3711 3754
+int_99(ns): 13004067 13003219 13003226 13003214 13003212 13003125 13003210 18001601 13003444 13003366 13003349 13003352 13003349 13003420
+int_999(ns): 22001169 13004163 13004071 13004187 13004052 13004060 13004044 33000808 13004193 13004068 13004104 13004199 13004344 13004242
+int_9999(ns): 33001945 22003007 25000834 22001578 25000725 23000685 25001220 38001882 25001220 21002754 22000725 25002459 25000942 25001355
+int_99999(ns): 41001753 25002573 25001847 25001000 25001707 25003163 25003272 44002304 25003177 23001028 25001536 25003386 25003017 25002663
+int_max(ns): 54000382 25002573 25001847 25001000 25001707 25003163 25003272 53001985 25003177 23001028 25001536 25003386 25003017 25002663
+int_total(ns): 135013696266 29322229483 29791817888 37550431699 43787268252 25601212792 51037415116 139101574296 28707166017 19808129237 41558969380 38080602259 51835935653 46002351469
+int_total(%): 45.007 9.775 9.931 12.517 14.596 8.534 17.013 46.368 9.570 6.603 13.854 12.694 17.279 15.335
+
+

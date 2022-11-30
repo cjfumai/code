@@ -1,0 +1,85 @@
+Crowdstrike falcon-sensor-6.41.0-13804.el8.x86_64 stopped at 240822:08:45:37
+
+/bin/ioping -qc 100 /tmp
+
+
+--- /tmp (tmpfs /tmpfs) ioping statistics ---
+99 requests completed in 247.6 us, 396 KiB read, 399.9 k iops, 1.53 GiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 1.19 us / 2.50 us / 4.38 us / 978 ns
+
+ /bin/ioping -qc 100 -RL /dev/sda
+
+
+--- /dev/sda (block device 447.1 GiB) ioping statistics ---
+99 requests completed in 62.6 ms, 24.8 MiB read, 1.58 k iops, 395.1 MiB/s
+generated 100 requests in 64.0 ms, 25 MiB, 1.56 k iops, 390.4 MiB/s
+min/avg/max/mdev = 551.7 us / 632.8 us / 696.7 us / 44.4 us
+
+/bin/ioping -qc 100 -RL /dev/sda
+
+
+--- /dev/sda (block device 447.1 GiB) ioping statistics ---
+99 requests completed in 62.5 ms, 24.8 MiB read, 1.58 k iops, 395.8 MiB/s
+generated 100 requests in 65.0 ms, 25 MiB, 1.54 k iops, 384.8 MiB/s
+min/avg/max/mdev = 553.2 us / 631.6 us / 700.4 us / 44.1 us
+
+taskset -c 1 ioping -WY -qc 100 /dev/shm/ioping
+
+
+--- /dev/shm/ioping (tmpfs tmpfs) ioping statistics ---
+99 requests completed in 133.9 us, 396 KiB written, 739.2 k iops, 2.82 GiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 918 ns / 1.35 us / 3.62 us / 446 ns
+
+taskset -c 1 ioping -WY -qc 100 /cs/ioping
+
+
+--- /cs/ioping (ext4 /dev/dm-5) ioping statistics ---
+99 requests completed in 20.7 ms, 396 KiB written, 4.78 k iops, 18.7 MiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 199.4 us / 209.1 us / 258.1 us / 8.41 us
+
+
+Crowdstrike falcon-sensor-6.41.0-13804.el8.x86_64 started at 240822:08:50:44
+
+/bin/ioping -qc 100 /tmp
+
+
+--- /tmp (tmpfs /tmpfs) ioping statistics ---
+99 requests completed in 582.0 us, 396 KiB read, 170.1 k iops, 664.4 MiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 3.03 us / 5.88 us / 13.4 us / 3.66 us
+
+ /bin/ioping -qc 100 -RL /dev/sda
+
+
+--- /dev/sda (block device 447.1 GiB) ioping statistics ---
+99 requests completed in 62.5 ms, 24.8 MiB read, 1.58 k iops, 396.2 MiB/s
+generated 100 requests in 65.0 ms, 25 MiB, 1.54 k iops, 384.7 MiB/s
+min/avg/max/mdev = 550.4 us / 631.0 us / 701.4 us / 45.0 us
+
+/bin/ioping -qc 100 -RL /dev/sda
+
+
+--- /dev/sda (block device 447.1 GiB) ioping statistics ---
+99 requests completed in 62.4 ms, 24.8 MiB read, 1.59 k iops, 396.5 MiB/s
+generated 100 requests in 64.9 ms, 25 MiB, 1.54 k iops, 385.3 MiB/s
+min/avg/max/mdev = 549.7 us / 630.5 us / 700.5 us / 45.3 us
+
+taskset -c 1 ioping -WY -qc 100 /dev/shm/ioping
+
+
+--- /dev/shm/ioping (tmpfs tmpfs) ioping statistics ---
+99 requests completed in 279.9 us, 396 KiB written, 353.7 k iops, 1.35 GiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 1.39 us / 2.83 us / 5.93 us / 948 ns
+
+taskset -c 1 ioping -WY -qc 100 /cs/ioping
+
+
+--- /cs/ioping (ext4 /dev/dm-5) ioping statistics ---
+99 requests completed in 21.0 ms, 396 KiB written, 4.71 k iops, 18.4 MiB/s
+generated 100 requests in 1.65 min, 400 KiB, 1 iops, 4.04 KiB/s
+min/avg/max/mdev = 197.0 us / 212.2 us / 257.3 us / 10.1 us
+

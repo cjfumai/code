@@ -1,0 +1,38 @@
+---
+- tags: Patching_rhel_8
+  hosts: all
+  gather_facts: true
+  tasks:
+  - name: ARE_YOU_SURE_PAUSE
+    pause:
+      prompt: Press ENTER to continue with rollback of hosts seen above or press "Ctrl+c" then "a" to abort.
+    when: ansible_distribution_major_version == "8"
+
+  - name: Run_rollback_validate
+    script: files/rollback_validate.sh
+    args:
+      chdir: /var/tmp
+      executable: /bin/bash
+    when: ansible_distribution_major_version == "8"
+
+  - name: ARE_YOU_SURE_PAUSE_BEFORE_REBOOT
+    pause:
+      prompt: Press ENTER to continue with reboot of these hosts or press "Ctrl+c" then "a" to abort. 
+    when: ansible_distribution_major_version == "8"
+
+  - name: Run_reboot_action
+    reboot:
+      reboot_timeout: 300
+    when: ansible_distribution_major_version == "8"
+
+  - name: post_reboot_services_pause 
+    pause:
+      seconds: 30
+
+  - name: Run_post_upgrade_validation
+    script: files/snaprollback_post_reboot.sh
+    args:
+      chdir: /var/tmp
+      executable: /bin/bash
+    when: ansible_distribution_major_version == "8"
+                                          

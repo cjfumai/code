@@ -1,0 +1,39 @@
+---
+# vars file for sockperf
+#
+prog:          sockperf
+roles_path:    /cs/benchmarking/roles
+prog_path:     /usr/local/bin
+logs_dir:      /cs/benchmarking/logs/{{ ansible_hostname }}
+tmp_log:       /tmp/{{ prog }}.log
+server_ip:     127.0.0.1
+default_port:  2020
+runtime:       120
+message_size:  250
+timer:         1800
+
+commands:
+
+#
+# run on junk cores
+#
+  - echo "timeout {{ timer }} {{ prog_path }}/{{ prog }} server -i {{ server_ip }} -p {{ default_port }} --tcp &" >> "{{ tmp_log }}.{{ tstamp.stdout }}.txt" 2>&1
+  - echo "" >> "{{ tmp_log }}.{{ tstamp.stdout }}.txt" 2>&1
+
+  - timeout {{ timer }} {{ prog_path }}/{{ prog }} server -i {{ server_ip }} -p {{ default_port }} --tcp & >> "{{ tmp_log }}.{{ tstamp.stdout }}.txt" 2>&1
+
+  - echo "/usr/local/bin/{{ prog }} pp -i {{ server_ip }} -p {{ default_port }} --tcp -t {{ runtime }} -m  {{ message_size }}" >> "{{ tmp_log }}.{{ tstamp.stdout }}.txt" 2>&1
+  - echo "" >> "{{ tmp_log }}.{{ tstamp.stdout }}.txt" 2>&1
+  - /usr/local/bin/{{ prog }} pp -i {{ server_ip }} -p {{ default_port }} --tcp -t {{ runtime }} -m  {{ message_size }} >> "{{ tmp_log }}.{{ tstamp.stdout }}.txt" 2>&1
+
+#
+# run on prime cores
+#
+  - echo "timeout {{ timer }} cgexec -g cpuset:/prime {{ prog_path }}/{{ prog }} server -i {{ server_ip }} -p {{ default_port }} --tcp &" >> "{{ tmp_log }}.{{ tstamp.stdout }}.txt" 2>&1
+  - echo "" >> "{{ tmp_log }}.{{ tstamp.stdout }}.txt" 2>&1
+
+  - timeout {{ timer }} cgexec -g cpuset:/prime {{ prog_path }}/{{ prog }} server -i {{ server_ip }} -p {{ default_port }} --tcp & >> "{{ tmp_log }}.{{ tstamp.stdout }}.txt" 2>&1
+
+  - echo "cgexec -g cpuset:/prime /usr/local/bin/{{ prog }} pp -i {{ server_ip }} -p {{ default_port }} --tcp -t {{ runtime }} -m  {{ message_size }}" >> "{{ tmp_log }}.{{ tstamp.stdout }}.txt" 2>&1
+  - echo "" >> "{{ tmp_log }}.{{ tstamp.stdout }}.txt" 2>&1
+  - cgexec -g cpuset:/prime /usr/local/bin/{{ prog }} pp -i {{ server_ip }} -p {{ default_port }} --tcp -t {{ runtime }} -m  {{ message_size }} >> "{{ tmp_log }}.{{ tstamp.stdout }}.txt" 2>&1

@@ -1,0 +1,79 @@
+##########################################################################################
+INFO : Starting prevalidate.sh at 10:53:47:180722
+
+INFO: /boot/grub2/grubenv is OK
+
+INFO: grubby info is OK
+
+INFO : 10:53:47:180722 Starting bootspace checks
+/dev/sda1         245671 62167    166301  28% /boot
+
+INFO : 10:53:47:180722 Found 166301 kilobytes of space in /boot, continuing.....
+
+INFO : 10:53:47:180722 Printing state of all LVM vols seen 
+
+  LV   VG      Attr       LSize    Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  cs   root_vg -wi-ao---- <176.75g                                                    
+  root root_vg -wi-ao----   40.00g                                                    
+  swap root_vg -wi-ao----    8.00g                                                    
+  var  root_vg -wi-ao----   40.00g                                                    
+
+INFO : 10:53:47:180722 Starting snap checks
+INFO : 10:53:47:180722 No root snaps detected, continuing.
+
+      0
+ERROR : 10:53:47:180722 root_vg has less than 31G free
+INFO : 10:53:47:180722 Starting rpm checks
+INFO : 10:53:48:180722 No problematic RPM's found OK 
+
+INFO : 10:53:48:180722 Starting dracut checks
+INFO : 10:53:48:180722 dracut checks have passed OK
+
+/cs is less then 85 percent OK
+ERROR : 10:53:48:180722 /opt/puppetlabs/puppet/cache/state/agent_disabled.lock found - puppet is disabled on this host
+ERROR : 10:53:48:180722 puppet disabled in cron
+INFO : 10:53:48:180722 Starting duplicate rpms check
+
+ERROR : 10:53:50:180722 check failed check logfile in /var/log
+
+INFO : Finished prevalidate.sh at 10:53:50:180722
+##########################################################################################
+##########################################################################################
+INFO : Starting prevalidate.sh at 10:58:30:180722
+
+INFO: /boot/grub2/grubenv is OK
+
+INFO: grubby info is OK
+
+INFO : 10:58:31:180722 Starting bootspace checks
+/dev/sda1         245671 62167    166301  28% /boot
+
+INFO : 10:58:31:180722 Found 166301 kilobytes of space in /boot, continuing.....
+
+INFO : 10:58:31:180722 Printing state of all LVM vols seen 
+
+  LV   VG      Attr       LSize    Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  cs   root_vg -wi-ao---- <176.75g                                                    
+  root root_vg -wi-ao----   40.00g                                                    
+  swap root_vg -wi-ao----    8.00g                                                    
+  var  root_vg -wi-ao----   40.00g                                                    
+
+INFO : 10:58:31:180722 Starting snap checks
+INFO : 10:58:31:180722 No root snaps detected, continuing.
+
+      0
+ERROR : 10:58:31:180722 root_vg has less than 31G free
+INFO : 10:58:31:180722 Starting rpm checks
+INFO : 10:58:32:180722 No problematic RPM's found OK 
+
+INFO : 10:58:32:180722 Starting dracut checks
+INFO : 10:58:32:180722 dracut checks have passed OK
+
+/cs is less then 85 percent OK
+ERROR : 10:58:32:180722 puppet disabled in cron
+INFO : 10:58:32:180722 Starting duplicate rpms check
+
+ERROR : 10:58:34:180722 check failed check logfile in /var/log
+
+INFO : Finished prevalidate.sh at 10:58:34:180722
+##########################################################################################

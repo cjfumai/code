@@ -1,0 +1,36 @@
+---
+- tags: Prevalidate rhel_84 update
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: ARE_YOU_SURE_PAUSE
+      pause:
+        prompt: Please review the hosts seen in the output above.   Press "Ctrl+c" then "a" to abort now or Press ENTER to continue
+      when: ansible_distribution_major_version == "8"
+
+    - name: set short date
+      shell: "date +%d%m%y"
+      register: tstamp
+
+    - name: Run prevalidate checkout
+      script: files/prevalidate.sh
+      args:
+        chdir: /var/tmp
+        executable: /bin/bash
+      when: ansible_distribution_major_version == "8"
+
+
+    - name: find file on remote to copy
+      find:
+        paths: /var/log/
+        recurse: no
+        patterns: "OS_prevalidate_log_{{ tstamp.stdout }}.out"
+      register: files_to_copy
+
+
+    - name: Copy prevalidate log file to logs directory
+      fetch:
+         src: "{{ item.path }}"
+         dest: "/cs/PATCHING/RHEL8_latest/logs/{{ ansible_hostname }}.prevalidate.{{ tstamp.stdout }}"
+         flat: yes
+      with_items: "{{ files_to_copy.files }}"

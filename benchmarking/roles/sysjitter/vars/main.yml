@@ -1,0 +1,14 @@
+---
+# vars file for sysjitter
+#
+prog:        sysjitter
+roles_path:  /cs/benchmarking/roles
+logs_dir:    /cs/benchmarking/logs/{{ ansible_hostname }}
+tmp_log:     /tmp/{{ prog }}.log
+runtime:     300
+threshold:   500
+
+commands:
+     - echo "cgexec -g cpuset:/prime sysjitter --runtime {{ runtime }} --cores {{ prime_cpus.stdout }} {{ threshold }}" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+     - echo "" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+     - cgexec -g cpuset:/prime sysjitter --runtime {{ runtime }} --cores {{ prime_cpus.stdout }} {{ threshold }} >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1

@@ -1,0 +1,36 @@
+################################################
+INFO : Starting prevalidate.sh at 12:19:31:070422
+INFO : 12:19:31:070422 Starting bootspace checks
+/dev/sda1         245671 64092    164376  29% /boot
+
+INFO : 12:19:31:070422 Found 164376 kilobytes of space in /boot, continuing.....
+
+INFO : 12:19:31:070422 Printing state of all LVM vols seen 
+
+  LV   VG      Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  cs   root_vg -wi-ao---- 400.00g                                                    
+  root root_vg -wi-ao----  40.00g                                                    
+  swap root_vg -wi-ao----   8.00g                                                    
+  var  root_vg -wi-ao----  40.00g                                                    
+
+INFO : 12:19:31:070422 Starting snap checks
+INFO : 12:19:31:070422 No root snaps detected, continuing.
+
+  75833016320
+INFO : 12:19:31:070422 root_vg free space OK
+
+INFO : 12:19:31:070422 Starting rpm checks
+INFO : 12:19:32:070422 No problematic RPM's found OK 
+
+INFO : 12:19:32:070422 Starting ofed checks
+INFO : 12:19:32:070422 No evidence of ofed_info OK
+
+INFO : 12:19:32:070422 Starting dracut checks
+add_drivers+="dm-snapshot"
+INFO : 12:19:32:070422 dracut checks have passed OK
+
+/cs is less then 85 percent OK
+29 2 * * * /opt/puppetlabs/bin/puppet agent -o --no-daemonize --logdest=syslog --no-splay
+
+INFO : Finished prevalidate.sh at 12:19:32:070422
+################################################

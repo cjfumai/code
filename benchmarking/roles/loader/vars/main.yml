@@ -1,0 +1,26 @@
+---
+# vars file for loader
+#
+prog:                 loader
+roles_path:           /cs/benchmarking/roles
+logs_dir:             /cs/benchmarking/logs/{{ ansible_hostname }}
+tmp_log:              /tmp/{{ prog }}.log
+ps_log:		      /tmp/ps.log
+
+# generate cpu load with dd
+commands:
+  - echo "taskset -c 1 dd if=/dev/zero of=/dev/null &" > {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "taskset -c 2 dd if=/dev/zero of=/dev/null &" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "taskset -c 3 dd if=/dev/zero of=/dev/null &" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "taskset -c 4 dd if=/dev/zero of=/dev/null &" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+  - echo "taskset -c 5 dd if=/dev/zero of=/dev/null &" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+
+  -  cgexec -g cpuset:/prime dd if=/dev/zero of=/dev/null &
+  -  cgexec -g cpuset:/prime dd if=/dev/zero of=/dev/null &
+  -  cgexec -g cpuset:/prime dd if=/dev/zero of=/dev/null &
+  -  cgexec -g cpuset:/prime dd if=/dev/zero of=/dev/null &
+  -  cgexec -g cpuset:/prime dd if=/dev/zero of=/dev/null &
+
+  - echo "for i in {1..100}; do echo $i; dd if=/dev/zero of=/tmp/dd.junkfile count=10240 bs=1M; rm -rf /tmp/dd.junkfile; sleep 2; done" >> {{ tmp_log }}.{{ tstamp.stdout }}.txt 2>&1
+
+  - for i in {1..100}; do echo $i; dd if=/dev/zero of=/tmp/dd.junkfile count=10240 bs=1M; rm -rf /tmp/dd.junkfile; sleep 2; done

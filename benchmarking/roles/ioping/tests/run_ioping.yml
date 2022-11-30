@@ -1,0 +1,92 @@
+---
+- tags: ioping benchmarking/
+  hosts: all
+  vars:
+     ansible_python_interpreter: /usr/bin/python3
+     role_path: /cs/benchmarking/roles/ioping
+
+  vars_files:
+     - "{{ role_path }}/vars/main.yml"
+
+  tasks:
+
+  - name: check for /bin/ioping
+    stat:
+      path: /bin/ioping
+    register: ioping_result
+  
+  - name: set short date
+    shell: "date +%d%m%y"
+    register: tstamp
+    when:
+      ioping_result.stat.exists
+  
+  - file:
+       path: "{{ test_fs2 }}"
+       state: directory
+       owner: root
+       group: root
+       mode: 0755
+    when:
+      ioping_result.stat.exists
+  
+  - file:
+       path: "{{ test_fs3 }}"
+       state: directory
+       owner: root
+       group: root
+       mode: 0755
+    when:
+      ioping_result.stat.exists
+  
+  - name: run {{ prog }} tests
+    shell: "{{ item }}"
+    with_items:
+       "{{ commands }}"
+    when:
+      ioping_result.stat.exists
+  
+  - file:
+       path: "{{ tmp_log }}.{{ tstamp.stdout }}.txt"
+       state: touch
+       owner: root
+       group: root
+       mode: 0755
+    when:
+      ioping_result.stat.exists
+  
+  - file:
+       path: "{{ test_fs2 }}"
+       state: absent
+  
+  - file:
+       path: "{{ test_fs3 }}"
+       state: absent
+  
+  - name: find file on remote to copy
+    find:
+      paths: /tmp/
+      recurse: no
+      patterns: "{{ prog }}.log.{{ tstamp.stdout }}.txt"
+    register: files_to_copy
+    when:
+      ioping_result.stat.exists
+  
+  - name: Copy logfile to control server
+    fetch:
+       src: "{{ item.path }}"
+       dest: "{{ logs_dir }}/{{ ansible_hostname }}.{{ prog }}.log.{{ tstamp.stdout }}.txt"
+       flat: yes
+    with_items: "{{ files_to_copy.files }}"
+    when:
+      ioping_result.stat.exists
+  
+  - name: local action on controller to fix fetched file perms
+    file:
+       path:  "{{ logs_dir }}"
+       state: directory
+       mode: 0755
+       recurse: yes
+    delegate_to: localhost
+    when:
+      ioping_result.stat.exists

@@ -1,0 +1,38 @@
+---
+- name: Include crowdstrike
+  include_vars:  "{{ roles_path }}/crowdstrike/vars/crowdstrike.yml"
+
+- name: copy crowdstrike rpm locally
+  copy:
+    src: "{{ roles_path }}/crowdstrike/files/{{ package_version }}"
+    dest: "/tmp/"
+  register: copied
+
+- name: install rpms from the list
+  yum:
+    name: "/tmp/{{ package_version }}"
+    state: present
+    disable_gpg_check: yes
+
+- name: update falconctl apd
+  shell: /opt/CrowdStrike/falconctl -g --apd=FALSE
+
+  when:
+    - '"install" in deploy_action'
+    - not falcon_info.stat.exists
+
+- name: update falconctl aid 
+  shell: /opt/CrowdStrike/falconctl -g --aid
+
+- name: register  {{ package }}
+  shell: /opt/CrowdStrike/falconctl -s -f --aph={{ app_aph }} --app={{ app_port }} --cid={{ app_cid }}
+
+- name: check {[ package }} status
+  service:
+     name: falcon-sensor
+     enabled: yes
+
+- name: check {{ package }} status
+  service:
+     name: falcon-sensor
+     state:  restarted

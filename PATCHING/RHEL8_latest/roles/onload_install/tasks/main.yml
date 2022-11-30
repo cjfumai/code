@@ -1,0 +1,29 @@
+---
+# tasks file for onload_install
+
+- name: check if solarflare cards are installed
+  shell: /sbin/lspci | /bin/grep -i Solarflare  | xargs
+  register: solarflare_nic_installed
+
+- name: deploy onload repo
+  copy:
+    src: files/onload.repo
+    dest: /etc/yum.repos.d
+    owner: root
+    group: root
+    mode: 0644
+  tags: install_onload
+  when:
+     - solarflare_nic_installed.stdout != ""
+
+- name: install onload to latest
+  yum:
+    name: "{{ packages }}"
+    state: latest
+  vars:
+      packages:
+        - onload-7.1.2.141-1.el8.x86_64
+        - onload-kmod-4.18.0-305.62.1.el8_4-7.1.2.141-1.el8.x86_64
+        - onload-sfcirqaffinity-7.1.2.141-1.el8.x86_64
+  when:
+     - solarflare_nic_installed.stdout != ""

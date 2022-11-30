@@ -1,0 +1,55 @@
+---
+# tasks file for preupgrade_remove
+
+- name: check if onload exists
+  command: rpm -qa | grep onload | xargs
+  register: onload_status
+
+- name: remove onload if present
+  yum:
+    name: "{{ packages }}"
+    state: absent
+ 
+  vars:
+     packages:
+        - onload*
+  when:
+     - "'onload' in onload_status.stdout"
+
+- name: Starting OFED Remove
+  shell: echo y | /usr/sbin/ofed_uninstall.sh  --force|xargs
+
+- name: Check if old Mellanox Repo exists
+  stat:
+    path: /etc/yum.repos.d/mellanox.repo
+  register: file_check
+
+- name: Remove /etc/yum.repos.d/mellanox.repo if Exists
+  file:
+    path: /etc/yum.repos.d/mellanox.repo
+    state: absent
+  when:
+    - file_check.stat.exists
+
+- name: Brute force remove all mlnx if anything is left
+  shell: rpm -qa |grep mlnx |xargs -I {} rpm -e {} --nodeps |xargs
+
+- name: Brute force remove all ofed if anything is left
+  shell: rpm -qa |grep -i ofed |xargs -I {} rpm -e {} --nodeps |xargs
+
+- name: Brute force remove all VMA if anything is left
+  shell: rpm -qa |grep -i libvma |xargs -I {} rpm -e {} --nodeps |xargs
+
+- name: checking for centrify direct audit package
+  command: rpm -qa | grep CentrifyDA | wc -l
+  register: da_status
+
+- name: stopping direct audit if found
+  shell: systemctl stop centrifyda 
+  when:
+     - da_status.rc > 0
+
+- name: disbaling dacontrol
+  shell: /usr/sbin/dacontrol -d -a
+  when:
+     - da_status.rc > 0

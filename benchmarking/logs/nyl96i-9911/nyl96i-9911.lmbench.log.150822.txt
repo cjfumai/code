@@ -1,0 +1,289 @@
+Crowdstrike falcon-sensor-6.41.0-13804.el8.x86_64 stopped at 150822:09:20:34
+
+
+
+Simple syscall: 0.2113 microseconds
+Simple read: 0.2813 microseconds
+Simple write: 0.2460 microseconds
+Simple stat: 0.4840 microseconds
+Simple fstat: 0.2695 microseconds
+Simple open/close: 1.0340 microseconds
+
+Simple syscall: 0.2101 microseconds
+Simple read: 0.2809 microseconds
+Simple write: 0.2457 microseconds
+Simple stat: 0.4824 microseconds
+Simple fstat: 0.2699 microseconds
+Simple open/close: 1.0241 microseconds
+
+Simple syscall: 0.2102 microseconds
+Simple read: 0.2811 microseconds
+Simple write: 0.2458 microseconds
+Simple stat: 0.4841 microseconds
+Simple fstat: 0.2701 microseconds
+Simple open/close: 1.0212 microseconds
+
+Simple syscall: 0.2102 microseconds
+Simple read: 0.2811 microseconds
+Simple write: 0.2463 microseconds
+Simple stat: 0.4892 microseconds
+Simple fstat: 0.2696 microseconds
+Simple open/close: 1.0178 microseconds
+
+Simple syscall: 0.2103 microseconds
+Simple read: 0.2812 microseconds
+Simple write: 0.2458 microseconds
+Simple stat: 0.4842 microseconds
+Simple fstat: 0.2696 microseconds
+Simple open/close: 1.0166 microseconds
+
+Simple syscall: 0.2106 microseconds
+Simple read: 0.2811 microseconds
+Simple write: 0.2459 microseconds
+Simple stat: 0.4841 microseconds
+Simple fstat: 0.2701 microseconds
+Simple open/close: 1.0175 microseconds
+
+Simple syscall: 0.2105 microseconds
+Simple read: 0.2811 microseconds
+Simple write: 0.2457 microseconds
+Simple stat: 0.4841 microseconds
+Simple fstat: 0.2697 microseconds
+Simple open/close: 1.0215 microseconds
+
+Simple syscall: 0.2104 microseconds
+Simple read: 0.2799 microseconds
+Simple write: 0.2457 microseconds
+Simple stat: 0.4842 microseconds
+Simple fstat: 0.2703 microseconds
+Simple open/close: 1.0227 microseconds
+
+Simple syscall: 0.2111 microseconds
+Simple read: 0.2810 microseconds
+Simple write: 0.2458 microseconds
+Simple stat: 0.4840 microseconds
+Simple fstat: 0.2700 microseconds
+Simple open/close: 1.0207 microseconds
+
+Simple syscall: 0.2112 microseconds
+Simple read: 0.2811 microseconds
+Simple write: 0.2458 microseconds
+Simple stat: 0.4841 microseconds
+Simple fstat: 0.2697 microseconds
+Simple open/close: 1.0228 microseconds
+
+Simple syscall: 0.2113 microseconds
+Simple read: 0.2811 microseconds
+Simple write: 0.2461 microseconds
+Simple stat: 0.4842 microseconds
+Simple fstat: 0.2700 microseconds
+Simple open/close: 1.0201 microseconds
+
+Simple syscall: 0.2112 microseconds
+Simple read: 0.2816 microseconds
+Simple write: 0.2456 microseconds
+Simple stat: 0.4840 microseconds
+Simple fstat: 0.2699 microseconds
+Simple open/close: 1.0238 microseconds
+
+Simple syscall: 0.2112 microseconds
+Simple read: 0.2817 microseconds
+Simple write: 0.2461 microseconds
+Simple stat: 0.4840 microseconds
+Simple fstat: 0.2698 microseconds
+Simple open/close: 1.0204 microseconds
+
+Simple syscall: 0.2112 microseconds
+Simple read: 0.2812 microseconds
+Simple write: 0.2455 microseconds
+Simple stat: 0.4840 microseconds
+Simple fstat: 0.2702 microseconds
+Simple open/close: 1.0231 microseconds
+
+Simple syscall: 0.2114 microseconds
+Simple read: 0.2812 microseconds
+Simple write: 0.2462 microseconds
+Simple stat: 0.4841 microseconds
+Simple fstat: 0.2698 microseconds
+Simple open/close: 1.0178 microseconds
+
+Simple syscall: 0.2111 microseconds
+Simple read: 0.2813 microseconds
+Simple write: 0.2457 microseconds
+Simple stat: 0.4840 microseconds
+Simple fstat: 0.2699 microseconds
+Simple open/close: 1.0226 microseconds
+
+Simple syscall: 0.2112 microseconds
+Simple read: 0.2811 microseconds
+Simple write: 0.2459 microseconds
+Simple stat: 0.4840 microseconds
+Simple fstat: 0.2699 microseconds
+Simple open/close: 1.0170 microseconds
+
+Simple syscall: 0.2112 microseconds
+Simple read: 0.2811 microseconds
+Simple write: 0.2450 microseconds
+Simple stat: 0.4842 microseconds
+Simple fstat: 0.2697 microseconds
+Simple open/close: 1.0262 microseconds
+
+Simple syscall: 0.2102 microseconds
+Simple read: 0.2812 microseconds
+Simple write: 0.2458 microseconds
+Simple stat: 0.4842 microseconds
+Simple fstat: 0.2700 microseconds
+Simple open/close: 1.0266 microseconds
+
+Simple syscall: 0.2103 microseconds
+Simple read: 0.2812 microseconds
+Simple write: 0.2458 microseconds
+Simple stat: 0.4842 microseconds
+Simple fstat: 0.2697 microseconds
+Simple open/close: 1.0217 microseconds
+
+
+Crowdstrike falcon-sensor-6.41.0-13804.el8.x86_64 started at 150822:09:22:52
+
+
+
+Simple syscall: 0.2096 microseconds
+Simple read: 0.3084 microseconds
+Simple write: 0.3911 microseconds
+Simple stat: 0.4870 microseconds
+Simple fstat: 0.2701 microseconds
+Simple open/close: 1.4322 microseconds
+
+Simple syscall: 0.2103 microseconds
+Simple read: 0.3093 microseconds
+Simple write: 0.3897 microseconds
+Simple stat: 0.4868 microseconds
+Simple fstat: 0.2696 microseconds
+Simple open/close: 1.4212 microseconds
+
+Simple syscall: 0.2100 microseconds
+Simple read: 0.3096 microseconds
+Simple write: 0.3922 microseconds
+Simple stat: 0.4870 microseconds
+Simple fstat: 0.2723 microseconds
+Simple open/close: 1.4249 microseconds
+
+Simple syscall: 0.2112 microseconds
+Simple read: 0.3095 microseconds
+Simple write: 0.3925 microseconds
+Simple stat: 0.4872 microseconds
+Simple fstat: 0.2696 microseconds
+Simple open/close: 1.4247 microseconds
+
+Simple syscall: 0.2111 microseconds
+Simple read: 0.3094 microseconds
+Simple write: 0.3942 microseconds
+Simple stat: 0.4871 microseconds
+Simple fstat: 0.2696 microseconds
+Simple open/close: 1.4248 microseconds
+
+Simple syscall: 0.2104 microseconds
+Simple read: 0.3094 microseconds
+Simple write: 0.3924 microseconds
+Simple stat: 0.4872 microseconds
+Simple fstat: 0.2698 microseconds
+Simple open/close: 1.4257 microseconds
+
+Simple syscall: 0.2103 microseconds
+Simple read: 0.3131 microseconds
+Simple write: 0.3905 microseconds
+Simple stat: 0.4872 microseconds
+Simple fstat: 0.2701 microseconds
+Simple open/close: 1.4463 microseconds
+
+Simple syscall: 0.2111 microseconds
+Simple read: 0.3110 microseconds
+Simple write: 0.3935 microseconds
+Simple stat: 0.4871 microseconds
+Simple fstat: 0.2701 microseconds
+Simple open/close: 1.4440 microseconds
+
+Simple syscall: 0.2113 microseconds
+Simple read: 0.3095 microseconds
+Simple write: 0.3906 microseconds
+Simple stat: 0.4858 microseconds
+Simple fstat: 0.2701 microseconds
+Simple open/close: 1.4260 microseconds
+
+Simple syscall: 0.2103 microseconds
+Simple read: 0.3145 microseconds
+Simple write: 0.3916 microseconds
+Simple stat: 0.4871 microseconds
+Simple fstat: 0.2705 microseconds
+Simple open/close: 1.4262 microseconds
+
+Simple syscall: 0.2103 microseconds
+Simple read: 0.3095 microseconds
+Simple write: 0.3900 microseconds
+Simple stat: 0.4894 microseconds
+Simple fstat: 0.2703 microseconds
+Simple open/close: 1.4358 microseconds
+
+Simple syscall: 0.2105 microseconds
+Simple read: 0.3095 microseconds
+Simple write: 0.3920 microseconds
+Simple stat: 0.4873 microseconds
+Simple fstat: 0.2705 microseconds
+Simple open/close: 1.4257 microseconds
+
+Simple syscall: 0.2112 microseconds
+Simple read: 0.3095 microseconds
+Simple write: 0.3900 microseconds
+Simple stat: 0.4872 microseconds
+Simple fstat: 0.2701 microseconds
+Simple open/close: 1.4162 microseconds
+
+Simple syscall: 0.2101 microseconds
+Simple read: 0.3097 microseconds
+Simple write: 0.3977 microseconds
+Simple stat: 0.4871 microseconds
+Simple fstat: 0.2700 microseconds
+Simple open/close: 1.4402 microseconds
+
+Simple syscall: 0.2112 microseconds
+Simple read: 0.3095 microseconds
+Simple write: 0.3899 microseconds
+Simple stat: 0.4869 microseconds
+Simple fstat: 0.2704 microseconds
+Simple open/close: 1.4148 microseconds
+
+Simple syscall: 0.2103 microseconds
+Simple read: 0.3095 microseconds
+Simple write: 0.3901 microseconds
+Simple stat: 0.4921 microseconds
+Simple fstat: 0.2706 microseconds
+Simple open/close: 1.4343 microseconds
+
+Simple syscall: 0.2103 microseconds
+Simple read: 0.3097 microseconds
+Simple write: 0.3903 microseconds
+Simple stat: 0.4871 microseconds
+Simple fstat: 0.2707 microseconds
+Simple open/close: 1.4234 microseconds
+
+Simple syscall: 0.2113 microseconds
+Simple read: 0.3109 microseconds
+Simple write: 0.3901 microseconds
+Simple stat: 0.4888 microseconds
+Simple fstat: 0.2700 microseconds
+Simple open/close: 1.4261 microseconds
+
+Simple syscall: 0.2104 microseconds
+Simple read: 0.3096 microseconds
+Simple write: 0.3899 microseconds
+Simple stat: 0.4906 microseconds
+Simple fstat: 0.2703 microseconds
+Simple open/close: 1.4267 microseconds
+
+Simple syscall: 0.2101 microseconds
+Simple read: 0.3096 microseconds
+Simple write: 0.3899 microseconds
+Simple stat: 0.4870 microseconds
+Simple fstat: 0.2701 microseconds
+Simple open/close: 1.4316 microseconds
+

@@ -1,0 +1,18 @@
+---
+# vars file for lmbench
+#
+prog:          lat_syscall
+prog_path:     /opt/LLlmbench-3.0-a9/bin/x86_64-linux-gnu/
+roles_path:    /cs/benchmarking/roles
+logs_dir:      /cs/benchmarking/logs/{{ ansible_hostname }}
+tmp_log:       /tmp/{{ prog }}.log
+
+commands:
+  - echo "" >> "{{ tmp_log }}.{{ tstamp.stdout }}.txt" 2>&1
+  - echo "" >> "{{ tmp_log }}.{{ tstamp.stdout }}.txt" 2>&1
+
+# run benchmark using junk cgroup cores
+#  - for i in `seq 1 20`; do for j in null read write stat fstat open; do lat_syscall -W 100 -N 100 $j /var/log/messages ; done; echo ; done >> "{{ tmp_log }}.{{ tstamp.stdout }}.txt" 2>&1
+
+# run benchmark using prime cgroup cores
+  - for i in `seq 1 20`; do for j in null read write stat fstat open; do cgexec -g cpuset:/prime lat_syscall -W 100 -N 100 $j /var/log/messages ; done; echo ; done >> "{{ tmp_log }}.{{ tstamp.stdout }}.txt" 2>&1

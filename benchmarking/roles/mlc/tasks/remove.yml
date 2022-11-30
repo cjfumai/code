@@ -1,0 +1,7 @@
+---
+- name: "Starting Intel MLC package removal"
+  yum:
+    name:
+       - LLIntelMLC
+
+    state: absent

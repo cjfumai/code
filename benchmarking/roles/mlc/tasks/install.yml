@@ -1,0 +1,24 @@
+---
+- hosts: all
+
+- name: Install {{ package }}
+
+     - name: Check {{ package }} exists
+       stat:
+         path: /usr/local/bin/mlc
+       register: mlc_info
+
+     - name: Install {{ package }}
+       include_tasks: install.yml
+
+       when:
+         - '"install" in deploy_action'
+         - not mlc_info.stat.exists
+ 
+- name: Removing  {{ package }}
+
+     - name: Remove {{ package }}
+       include_tasks: remove.yml
+
+  when:
+    - '"remove" in deploy_action'

@@ -1,0 +1,33 @@
+---
+
+- name: Create directory structure for roles
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+  loop:
+    - "{{ roles_path }}"
+  delegate_to: 127.0.0.1
+
+- name: "Set {{ hosttype }} branch as our default branch"
+  set_fact:
+    branch: "{{ hosttype }}"
+
+- name: Set NONPROD branch when hosttype is dev or sit
+  set_fact:
+    branch: 'nonprod'
+  when:
+    - hosttype | lower == 'dev' or hosttype | lower == 'sit'
+
+- name: "Clone roles using {{ hosttype }} branch"
+  git:
+    repo:  "{{ roles_repo }}"
+    dest: "{{ roles_path }}"
+    force: yes
+    version: "{{ branch | lower }}"
+  loop:
+    - "{{ roles_repo }}"
+  delegate_to: 127.0.0.1
+  environment:
+    - GIT_SSL_NO_VERIFY: "true"
+

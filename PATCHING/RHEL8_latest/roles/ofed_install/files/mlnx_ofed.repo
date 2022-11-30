@@ -1,0 +1,6 @@
+[mlnx_ofed]
+name= Mellanox OFED Repository
+baseurl=http://sol06a-4801.eu.hedani.net/repos/rhel_8.4_OFED_5.4-3.1.0.0/RPMS/
+enabled=1
+gpgcheck=0
+

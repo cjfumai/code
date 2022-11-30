@@ -1,0 +1,406 @@
+timeout 300 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+/usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 30 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+sockperf: Test end (interrupted by timer)
+sockperf: Test ended
+sockperf: [Total Run] RunTime=30.100 sec; SentMessages=6520511; ReceivedMessages=6520510
+sockperf: ========= Printing statistics for Server No: 0
+sockperf: [Valid Duration] RunTime=30.000 sec; SentMessages=6498792; ReceivedMessages=6498792
+sockperf: [2;35m====> avg-lat=  2.297 (std-dev=1.178)[0m
+sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
+sockperf: Summary: Latency is 2.297 usec
+sockperf: [2;35mTotal 6498792 observations[0m; each percentile contains 64987.92 observations
+sockperf: ---> <MAX> observation = 2382.700
+sockperf: ---> percentile  99.99 =    7.708
+sockperf: ---> percentile  99.90 =    3.654
+sockperf: ---> percentile  99.50 =    2.922
+sockperf: ---> percentile  99.00 =    2.471
+sockperf: ---> percentile  95.00 =    2.340
+sockperf: ---> percentile  90.00 =    2.330
+sockperf: ---> percentile  75.00 =    2.310
+sockperf: ---> percentile  50.00 =    2.283
+sockperf: ---> percentile  25.00 =    2.262
+sockperf: ---> <MIN> observation =    2.200
+timeout 300 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+/usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 30 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+sockperf: Test end (interrupted by timer)
+sockperf: Test ended
+sockperf: [Total Run] RunTime=30.100 sec; SentMessages=6495607; ReceivedMessages=6495606
+sockperf: ========= Printing statistics for Server No: 0
+sockperf: [Valid Duration] RunTime=30.000 sec; SentMessages=6475006; ReceivedMessages=6475006
+sockperf: [2;35m====> avg-lat=  2.305 (std-dev=1.157)[0m
+sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
+sockperf: Summary: Latency is 2.305 usec
+sockperf: [2;35mTotal 6475006 observations[0m; each percentile contains 64750.06 observations
+sockperf: ---> <MAX> observation = 2477.724
+sockperf: ---> percentile  99.99 =    7.741
+sockperf: ---> percentile  99.90 =    3.642
+sockperf: ---> percentile  99.50 =    2.928
+sockperf: ---> percentile  99.00 =    2.526
+sockperf: ---> percentile  95.00 =    2.351
+sockperf: ---> percentile  90.00 =    2.339
+sockperf: ---> percentile  75.00 =    2.318
+sockperf: ---> percentile  50.00 =    2.294
+sockperf: ---> percentile  25.00 =    2.267
+sockperf: ---> <MIN> observation =    2.204
+timeout 300 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+timeout 300 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+/usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 30 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+timeout 300 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+/usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 30 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+sockperf: Test end (interrupted by timer)
+sockperf: Test ended
+sockperf: [Total Run] RunTime=30.100 sec; SentMessages=6489242; ReceivedMessages=6489241
+sockperf: ========= Printing statistics for Server No: 0
+sockperf: [Valid Duration] RunTime=30.000 sec; SentMessages=6467542; ReceivedMessages=6467542
+sockperf: [2;35m====> avg-lat=  2.308 (std-dev=1.286)[0m
+sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
+sockperf: Summary: Latency is 2.308 usec
+sockperf: [2;35mTotal 6467542 observations[0m; each percentile contains 64675.42 observations
+sockperf: ---> <MAX> observation = 2287.859
+sockperf: ---> percentile  99.99 =    8.828
+sockperf: ---> percentile  99.90 =    3.627
+sockperf: ---> percentile  99.50 =    2.863
+sockperf: ---> percentile  99.00 =    2.475
+sockperf: ---> percentile  95.00 =    2.348
+sockperf: ---> percentile  90.00 =    2.338
+sockperf: ---> percentile  75.00 =    2.318
+sockperf: ---> percentile  50.00 =    2.296
+sockperf: ---> percentile  25.00 =    2.278
+sockperf: ---> <MIN> observation =    2.203
+timeout 300 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+/usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 30 -m  250
+
+timeout 300 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+/usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 30 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+timeout 300 /usr/local/bin/sockperf server -i 127.0.0.1 -p 2020 --tcp &
+
+/usr/local/bin/sockperf pp -i 127.0.0.1 -p 2020 --tcp -t 30 -m  250
+
+sockperf: [2;35m== version #2.7- == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 127.0.0.1       PORT =  2020 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+Simple syscall: 0.2113 microseconds
+Simple read: 0.3095 microseconds
+Simple write: 0.3902 microseconds
+Simple stat: 0.4845 microseconds
+Simple fstat: 0.2702 microseconds
+Simple open/close: 1.4129 microseconds
+
+Simple syscall: 0.2116 microseconds
+Simple read: 0.3097 microseconds
+Simple write: 0.3915 microseconds
+Simple stat: 0.4836 microseconds
+Simple fstat: 0.2709 microseconds
+Simple open/close: 1.4407 microseconds
+
+Simple syscall: 0.2114 microseconds
+Simple read: 0.3095 microseconds
+Simple write: 0.3936 microseconds
+Simple stat: 0.4838 microseconds
+Simple fstat: 0.2705 microseconds
+Simple open/close: 1.4239 microseconds
+
+Simple syscall: 0.2108 microseconds
+Simple read: 0.3094 microseconds
+Simple write: 0.3922 microseconds
+Simple stat: 0.4840 microseconds
+Simple fstat: 0.2713 microseconds
+Simple open/close: 1.4295 microseconds
+
+Simple syscall: 0.2103 microseconds
+Simple read: 0.3097 microseconds
+Simple write: 0.3920 microseconds
+Simple stat: 0.4842 microseconds
+Simple fstat: 0.2706 microseconds
+Simple open/close: 1.4427 microseconds
+
+Simple syscall: 0.2104 microseconds
+Simple read: 0.3081 microseconds
+Simple write: 0.3902 microseconds
+Simple stat: 0.4835 microseconds
+Simple fstat: 0.2700 microseconds
+Simple open/close: 1.4188 microseconds
+
+Simple syscall: 0.2110 microseconds
+Simple read: 0.3095 microseconds
+Simple write: 0.3901 microseconds
+Simple stat: 0.4836 microseconds
+Simple fstat: 0.2725 microseconds
+Simple open/close: 1.4202 microseconds
+
+Simple syscall: 0.2112 microseconds
+Simple read: 0.3151 microseconds
+Simple write: 0.3906 microseconds
+Simple stat: 0.4835 microseconds
+Simple fstat: 0.2706 microseconds
+Simple open/close: 1.4281 microseconds
+
+Simple syscall: 0.2104 microseconds
+Simple read: 0.3093 microseconds
+Simple write: 0.3922 microseconds
+Simple stat: 0.4837 microseconds
+Simple fstat: 0.2700 microseconds
+Simple open/close: 1.4111 microseconds
+
+Simple syscall: 0.2106 microseconds
+Simple read: 0.3100 microseconds
+Simple write: 0.3901 microseconds
+Simple stat: 0.4834 microseconds
+Simple fstat: 0.2706 microseconds
+Simple open/close: 1.4317 microseconds
+
+Simple syscall: 0.2113 microseconds
+Simple read: 0.3095 microseconds
+Simple write: 0.4000 microseconds
+Simple stat: 0.4843 microseconds
+Simple fstat: 0.2700 microseconds
+Simple open/close: 1.4308 microseconds
+
+Simple syscall: 0.2109 microseconds
+Simple read: 0.3095 microseconds
+Simple write: 0.3899 microseconds
+Simple stat: 0.4833 microseconds
+Simple fstat: 0.2705 microseconds
+Simple open/close: 1.4229 microseconds
+
+Simple syscall: 0.2104 microseconds
+Simple read: 0.3094 microseconds
+Simple write: 0.3900 microseconds
+Simple stat: 0.4836 microseconds
+Simple fstat: 0.2701 microseconds
+Simple open/close: 1.3990 microseconds
+
+Simple syscall: 0.2108 microseconds
+Simple read: 0.3096 microseconds
+Simple write: 0.3942 microseconds
+Simple stat: 0.4834 microseconds
+Simple fstat: 0.2703 microseconds
+Simple open/close: 1.4241 microseconds
+
+Simple syscall: 0.2113 microseconds
+Simple read: 0.3093 microseconds
+Simple write: 0.3912 microseconds
+Simple stat: 0.4836 microseconds
+Simple fstat: 0.2702 microseconds
+Simple open/close: 1.4876 microseconds
+
+Simple syscall: 0.2109 microseconds
+Simple read: 0.3096 microseconds
+Simple write: 0.3935 microseconds
+Simple stat: 0.4835 microseconds
+Simple fstat: 0.2703 microseconds
+Simple open/close: 1.4298 microseconds
+
+Simple syscall: 0.2111 microseconds
+Simple read: 0.3093 microseconds
+Simple write: 0.3910 microseconds
+Simple stat: 0.4838 microseconds
+Simple fstat: 0.2703 microseconds
+Simple open/close: 1.4274 microseconds
+
+Simple syscall: 0.2116 microseconds
+Simple read: 0.3095 microseconds
+Simple write: 0.3922 microseconds
+Simple stat: 0.4836 microseconds
+Simple fstat: 0.2705 microseconds
+Simple open/close: 1.4280 microseconds
+
+Simple syscall: 0.2113 microseconds
+Simple read: 0.3095 microseconds
+Simple write: 0.3902 microseconds
+Simple stat: 0.4837 microseconds
+Simple fstat: 0.2699 microseconds
+Simple open/close: 1.4338 microseconds
+
+Simple syscall: 0.2108 microseconds
+Simple read: 0.3095 microseconds
+Simple write: 0.3902 microseconds
+Simple stat: 0.4833 microseconds
+Simple fstat: 0.2716 microseconds
+Simple open/close: 1.4429 microseconds
+
+Simple syscall: 0.2102 microseconds
+Simple read: 0.3082 microseconds
+Simple write: 0.3906 microseconds
+Simple stat: 0.4852 microseconds
+Simple fstat: 0.2695 microseconds
+Simple open/close: 1.4483 microseconds
+
+Simple syscall: 0.2103 microseconds
+Simple read: 0.3083 microseconds
+Simple write: 0.3896 microseconds
+Simple stat: 0.4827 microseconds
+Simple fstat: 0.2690 microseconds
+Simple open/close: 1.4398 microseconds
+
+Simple syscall: 0.2105 microseconds
+Simple read: 0.3084 microseconds
+Simple write: 0.3886 microseconds
+Simple stat: 0.4825 microseconds
+Simple fstat: 0.2699 microseconds
+Simple open/close: 1.4351 microseconds
+
+Simple syscall: 0.2102 microseconds
+Simple read: 0.3083 microseconds
+Simple write: 0.3892 microseconds
+Simple stat: 0.4865 microseconds
+Simple fstat: 0.2694 microseconds
+Simple open/close: 1.4453 microseconds
+
+Simple syscall: 0.2098 microseconds
+Simple read: 0.3095 microseconds
+Simple write: 0.3890 microseconds
+Simple stat: 0.4836 microseconds
+Simple fstat: 0.2696 microseconds
+Simple open/close: 1.4352 microseconds
+
+Simple syscall: 0.2104 microseconds
+Simple read: 0.3082 microseconds
+Simple write: 0.3887 microseconds
+Simple stat: 0.4834 microseconds
+Simple fstat: 0.2687 microseconds
+Simple open/close: 1.4184 microseconds
+
+Simple syscall: 0.2092 microseconds
+Simple read: 0.3083 microseconds
+Simple write: 0.3899 microseconds
+Simple stat: 0.4827 microseconds
+Simple fstat: 0.2687 microseconds
+Simple open/close: 1.4435 microseconds
+
+Simple syscall: 0.2099 microseconds
+Simple read: 0.3086 microseconds
+Simple write: 0.3884 microseconds
+Simple stat: 0.4825 microseconds
+Simple fstat: 0.2694 microseconds
+Simple open/close: 1.4413 microseconds
+
+Simple syscall: 0.2095 microseconds
+Simple read: 0.3083 microseconds
+Simple write: 0.3894 microseconds
+Simple stat: 0.4828 microseconds
+Simple fstat: 0.2687 microseconds
+Simple open/close: 1.4413 microseconds
+
+Simple syscall: 0.2098 microseconds
+Simple read: 0.3083 microseconds
+Simple write: 0.3889 microseconds
+Simple stat: 0.4824 microseconds
+Simple fstat: 0.2692 microseconds
+Simple open/close: 1.4170 microseconds
+
+Simple syscall: 0.2098 microseconds
+Simple read: 0.3083 microseconds
+Simple write: 0.3889 microseconds
+Simple stat: 0.4826 microseconds
+Simple fstat: 0.2693 microseconds
+Simple open/close: 1.4310 microseconds
+
+Simple syscall: 0.2107 microseconds
+Simple read: 0.3078 microseconds
+Simple write: 0.3904 microseconds
+Simple stat: 0.4827 microseconds
+Simple fstat: 0.2738 microseconds
+Simple open/close: 1.4313 microseconds
+
+Simple syscall: 0.2095 microseconds
+Simple read: 0.3080 microseconds
+Simple write: 0.3906 microseconds
+Simple stat: 0.4828 microseconds
+Simple fstat: 0.2688 microseconds
+Simple open/close: 1.4454 microseconds
+
+Simple syscall: 0.2099 microseconds
+Simple read: 0.3084 microseconds
+Simple write: 0.3892 microseconds
+Simple stat: 0.4827 microseconds
+Simple fstat: 0.2698 microseconds
+Simple open/close: 1.4246 microseconds
+
+Simple syscall: 0.2096 microseconds
+Simple read: 0.3082 microseconds
+Simple write: 0.3903 microseconds
+Simple stat: 0.4828 microseconds
+Simple fstat: 0.2691 microseconds
+Simple open/close: 1.4423 microseconds
+
+Simple syscall: 0.2106 microseconds
+Simple read: 0.3090 microseconds
+Simple write: 0.3921 microseconds
+Simple stat: 0.4826 microseconds
+Simple fstat: 0.2686 microseconds
+Simple open/close: 1.4564 microseconds
+
+Simple syscall: 0.2104 microseconds
+Simple read: 0.3090 microseconds
+Simple write: 0.3924 microseconds
+Simple stat: 0.4837 microseconds
+Simple fstat: 0.2700 microseconds
+Simple open/close: 1.4273 microseconds
+
+Simple syscall: 0.2110 microseconds
+Simple read: 0.3099 microseconds
+Simple write: 0.3901 microseconds
+Simple stat: 0.4837 microseconds
+Simple fstat: 0.2706 microseconds
+Simple open/close: 1.4279 microseconds
+
+Simple syscall: 0.2115 microseconds
+Simple read: 0.3163 microseconds
+Simple write: 0.3911 microseconds
+Simple stat: 0.4836 microseconds
+Simple fstat: 0.2701 microseconds
+Simple open/close: 1.4300 microseconds
+
+Simple syscall: 0.2107 microseconds
+Simple read: 0.3095 microseconds
+Simple write: 0.3940 microseconds
+Simple stat: 0.4900 microseconds
+Simple fstat: 0.2710 microseconds
+Simple open/close: 1.4394 microseconds
+

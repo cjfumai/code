@@ -1,0 +1,5 @@
+[onload]
+name=Solareflare onload repo
+baseurl=http://sol06a-4801.eu.hedani.net/repos/rhel_8.4_isv_updates/
+enabled=1
+gpgcheck=0

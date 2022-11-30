@@ -1,0 +1,18 @@
+---
+# tasks file for set_host_env
+#
+
+- name: Include tasks set_env_variables.yml
+  include_tasks: set_env_variables.yml
+
+- name: Include tasks git_clone_groupvars.yml
+  include_tasks: git_clone_groupvars.yml 
+
+- name: Include tasks git_clone_roles.yml
+  include_tasks: git_clone_roles.yml
+
+- name: Include tasks import_groupvars.yml
+  include_tasks: import_groupvars.yml
+
+- name: Add server to groups for dynamic role include
+  include_tasks: add_to_groups.yml

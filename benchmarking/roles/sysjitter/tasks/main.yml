@@ -1,0 +1,135 @@
+---
+- name: Include crowdstrike
+  include_vars: "{{ roles_path }}/crowdstrike/vars/crowdstrike.yml"
+
+- name: check for /bin/sysjitter
+  stat:
+    path: /bin/sysjitter
+  register: sysjitter_result
+
+- name: check for  {{ prog }}
+  fail:
+    msg: "{{ prog }} does not exist on this system"
+  when:
+    - not sysjitter_result.stat.exists
+
+- name: set short date
+  shell: "date +%d%m%y"
+  register: tstamp
+  when:
+    - sysjitter_result.stat.exists
+    - ansible_distribution_major_version|int >= 7
+
+- name: Start cgroups service
+  shell: "{{ item }}"
+  with_items:
+     - "{{ LLcgconfig_start }}"
+  when:
+     - "'LLcgconfig' in services"
+     - cgroups == "yes"
+
+- name: gather junk cpu information
+  shell:
+     /bin/cgget -r cpuset.cpus junk | grep -i ^cpuset.cpus | awk '{print $2}'
+  register: junk_cpus
+  when:
+    - sysjitter_result.stat.exists
+    - ansible_distribution_major_version|int >= 7
+
+- name: gather prime cpu information
+  shell:
+     /bin/cgget -r cpuset.cpus prime | grep -i ^cpuset.cpus | awk '{print $2}'
+  register: prime_cpus
+  when:
+    - sysjitter_result.stat.exists
+    - ansible_distribution_major_version|int >= 7
+
+- name: Get List of services
+  service_facts:
+
+- name: Output message if Crowdstrike missing
+  shell: "{{ item }}"
+  with_items:
+    - "{{ crowdstrike_missing }}"
+  when:
+    - "'falcon-sensor.service' not in services"
+
+- name: Stop Crowdstrike if exists
+  shell: "{{ item }}"
+  with_items:
+    - "{{ crowdstrike_stop }}"
+  when:
+    - ( crowdstrike == "yes" ) and (  "'falcon-sensor.service' in services" )
+    - cgroups == "yes"
+
+- name: Start cgroups service
+  shell: "{{ item }}"
+  with_items:
+     - "{{ LLcgconfig_start }}"
+  when:
+     - "'LLcgconfig' in services"
+     - cgroups == "yes"
+
+- name: run sysjitter on prime cores
+  shell: "{{ item }}"
+  with_items:
+    - "{{ commands }}"
+  when:
+    - sysjitter_result.stat.exists
+    - prime_cpus.stdout != ""
+    - ansible_distribution_major_version|int >= 7
+
+- name: start crowdstrike
+  shell: "{{ item }}"
+  with_items:
+    - "{{ crowdstrike_start }}"
+  when:
+    - ( crowdstrike == "yes" ) and (  "'falcon-sensor.service' in services" )
+    - cgroups == "yes"
+
+- name: run sysjitter on prime cores
+  shell: "{{ item }}"
+  with_items:
+    - "{{ commands }}"
+  when:
+    - prime_cpus.stdout != ""
+    - "'falcon-sensor.service' in services"
+
+- name: Start cgroups service
+  shell: "{{ item }}"
+  with_items:
+     - "{{ LLcgconfig_start }}"
+  when:
+     - "'LLcgconfig' in services"
+     - cgroups == "yes"
+
+- name: find file on remote to copy
+  find:
+    paths: /tmp/
+    recurse: no
+    patterns: "sysjitter.log.{{ tstamp.stdout }}.txt"
+  register: files_to_copy
+  when:
+    - sysjitter_result.stat.exists
+    - ansible_distribution_major_version|int >= 7
+
+- name: Copy logfile to control server
+  fetch:
+     src: "{{ item.path }}"
+     dest: "{{ logs_dir }}/{{ ansible_hostname }}.sysjitter.log.{{ tstamp.stdout }}.txt"
+     flat: yes
+  with_items: "{{ files_to_copy.files }}"
+  when:
+    - sysjitter_result.stat.exists
+    - ansible_distribution_major_version|int >= 7
+
+- name: local action on controller to fix fetched file perms
+  file:
+     path: "{{ logs_dir }}"
+     state: directory
+     mode: 0755
+     recurse: yes
+  delegate_to: localhost
+  when:
+    - sysjitter_result.stat.exists
+    - ansible_distribution_major_version|int >= 7

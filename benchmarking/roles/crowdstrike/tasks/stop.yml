@@ -1,0 +1,10 @@
+---
+- name: Stop Crowdstrike if exists
+  shell: "{{ item }}"
+  with_items:
+      - "{{ crowdstrike_stop }}"
+  when:
+      - "'falcon-sensor.service' in services"
+      - stopfalcon
+
+  tags: stopfalcon
